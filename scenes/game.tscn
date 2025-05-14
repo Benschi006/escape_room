@@ -19,3 +19,8 @@ position = Vector2(7, -56)
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -2)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(67, 216.5)
+scale = Vector2(1.76563, 1.58594)
+texture = ExtResource("2_my8ox")
