@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvsqchbcmw5iu"]
+
+[ext_resource type="Texture2D" uid="uid://bw2dkducd6134" path="res://assets/stuhl.png" id="1_hqs7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_juog5"]
+size = Vector2(154.75, 50.2436)
+
+[node name="stuhl" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Stuhl" type="Sprite2D" parent="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(69, -121)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("1_hqs7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, -12.5)
+scale = Vector2(0.497576, 0.497576)
+shape = SubResource("RectangleShape2D_juog5")

@@ -1,18 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://kw7le5116cb6"]
 
 [ext_resource type="Script" uid="uid://ro4wytciq3p5" path="res://scripts/player.gd" id="1_cos01"]
-[ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="2_f2nko"]
+[ext_resource type="Texture2D" uid="uid://c6rir41i10t6n" path="res://assets/Project Capture (4).png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiaa0"]
-size = Vector2(120, 117)
+size = Vector2(61, 33)
 
 [node name="player" type="CharacterBody2D"]
+light_mask = 7
+visibility_layer = 7
+y_sort_enabled = true
 script = ExtResource("1_cos01")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-4, -6)
-texture = ExtResource("2_f2nko")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -5.5)
+position = Vector2(-5.5, 36.5)
 shape = SubResource("RectangleShape2D_iiaa0")
+
+[node name="ProjectCapture(4)" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(17.7879, -49.875)
+scale = Vector2(0.172273, 0.172273)
+texture = ExtResource("2_g2els")

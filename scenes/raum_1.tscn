@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=10 format=3 uid="uid://bae4jdr6cm2ic"]
+
+[ext_resource type="Texture2D" uid="uid://dmbyk8m3bonuf" path="res://assets/raum1.jpg" id="1_765ex"]
+[ext_resource type="PackedScene" uid="uid://dvsqchbcmw5iu" path="res://scenes/stuhl.tscn" id="2_oapjn"]
+[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/player.tscn" id="2_pukxj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oapjn"]
+a = Vector2(396, 53)
+b = Vector2(-322, 53)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_765ex"]
+a = Vector2(-466, 311)
+b = Vector2(-468, 158)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pukxj"]
+a = Vector2(551, 310)
+b = Vector2(551, 155)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vefn4"]
+distance = -313.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yh7nx"]
+a = Vector2(-64, 123)
+b = Vector2(78, -14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vywjg"]
+a = Vector2(552, 189)
+b = Vector2(394, 54)
 
 [node name="raum1" type="Node2D"]
+
+[node name="Raum1" type="Sprite2D" parent="."]
+position = Vector2(-4, -170)
+texture = ExtResource("1_765ex")
+
+[node name="backwall" type="StaticBody2D" parent="Raum1"]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/backwall"]
+position = Vector2(-1, 119)
+shape = SubResource("SegmentShape2D_oapjn")
+
+[node name="leftwallStraight" type="StaticBody2D" parent="Raum1"]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/leftwallStraight"]
+position = Vector2(1, 0)
+shape = SubResource("SegmentShape2D_765ex")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Raum1/leftwallStraight"]
+shape = SubResource("SegmentShape2D_pukxj")
+
+[node name="fromtwall" type="StaticBody2D" parent="Raum1"]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/fromtwall"]
+shape = SubResource("WorldBoundaryShape2D_vefn4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Raum1"]
+position = Vector2(-404, 67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/StaticBody2D2"]
+position = Vector2(4, 116)
+shape = SubResource("SegmentShape2D_yh7nx")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Raum1"]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/StaticBody2D3"]
+position = Vector2(1, 114)
+shape = SubResource("SegmentShape2D_vywjg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(38, -181)
+
+[node name="player" parent="." instance=ExtResource("2_pukxj")]
+light_mask = 1
+visibility_layer = 1
+position = Vector2(-142, 41)
+
+[node name="stuhl" parent="." instance=ExtResource("2_oapjn")]
+y_sort_enabled = false
+position = Vector2(52, 67)
