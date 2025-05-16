@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0csjqmnu2f6"]
+
+[ext_resource type="Texture2D" uid="uid://d24c1r74lwhoe" path="res://assets/tisch.png" id="1_3mrvn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7iup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3mrvn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hdgd"]
+size = Vector2(131, 10)
+
+[node name="tisch" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -91)
+scale = Vector2(0.479, 0.479)
+sprite_frames = SubResource("SpriteFrames_m7iup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -26)
+shape = SubResource("RectangleShape2D_1hdgd")
