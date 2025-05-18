@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=19 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
 [ext_resource type="PackedScene" uid="uid://bb0wud2nxuvhn" path="res://scenes/function scenes/schrank.tscn" id="2_rdng0"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="4_rdcte"]
+[ext_resource type="PackedScene" uid="uid://uvtoqvx1h3xh" path="res://scenes/function scenes/lehrertisch.tscn" id="5_rdcte"]
+[ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_75tq4"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
+[ext_resource type="Script" uid="uid://b81c64c2c6vhc" path="res://scripts/prompt_area.gd" id="7_5bm2n"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -14,8 +18,8 @@ a = Vector2(-315, -215)
 b = Vector2(-500, -43)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_75tq4"]
-a = Vector2(315, -216)
-b = Vector2(-317, -214)
+a = Vector2(349.474, -214.737)
+b = Vector2(-323.158, -212.632)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bgydp"]
 a = Vector2(519, -24)
@@ -28,6 +32,45 @@ b = Vector2(500, -1)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5arhk"]
 a = Vector2(504, -1)
 b = Vector2(-507, -1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqhsi"]
+radius = 71.1758
+
+[sub_resource type="Animation" id="Animation_5bm2n"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EKey:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5arhk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EKey:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqhsi"]
+_data = {
+&"RESET": SubResource("Animation_5arhk"),
+&"appear": SubResource("Animation_5bm2n")
+}
 
 [node name="raum2" type="Node2D"]
 
@@ -45,13 +88,18 @@ position = Vector2(12, -18)
 position = Vector2(-193, -20)
 
 [node name="tisch2" parent="Objekte" instance=ExtResource("2_gkwet")]
-position = Vector2(61, -120)
+position = Vector2(87, -121)
 
 [node name="tisch" parent="Objekte" instance=ExtResource("2_gkwet")]
-position = Vector2(-98, -120)
+position = Vector2(-106, -119)
+scale = Vector2(0.95, 0.95)
 
 [node name="schrank" parent="Objekte" instance=ExtResource("2_rdng0")]
 position = Vector2(-251, -321)
+
+[node name="lehrertisch" parent="Objekte" instance=ExtResource("5_rdcte")]
+position = Vector2(242, -110)
+scale = Vector2(0.9, 0.9)
 
 [node name="player" parent="Objekte" instance=ExtResource("4_rdcte")]
 position = Vector2(-320, -93)
@@ -67,6 +115,8 @@ shape = SubResource("SegmentShape2D_gkwet")
 shape = SubResource("SegmentShape2D_rdcte")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+position = Vector2(-12, -15)
+scale = Vector2(0.95, 0.95)
 shape = SubResource("SegmentShape2D_75tq4")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="barriers/StaticBody2D"]
@@ -81,3 +131,35 @@ shape = SubResource("SegmentShape2D_5arhk")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -249)
 zoom = Vector2(1.15, 1.15)
+
+[node name="Logik" type="Node2D" parent="."]
+
+[node name="schulbuch" type="Node2D" parent="Logik"]
+
+[node name="buch" type="Sprite2D" parent="Logik/schulbuch"]
+position = Vector2(263, -173)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("6_75tq4")
+
+[node name="prompt_area" type="Area2D" parent="Logik/schulbuch"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("7_5bm2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schulbuch/prompt_area"]
+position = Vector2(264, -174)
+shape = SubResource("CircleShape2D_tqhsi")
+
+[node name="EKey" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
+visible = false
+position = Vector2(263, -323)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("7_5arhk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logik/schulbuch/prompt_area"]
+libraries = {
+&"": SubResource("AnimationLibrary_tqhsi")
+}
+
+[connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]

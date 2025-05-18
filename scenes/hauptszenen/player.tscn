@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://m8ta671fkfpb" path="res://assets/spieler.png" id="2_ijn0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfkil"]
-radius = 12.0416
+radius = 16.2788
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_cos01")
 
 [node name="Spieler" type="Sprite2D" parent="."]
@@ -16,5 +18,5 @@ scale = Vector2(0.298387, 0.298387)
 texture = ExtResource("2_ijn0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -20)
 shape = SubResource("CircleShape2D_wfkil")

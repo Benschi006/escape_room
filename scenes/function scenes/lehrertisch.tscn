@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://uvtoqvx1h3xh"]
+
+[ext_resource type="Texture2D" uid="uid://cw3i55ys5rt5c" path="res://assets/Lehrer_tisch.png" id="1_542se"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0mfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_542se")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eckj"]
+size = Vector2(61, 87.75)
+
+[node name="lehrertisch" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h0mfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(25, 26.125)
+shape = SubResource("RectangleShape2D_5eckj")
