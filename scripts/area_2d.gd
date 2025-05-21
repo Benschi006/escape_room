@@ -11,10 +11,15 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	e_key.show()
+	entered = true
 	
 func _on_body_exited(body: Node2D) -> void:
 	e_key.hide()
+	entered = false
 
-func _physics_process(delta):
-	if entered == true and Input.is_action_just_pressed("E"):
+func testE():
+	if Input.is_action_just_pressed("E") and entered == true:
 		icon.show()
+
+func _process(delta):
+	testE()

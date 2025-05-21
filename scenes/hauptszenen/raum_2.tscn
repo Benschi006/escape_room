@@ -188,8 +188,8 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("7_5arhk")
 
 [node name="Icon" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
-light_mask = 3
-visibility_layer = 3
+light_mask = 8
+visibility_layer = 8
 y_sort_enabled = true
 position = Vector2(-322, -259)
 texture = ExtResource("10_tqhsi")
