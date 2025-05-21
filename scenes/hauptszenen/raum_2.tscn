@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=22 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_75tq4"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://b81c64c2c6vhc" path="res://scripts/prompt_area.gd" id="7_5bm2n"]
+[ext_resource type="Script" uid="uid://6jeld6q2iicx" path="res://scripts/area_2d.gd" id="9_5arhk"]
+[ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="10_tqhsi"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -36,21 +38,6 @@ b = Vector2(-507, -1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqhsi"]
 radius = 71.1758
 
-[sub_resource type="Animation" id="Animation_5bm2n"]
-resource_name = "appear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EKey:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_5arhk"]
 length = 0.001
 tracks/0/type = "value"
@@ -66,11 +53,29 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_5bm2n"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EKey:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqhsi"]
 _data = {
 &"RESET": SubResource("Animation_5arhk"),
 &"appear": SubResource("Animation_5bm2n")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsc35"]
+radius = 68.0074
 
 [node name="raum2" type="Node2D"]
 
@@ -95,7 +100,7 @@ position = Vector2(-106, -119)
 scale = Vector2(0.95, 0.95)
 
 [node name="schrank" parent="Objekte" instance=ExtResource("2_rdng0")]
-position = Vector2(-251, -321)
+position = Vector2(-251, -328)
 
 [node name="lehrertisch" parent="Objekte" instance=ExtResource("5_rdcte")]
 position = Vector2(242, -110)
@@ -161,5 +166,32 @@ libraries = {
 &"": SubResource("AnimationLibrary_tqhsi")
 }
 
+[node name="hausaufgabenheft" type="Node2D" parent="Logik"]
+
+[node name="Buch" type="Sprite2D" parent="Logik/hausaufgabenheft"]
+position = Vector2(-64, -226)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("6_75tq4")
+
+[node name="Area2D" type="Area2D" parent="Logik/hausaufgabenheft"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_5arhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(-60, -227)
+shape = SubResource("CircleShape2D_fsc35")
+
+[node name="EKey" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(-63, -377)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_5arhk")
+
+[node name="Icon" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(-322, -259)
+texture = ExtResource("10_tqhsi")
+
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_exited"]
