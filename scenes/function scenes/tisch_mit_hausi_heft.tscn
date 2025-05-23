@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://je5hg8rrgo57"]
+
+[ext_resource type="Texture2D" uid="uid://d24c1r74lwhoe" path="res://assets/tisch.png" id="1_kglsu"]
+[ext_resource type="Texture2D" uid="uid://beh6hsqsyegjx" path="res://assets/hausi heft.png" id="2_jpb7j"]
+
+[node name="tisch mit hausi heft" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Tisch" type="Sprite2D" parent="."]
+texture = ExtResource("1_kglsu")
+
+[node name="HausiHeft" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(128, -18)
+scale = Vector2(0.272424, 0.272424)
+texture = ExtResource("2_jpb7j")
