@@ -23,7 +23,7 @@ func checkClickable():
 
 func _process(delta: float) -> void:
 	checkClickable()
-	if entered == true and e_pressed == true:
+	if e_pressed == true and entered == true:
 		hausi_heft_offen.show()
 		get_tree().paused = true
 	elif e_pressed == false:

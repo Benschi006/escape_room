@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtvmoaevdgbgm"
-path="res://.godot/imported/Project Capture (19).png-31784802b4cd11ca7bec696a60d111f3.ctex"
+uid="uid://b1uwe0g678poj"
+path="res://.godot/imported/buchseite_falsch.png-57264fc800c4a0c572369edcb1809c35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Project Capture (19).png"
-dest_files=["res://.godot/imported/Project Capture (19).png-31784802b4cd11ca7bec696a60d111f3.ctex"]
+source_file="res://assets/buchseite_falsch.png"
+dest_files=["res://.godot/imported/buchseite_falsch.png-57264fc800c4a0c572369edcb1809c35.ctex"]
 
 [params]
 

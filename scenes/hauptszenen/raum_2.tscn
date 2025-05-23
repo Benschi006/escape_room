@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=26 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_75tq4"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://o852i7sras1v" path="res://scripts/schulbuch_prompr_r2.gd" id="7_tqhsi"]
+[ext_resource type="Script" uid="uid://dp7s4u7uk8is0" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
 [ext_resource type="Script" uid="uid://bj0dps7eibay5" path="res://scripts/hausiheft_area.gd" id="10_jokoe"]
 [ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
+[ext_resource type="Texture2D" uid="uid://dtvmoaevdgbgm" path="res://assets/buchseite_richtig.png" id="11_wehhw"]
+[ext_resource type="Texture2D" uid="uid://b1uwe0g678poj" path="res://assets/buchseite_falsch.png" id="12_xhwow"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -38,6 +41,17 @@ b = Vector2(-507, -1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqhsi"]
 radius = 71.1758
+
+[sub_resource type="SystemFont" id="SystemFont_fsc35"]
+font_names = PackedStringArray("Arial")
+font_weight = 625
+
+[sub_resource type="LabelSettings" id="LabelSettings_jokoe"]
+font = SubResource("SystemFont_fsc35")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsc35"]
 radius = 68.0074
@@ -115,8 +129,8 @@ zoom = Vector2(1.15, 1.15)
 process_mode = 3
 
 [node name="buch" type="Sprite2D" parent="Logik/schulbuch"]
-position = Vector2(263, -173)
-scale = Vector2(0.21, 0.21)
+position = Vector2(129.5, -241.5)
+scale = Vector2(0.195, 0.185)
 texture = ExtResource("6_75tq4")
 
 [node name="prompt_area" type="Area2D" parent="Logik/schulbuch"]
@@ -125,14 +139,51 @@ collision_mask = 4
 script = ExtResource("7_tqhsi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schulbuch/prompt_area"]
-position = Vector2(264, -174)
+position = Vector2(130, -245)
 shape = SubResource("CircleShape2D_tqhsi")
 
 [node name="EKey" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
-visible = false
-position = Vector2(263, -323)
+position = Vector2(128, -392)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("7_5arhk")
+
+[node name="seiten_input" type="Node2D" parent="Logik/schulbuch/prompt_area"]
+visible = false
+script = ExtResource("10_0n3xi")
+
+[node name="LineEdit" type="LineEdit" parent="Logik/schulbuch/prompt_area/seiten_input"]
+offset_left = -222.0
+offset_top = -256.0
+offset_right = 222.0
+offset_bottom = -225.0
+placeholder_text = "Seitenzahl"
+
+[node name="Label" type="Label" parent="Logik/schulbuch/prompt_area/seiten_input"]
+offset_left = -222.0
+offset_top = -283.0
+offset_right = 222.0
+offset_bottom = -260.0
+text = "Welche Seite möchtest du öffnen?:"
+label_settings = SubResource("LabelSettings_jokoe")
+
+[node name="schliessen" type="Button" parent="Logik/schulbuch/prompt_area/seiten_input"]
+offset_left = -200.0
+offset_top = -53.0
+offset_right = 198.0
+offset_bottom = -22.0
+text = "Schließen"
+
+[node name="BuchseiteFalsch" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
+visible = false
+position = Vector2(60, -215)
+scale = Vector2(0.365455, 0.365455)
+texture = ExtResource("12_xhwow")
+
+[node name="BuchseiteRichtig" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
+visible = false
+position = Vector2(1, -249)
+scale = Vector2(0.31697, 0.31697)
+texture = ExtResource("11_wehhw")
 
 [node name="hausaufgabenheft" type="Node2D" parent="Logik"]
 process_mode = 3
@@ -149,6 +200,7 @@ position = Vector2(-55, -203)
 shape = SubResource("CircleShape2D_fsc35")
 
 [node name="HausiHeftOffen" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+visible = false
 position = Vector2(56, -255)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_fsc35")
@@ -162,11 +214,12 @@ text = "'E' drücken, um zu schließen"
 label_settings = SubResource("LabelSettings_fsc35")
 
 [node name="EKey" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
-position = Vector2(-63, -377)
-scale = Vector2(0.55, 0.55)
+position = Vector2(-62, -369)
+scale = Vector2(0.385, 0.385)
 texture = ExtResource("7_5arhk")
 
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/schulbuch/prompt_area/seiten_input/schliessen" to="Logik/schulbuch/prompt_area" method="_on_schliessen_pressed"]
 [connection signal="body_entered" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_exited"]
