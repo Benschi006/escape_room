@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=23 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://b81c64c2c6vhc" path="res://scripts/prompt_area.gd" id="7_5bm2n"]
 [ext_resource type="Script" uid="uid://6jeld6q2iicx" path="res://scripts/area_2d.gd" id="9_5arhk"]
-[ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="10_tqhsi"]
+[ext_resource type="Texture2D" uid="uid://beh6hsqsyegjx" path="res://assets/hausi heft.png" id="10_fsc35"]
+[ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -168,17 +169,20 @@ libraries = {
 
 [node name="hausaufgabenheft" type="Node2D" parent="Logik"]
 
-[node name="Buch" type="Sprite2D" parent="Logik/hausaufgabenheft"]
-position = Vector2(-64, -226)
-scale = Vector2(0.24, 0.24)
-texture = ExtResource("6_75tq4")
+[node name="HausiHeft" type="Sprite2D" parent="Logik/hausaufgabenheft"]
+visibility_layer = 8
+position = Vector2(-47, -226)
+scale = Vector2(0.117, 0.117)
+texture = ExtResource("10_fsc35")
 
 [node name="Area2D" type="Area2D" parent="Logik/hausaufgabenheft"]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_5arhk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/hausaufgabenheft/Area2D"]
+y_sort_enabled = true
 position = Vector2(-60, -227)
 shape = SubResource("CircleShape2D_fsc35")
 
@@ -187,12 +191,10 @@ position = Vector2(-63, -377)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("7_5arhk")
 
-[node name="Icon" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
-light_mask = 8
-visibility_layer = 8
-y_sort_enabled = true
-position = Vector2(-322, -259)
-texture = ExtResource("10_tqhsi")
+[node name="HausiHeftOffen" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(56, -255)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_fsc35")
 
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
