@@ -1,8 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=20 format=3 uid="uid://bae4jdr6cm2ic"]
 
 [ext_resource type="Texture2D" uid="uid://dmbyk8m3bonuf" path="res://assets/raum1.jpg" id="1_765ex"]
-[ext_resource type="PackedScene" uid="uid://dvsqchbcmw5iu" path="res://scenes/stuhl.tscn" id="2_oapjn"]
-[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/player.tscn" id="2_pukxj"]
+[ext_resource type="PackedScene" path="res://scenes/stuhl.tscn" id="2_oapjn"]
+[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_pukxj"]
+[ext_resource type="Script" uid="uid://du7nefkumvri4" path="res://scripts/sticky.gd" id="4_3t605"]
+[ext_resource type="Texture2D" uid="uid://br4y5csae6wue" path="res://assets/Project Capture (18).png" id="6_j70gu"]
+[ext_resource type="Texture2D" uid="uid://c5glljkskexjo" path="res://assets/Project Capture (17).png" id="7_l1u5m"]
+[ext_resource type="Texture2D" uid="uid://pwl407o4u7ry" path="res://assets/Project Capture (12).png" id="8_b3tkx"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="8_lj200"]
+[ext_resource type="Script" uid="uid://b4yr33ces8ye5" path="res://scripts/computer_funktion.gd" id="9_o7j6o"]
+[ext_resource type="Texture2D" uid="uid://dk4tbohdja2dn" path="res://assets/Project Capture (15).png" id="10_hsqyi"]
+[ext_resource type="Script" uid="uid://dkmalkkbolj0d" path="res://scripts/control.gd" id="11_o7j6o"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_oapjn"]
 a = Vector2(396, 53)
@@ -26,6 +34,13 @@ b = Vector2(78, -14)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vywjg"]
 a = Vector2(552, 189)
 b = Vector2(394, 54)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3tkx"]
+radius = 68.0074
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqplh"]
+radius = 80.0
+height = 160.0
 
 [node name="raum1" type="Node2D"]
 
@@ -74,10 +89,99 @@ shape = SubResource("SegmentShape2D_vywjg")
 position = Vector2(38, -181)
 
 [node name="player" parent="." instance=ExtResource("2_pukxj")]
-light_mask = 1
-visibility_layer = 1
 position = Vector2(-142, 41)
 
 [node name="stuhl" parent="." instance=ExtResource("2_oapjn")]
 y_sort_enabled = false
 position = Vector2(52, 67)
+
+[node name="Logik1" type="Node2D" parent="."]
+
+[node name="stickyNote" type="Node2D" parent="Logik1"]
+
+[node name="sticky" type="Area2D" parent="Logik1/stickyNote"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_3t605")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/stickyNote/sticky"]
+position = Vector2(-62, 78)
+shape = SubResource("CircleShape2D_b3tkx")
+
+[node name="EKey" type="Sprite2D" parent="Logik1/stickyNote/sticky"]
+position = Vector2(-56, -139)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_lj200")
+
+[node name="ProjectCapture(18)" type="Sprite2D" parent="Logik1/stickyNote/sticky"]
+visible = false
+position = Vector2(335, -178)
+scale = Vector2(0.628214, 0.553333)
+texture = ExtResource("6_j70gu")
+
+[node name="ProjectCapture(17)" type="Sprite2D" parent="Logik1/stickyNote"]
+position = Vector2(-53, 82)
+scale = Vector2(0.0635714, 0.0769697)
+texture = ExtResource("7_l1u5m")
+
+[node name="computer" type="Node2D" parent="Logik1"]
+
+[node name="ProjectCapture(12)" type="Sprite2D" parent="Logik1/computer"]
+position = Vector2(251, 30)
+scale = Vector2(0.14, 0.120606)
+texture = ExtResource("8_b3tkx")
+
+[node name="computer funktion" type="Area2D" parent="Logik1/computer"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_o7j6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/computer funktion"]
+y_sort_enabled = true
+position = Vector2(206, 43)
+shape = SubResource("CapsuleShape2D_uqplh")
+
+[node name="ProjectCapture(15)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+visible = false
+position = Vector2(-78, -186)
+scale = Vector2(0.635893, 0.568485)
+texture = ExtResource("10_hsqyi")
+
+[node name="EKey2" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+visible = false
+position = Vector2(203, -124)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("8_lj200")
+
+[node name="Control" type="Control" parent="Logik1/computer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_o7j6o")
+
+[node name="LineEditusername" type="LineEdit" parent="Logik1/computer/Control"]
+offset_left = 129.0
+offset_top = -202.0
+offset_right = 276.0
+offset_bottom = -142.0
+
+[node name="LineEditPassword" type="LineEdit" parent="Logik1/computer/Control"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="CheckButton" type="CheckButton" parent="Logik1/computer/Control"]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="Logik1/computer/Control/CheckButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik1/computer/computer funktion" to="Logik1/computer/computer funktion" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik1/computer/computer funktion" to="Logik1/computer/computer funktion" method="_on_body_exited"]
