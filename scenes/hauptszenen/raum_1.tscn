@@ -1,3 +1,233 @@
-[gd_scene format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=23 format=3 uid="uid://bae4jdr6cm2ic"]
+
+[ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_b3tkx"]
+[ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_o7j6o"]
+[ext_resource type="PackedScene" uid="uid://bb0wud2nxuvhn" path="res://scenes/function scenes/schrank.tscn" id="3_hsqyi"]
+[ext_resource type="PackedScene" uid="uid://uvtoqvx1h3xh" path="res://scenes/function scenes/lehrertisch.tscn" id="4_uqplh"]
+[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="5_tlo3d"]
+[ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_mxfo0"]
+[ext_resource type="Script" uid="uid://b81c64c2c6vhc" path="res://scripts/prompt_area.gd" id="7_5ka36"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="8_lj200"]
+[ext_resource type="Script" uid="uid://6jeld6q2iicx" path="res://scripts/area_2d.gd" id="9_m0ht4"]
+[ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="10_3bo7f"]
+[ext_resource type="Script" uid="uid://ct12ta1j73n26" path="res://scripts/stickynote.gd" id="11_o7j6o"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1cuc3"]
+a = Vector2(-501, -3)
+b = Vector2(-501, -501)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qk0i1"]
+a = Vector2(-315, -215)
+b = Vector2(-500, -43)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0jjxd"]
+a = Vector2(349.474, -214.737)
+b = Vector2(-323.158, -212.632)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q1d70"]
+a = Vector2(519, -24)
+b = Vector2(307, -222)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_13gbl"]
+a = Vector2(501, -500)
+b = Vector2(500, -1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8d2xq"]
+a = Vector2(504, -1)
+b = Vector2(-507, -1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3wp4"]
+radius = 71.1758
+
+[sub_resource type="Animation" id="Animation_5arhk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EKey:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5bm2n"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EKey:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqhsi"]
+_data = {
+&"RESET": SubResource("Animation_5arhk"),
+&"appear": SubResource("Animation_5bm2n")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bxsv"]
+radius = 68.0074
 
 [node name="raum1" type="Node2D"]
+
+[node name="RaumVorlage2" type="Sprite2D" parent="."]
+position = Vector2(0, -251)
+texture = ExtResource("1_b3tkx")
+
+[node name="Objekte" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tisch4" parent="Objekte" instance=ExtResource("2_o7j6o")]
+position = Vector2(12, -18)
+
+[node name="tisch3" parent="Objekte" instance=ExtResource("2_o7j6o")]
+position = Vector2(-193, -20)
+
+[node name="tisch2" parent="Objekte" instance=ExtResource("2_o7j6o")]
+position = Vector2(87, -121)
+
+[node name="tisch" parent="Objekte" instance=ExtResource("2_o7j6o")]
+position = Vector2(-106, -119)
+scale = Vector2(0.95, 0.95)
+
+[node name="schrank" parent="Objekte" instance=ExtResource("3_hsqyi")]
+position = Vector2(-251, -328)
+
+[node name="lehrertisch" parent="Objekte" instance=ExtResource("4_uqplh")]
+position = Vector2(242, -110)
+scale = Vector2(0.9, 0.9)
+
+[node name="player" parent="Objekte" instance=ExtResource("5_tlo3d")]
+position = Vector2(-320, -93)
+
+[node name="barriers" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+shape = SubResource("SegmentShape2D_1cuc3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+shape = SubResource("SegmentShape2D_qk0i1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+position = Vector2(-12, -15)
+scale = Vector2(0.95, 0.95)
+shape = SubResource("SegmentShape2D_0jjxd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+shape = SubResource("SegmentShape2D_q1d70")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+shape = SubResource("SegmentShape2D_13gbl")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+shape = SubResource("SegmentShape2D_8d2xq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, -249)
+zoom = Vector2(1.15, 1.15)
+
+[node name="Logik" type="Node2D" parent="."]
+
+[node name="schulbuch" type="Node2D" parent="Logik"]
+
+[node name="buch" type="Sprite2D" parent="Logik/schulbuch"]
+y_sort_enabled = true
+position = Vector2(263, -173)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("6_mxfo0")
+
+[node name="prompt_area" type="Area2D" parent="Logik/schulbuch"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("7_5ka36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schulbuch/prompt_area"]
+position = Vector2(264, -174)
+shape = SubResource("CircleShape2D_p3wp4")
+
+[node name="EKey" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
+visible = false
+position = Vector2(263, -323)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("8_lj200")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logik/schulbuch/prompt_area"]
+libraries = {
+&"": SubResource("AnimationLibrary_tqhsi")
+}
+
+[node name="hausaufgabenheft" type="Node2D" parent="Logik"]
+
+[node name="Buch" type="Sprite2D" parent="Logik/hausaufgabenheft"]
+y_sort_enabled = true
+position = Vector2(-64, -226)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("6_mxfo0")
+
+[node name="Area2D" type="Area2D" parent="Logik/hausaufgabenheft"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_m0ht4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(-60, -227)
+shape = SubResource("CircleShape2D_2bxsv")
+
+[node name="EKey" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+position = Vector2(-63, -377)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_lj200")
+
+[node name="Icon" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
+light_mask = 8
+visibility_layer = 8
+y_sort_enabled = true
+position = Vector2(-322, -259)
+texture = ExtResource("10_3bo7f")
+
+[node name="stickyNote" type="Node2D" parent="Logik"]
+
+[node name="StickyNote" type="Sprite2D" parent="Logik/stickyNote"]
+position = Vector2(-149, -123)
+scale = Vector2(0.398438, 0.445313)
+texture = ExtResource("10_3bo7f")
+
+[node name="sticky" type="Area2D" parent="Logik/stickyNote"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("11_o7j6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/stickyNote/sticky"]
+position = Vector2(-146, -126)
+shape = SubResource("CircleShape2D_p3wp4")
+
+[node name="EKey" type="Sprite2D" parent="Logik/stickyNote/sticky"]
+visible = false
+position = Vector2(-151, -262)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("8_lj200")
+
+[node name="StickyNoteFenster" type="Sprite2D" parent="Logik/stickyNote/sticky"]
+visible = false
+position = Vector2(219, -241)
+scale = Vector2(3, 2.98438)
+texture = ExtResource("10_3bo7f")
+
+[connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik/stickyNote/sticky" to="Logik/stickyNote/sticky" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/stickyNote/sticky" to="Logik/stickyNote/sticky" method="_on_body_exited"]
