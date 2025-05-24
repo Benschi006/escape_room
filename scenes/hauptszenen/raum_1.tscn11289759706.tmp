@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=24 format=3 uid="uid://bae4jdr6cm2ic"]
 
 [ext_resource type="Texture2D" uid="uid://dmbyk8m3bonuf" path="res://assets/raum1.jpg" id="1_765ex"]
 [ext_resource type="PackedScene" uid="uid://dvsqchbcmw5iu" path="res://scenes/stuhl.tscn" id="2_oapjn"]
@@ -15,10 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://5kqb6ypqwm0r" path="res://assets/Project Capture (21).png" id="13_tlo3d"]
 [ext_resource type="Script" uid="uid://ccenbc36ufsr4" path="res://scripts/cd.gd" id="14_mxfo0"]
 [ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="15_5ka36"]
-[ext_resource type="Script" uid="uid://5yxr7p45q2qm" path="res://scripts/minigame.gd" id="15_lj200"]
-[ext_resource type="Texture2D" uid="uid://c6rir41i10t6n" path="res://assets/Project Capture (4).png" id="16_m0ht4"]
-[ext_resource type="Script" uid="uid://fgssbps5w450" path="res://scripts/pclehrer.gd" id="18_3bo7f"]
-[ext_resource type="Script" uid="uid://cfw8nimc0drql" path="res://scripts/login_lehrer.gd" id="19_1cuc3"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_oapjn"]
 a = Vector2(396, 53)
@@ -44,18 +40,16 @@ a = Vector2(552, 189)
 b = Vector2(394, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3tkx"]
-radius = 52.0
+radius = 68.0074
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqplh"]
-radius = 50.0
-height = 100.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj200"]
+radius = 80.0
+height = 160.0
 
 [node name="raum1" type="Node2D"]
 
 [node name="Raum1" type="Sprite2D" parent="."]
-position = Vector2(-11, -184)
+position = Vector2(-22, -172)
 texture = ExtResource("1_765ex")
 
 [node name="backwall" type="StaticBody2D" parent="Raum1"]
@@ -85,7 +79,7 @@ shape = SubResource("WorldBoundaryShape2D_vefn4")
 position = Vector2(-404, 67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Raum1/StaticBody2D2"]
-position = Vector2(134, 266)
+position = Vector2(4, 116)
 shape = SubResource("SegmentShape2D_yh7nx")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Raum1"]
@@ -99,7 +93,7 @@ shape = SubResource("SegmentShape2D_vywjg")
 position = Vector2(29, -186)
 
 [node name="player" parent="." instance=ExtResource("2_pukxj")]
-position = Vector2(-108, 29)
+position = Vector2(-142, 41)
 
 [node name="stuhl" parent="." instance=ExtResource("2_oapjn")]
 y_sort_enabled = false
@@ -115,7 +109,7 @@ collision_mask = 4
 script = ExtResource("4_3t605")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/stickyNote/sticky"]
-position = Vector2(-60, 80)
+position = Vector2(-62, 78)
 shape = SubResource("CircleShape2D_b3tkx")
 
 [node name="EKey" type="Sprite2D" parent="Logik1/stickyNote/sticky"]
@@ -149,6 +143,7 @@ script = ExtResource("9_o7j6o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/computer funktion"]
 y_sort_enabled = true
 position = Vector2(223, 36)
+scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_uqplh")
 
 [node name="ProjectCapture(15)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
@@ -158,6 +153,7 @@ scale = Vector2(0.635893, 0.568485)
 texture = ExtResource("10_hsqyi")
 
 [node name="EKey2" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+visible = false
 position = Vector2(203, -124)
 scale = Vector2(0.57, 0.57)
 texture = ExtResource("8_lj200")
@@ -176,8 +172,8 @@ texture = ExtResource("13_tlo3d")
 
 [node name="Programm Cd" type="Sprite2D" parent="Logik1/computer/computer funktion"]
 visible = false
-position = Vector2(55.75, -201.5)
-scale = Vector2(8.00391, 5.41406)
+position = Vector2(3, -205)
+scale = Vector2(6.4375, 4.35938)
 texture = ExtResource("15_5ka36")
 
 [node name="Login" type="Control" parent="Logik1/computer"]
@@ -214,7 +210,6 @@ offset_right = 212.0
 offset_bottom = -157.0
 
 [node name="Label" type="Label" parent="Logik1/computer/Login/CheckButton"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.19
@@ -226,53 +221,9 @@ offset_top = 51.0
 offset_right = -11.64
 offset_bottom = 81.0
 
-[node name="PasswordMinigame" type="Node2D" parent="Logik1/computer"]
-script = ExtResource("15_lj200")
-
-[node name="password_player" type="CharacterBody2D" parent="Logik1/computer/PasswordMinigame"]
-
-[node name="passwordplayer" type="Sprite2D" parent="Logik1/computer/PasswordMinigame/password_player"]
-light_mask = 256
-visibility_layer = 256
-position = Vector2(65, -183)
-scale = Vector2(0.0571429, 0.0581818)
-texture = ExtResource("16_m0ht4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/PasswordMinigame/password_player"]
-shape = SubResource("RectangleShape2D_lj200")
-
-[node name="Ziel" type="Area2D" parent="Logik1/computer/PasswordMinigame"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/PasswordMinigame/Ziel"]
-light_mask = 256
-visibility_layer = 256
-y_sort_enabled = true
-position = Vector2(131, 10)
-shape = SubResource("CapsuleShape2D_uqplh")
-
-[node name="Label" type="Label" parent="Logik1/computer/PasswordMinigame"]
-anchors_preset = -1
-anchor_top = -6.396
-anchor_right = 2.725
-anchor_bottom = -6.396
-offset_left = -309.0
-offset_top = -492.0
-offset_right = 408.0
-offset_bottom = -459.0
-
-[node name="passwordbox" type="LineEdit" parent="Logik1/computer/PasswordMinigame"]
-anchors_preset = -1
-anchor_top = -2.214
-anchor_bottom = -2.214
-offset_left = -101.0
-offset_top = -330.0
-offset_right = 207.0
-offset_bottom = -299.0
-
 [node name="CD" type="Node2D" parent="Logik1"]
 
 [node name="areacd" type="Area2D" parent="Logik1/CD"]
-position = Vector2(14, -5)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("14_mxfo0")
@@ -282,7 +233,7 @@ position = Vector2(404, 58)
 shape = SubResource("CircleShape2D_b3tkx")
 
 [node name="cd" type="Sprite2D" parent="Logik1/CD/areacd"]
-position = Vector2(407, 58)
+position = Vector2(410, 54)
 scale = Vector2(0.585938, 0.53125)
 texture = ExtResource("15_5ka36")
 
@@ -291,100 +242,9 @@ position = Vector2(415, -110)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("8_lj200")
 
-[node name="Lehrer-Pc" type="Node2D" parent="Logik1"]
-
-[node name="lehrerpc" type="Sprite2D" parent="Logik1/Lehrer-Pc"]
-position = Vector2(-283, 29)
-scale = Vector2(0.11, 0.126212)
-texture = ExtResource("8_b3tkx")
-
-[node name="Pclehrer" type="Area2D" parent="Logik1/Lehrer-Pc"]
-position = Vector2(-3, -7)
-script = ExtResource("18_3bo7f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-position = Vector2(-315, 53)
-shape = SubResource("CircleShape2D_b3tkx")
-
-[node name="EKey123" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-position = Vector2(-301, -83)
-scale = Vector2(0.57, 0.47)
-texture = ExtResource("8_lj200")
-
-[node name="anmeldescreen" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-visible = false
-position = Vector2(-63, -193)
-scale = Vector2(0.535893, 0.514848)
-texture = ExtResource("10_hsqyi")
-
-[node name="Icon" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-visible = false
-position = Vector2(39, -192.5)
-scale = Vector2(7.3125, 4.96094)
-texture = ExtResource("15_5ka36")
-
-[node name="Login Lehrer" type="Control" parent="Logik1/Lehrer-Pc"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 5.0
-offset_top = 4.0
-offset_right = 45.0
-offset_bottom = 44.0
-script = ExtResource("19_1cuc3")
-
-[node name="code" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
-visible = false
-offset_left = -115.0
-offset_top = -382.0
-offset_right = 157.0
-offset_bottom = -351.0
-
-[node name="LineEditusername" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
-visible = false
-show_behind_parent = true
-layout_mode = 0
-offset_left = -6.0
-offset_top = -275.0
-offset_right = 156.0
-offset_bottom = -244.0
-
-[node name="LineEditPassword" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
-visible = false
-show_behind_parent = true
-layout_mode = 0
-offset_left = -7.0
-offset_top = -240.0
-offset_right = 158.0
-offset_bottom = -209.0
-secret = true
-
-[node name="CheckButton" type="CheckButton" parent="Logik1/Lehrer-Pc/Login Lehrer"]
-visible = false
-layout_mode = 0
-offset_left = 168.0
-offset_top = -183.0
-offset_right = 212.0
-offset_bottom = -157.0
-
-[node name="Label" type="Label" parent="Logik1/Lehrer-Pc/Login Lehrer/CheckButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -2.19
-anchor_top = 1.0
-anchor_right = -2.19
-anchor_bottom = 1.0
-offset_left = -95.64
-offset_top = 51.0
-offset_right = -11.64
-offset_bottom = 81.0
-
 [connection signal="body_entered" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_exited"]
 [connection signal="body_entered" from="Logik1/computer/computer funktion" to="Logik1/computer/computer funktion" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik1/computer/computer funktion" to="Logik1/computer/computer funktion" method="_on_body_exited"]
-[connection signal="body_entered" from="Logik1/computer/PasswordMinigame/Ziel" to="Logik1/computer/PasswordMinigame" method="_on_Ziel_body_entered"]
-[connection signal="body_exited" from="Logik1/computer/PasswordMinigame/Ziel" to="Logik1/computer/PasswordMinigame" method="_on_Ziel_body_exited"]
 [connection signal="body_entered" from="Logik1/CD/areacd" to="Logik1/CD/areacd" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik1/CD/areacd" to="Logik1/CD/areacd" method="_on_body_exited"]
-[connection signal="body_entered" from="Logik1/Lehrer-Pc/Pclehrer" to="Logik1/Lehrer-Pc/Pclehrer" method="_on_body_entered"]
-[connection signal="body_exited" from="Logik1/Lehrer-Pc/Pclehrer" to="Logik1/Lehrer-Pc/Pclehrer" method="_on_body_exited"]
