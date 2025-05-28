@@ -334,6 +334,7 @@ script = ExtResource("19_1cuc3")
 
 [node name="code" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
 visible = false
+layout_mode = 0
 offset_left = -115.0
 offset_top = -382.0
 offset_right = 157.0

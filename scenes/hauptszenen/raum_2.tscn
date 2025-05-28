@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_75tq4"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://o852i7sras1v" path="res://scripts/schulbuch_prompr_r2.gd" id="7_tqhsi"]
-[ext_resource type="Script" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
+[ext_resource type="Script" uid="uid://dp7s4u7uk8is0" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
 [ext_resource type="Script" uid="uid://bj0dps7eibay5" path="res://scripts/hausiheft_area.gd" id="10_jokoe"]
 [ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
 [ext_resource type="Texture2D" uid="uid://dtvmoaevdgbgm" path="res://assets/buchseite_richtig.png" id="11_wehhw"]
