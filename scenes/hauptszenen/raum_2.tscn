@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=28 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://ttvc5k54vnfp" path="res://assets/buch.png" id="6_75tq4"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://o852i7sras1v" path="res://scripts/schulbuch_prompr_r2.gd" id="7_tqhsi"]
-[ext_resource type="Script" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
+[ext_resource type="Script" uid="uid://dp7s4u7uk8is0" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
 [ext_resource type="Script" uid="uid://bj0dps7eibay5" path="res://scripts/hausiheft_area.gd" id="10_jokoe"]
 [ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
 [ext_resource type="Texture2D" uid="uid://dtvmoaevdgbgm" path="res://assets/buchseite_richtig.png" id="11_wehhw"]
 [ext_resource type="Texture2D" uid="uid://b1uwe0g678poj" path="res://assets/buchseite_falsch.png" id="12_xhwow"]
+[ext_resource type="Script" uid="uid://3w4pajfd0p7h" path="res://scripts/schrank_area.gd" id="15_wehhw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -63,6 +64,9 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 6
 shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 shadow_offset = Vector2(3, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhwow"]
+radius = 92.0489
 
 [node name="raum2" type="Node2D"]
 
@@ -216,6 +220,20 @@ label_settings = SubResource("LabelSettings_fsc35")
 [node name="EKey" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
 position = Vector2(-62, -369)
 scale = Vector2(0.385, 0.385)
+texture = ExtResource("7_5arhk")
+
+[node name="schrank" type="Node2D" parent="Logik"]
+
+[node name="schrank_area" type="Area2D" parent="Logik/schrank"]
+position = Vector2(-251, -239)
+script = ExtResource("15_wehhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schrank/schrank_area"]
+shape = SubResource("CircleShape2D_xhwow")
+
+[node name="EKey" type="Sprite2D" parent="."]
+position = Vector2(-258, -432)
+scale = Vector2(0.38, 0.38)
 texture = ExtResource("7_5arhk")
 
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
