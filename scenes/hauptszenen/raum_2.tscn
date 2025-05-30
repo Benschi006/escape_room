@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=32 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -12,9 +12,11 @@
 [ext_resource type="Script" uid="uid://dp7s4u7uk8is0" path="res://scripts/seiten_input.gd" id="10_0n3xi"]
 [ext_resource type="Script" uid="uid://bj0dps7eibay5" path="res://scripts/hausiheft_area.gd" id="10_jokoe"]
 [ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
-[ext_resource type="Texture2D" uid="uid://dtvmoaevdgbgm" path="res://assets/buchseite_richtig.png" id="11_wehhw"]
+[ext_resource type="Texture2D" uid="uid://s2tu17obohw2" path="res://assets/buchseite_richtig_1.png" id="12_wehhw"]
 [ext_resource type="Texture2D" uid="uid://b1uwe0g678poj" path="res://assets/buchseite_falsch.png" id="12_xhwow"]
 [ext_resource type="Script" uid="uid://3w4pajfd0p7h" path="res://scripts/schrank_area.gd" id="15_wehhw"]
+[ext_resource type="Texture2D" uid="uid://c7jagwvixnehw" path="res://assets/schloss.png" id="16_xhwow"]
+[ext_resource type="Texture2D" uid="uid://buu66jowdhr2w" path="res://assets/ex_notiz_1.png" id="17_8mifd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -67,6 +69,14 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhwow"]
 radius = 92.0489
+
+[sub_resource type="LabelSettings" id="LabelSettings_wehhw"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhwow"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="raum2" type="Node2D"]
 
@@ -183,14 +193,15 @@ position = Vector2(60, -215)
 scale = Vector2(0.365455, 0.365455)
 texture = ExtResource("12_xhwow")
 
-[node name="BuchseiteRichtig" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
+[node name="BuchseiteRichtig1" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
 visible = false
-position = Vector2(1, -249)
-scale = Vector2(0.31697, 0.31697)
-texture = ExtResource("11_wehhw")
+position = Vector2(83, -212)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("12_wehhw")
 
 [node name="hausaufgabenheft" type="Node2D" parent="Logik"]
 process_mode = 3
+y_sort_enabled = true
 
 [node name="Area2D" type="Area2D" parent="Logik/hausaufgabenheft"]
 y_sort_enabled = true
@@ -226,18 +237,68 @@ texture = ExtResource("7_5arhk")
 
 [node name="schrank_area" type="Area2D" parent="Logik/schrank"]
 position = Vector2(-251, -239)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("15_wehhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schrank/schrank_area"]
 shape = SubResource("CircleShape2D_xhwow")
 
-[node name="EKey" type="Sprite2D" parent="."]
-position = Vector2(-258, -432)
+[node name="EKey" type="Sprite2D" parent="Logik/schrank/schrank_area"]
+position = Vector2(-4, -145)
 scale = Vector2(0.38, 0.38)
 texture = ExtResource("7_5arhk")
+
+[node name="schloss_input" type="Node2D" parent="Logik/schrank/schrank_area"]
+visible = false
+
+[node name="Schloss" type="Sprite2D" parent="Logik/schrank/schrank_area/schloss_input"]
+position = Vector2(286, -39)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("16_xhwow")
+
+[node name="LineEdit" type="LineEdit" parent="Logik/schrank/schrank_area/schloss_input"]
+offset_left = 136.0
+offset_top = -56.0
+offset_right = 373.0
+offset_bottom = -25.0
+placeholder_text = "(Dreistellig)"
+
+[node name="schliessen" type="Button" parent="Logik/schrank/schrank_area/schloss_input"]
+offset_left = -5.0
+offset_top = 189.0
+offset_right = 510.0
+offset_bottom = 220.0
+text = "Schließen"
+
+[node name="Label_input" type="Label" parent="Logik/schrank/schrank_area/schloss_input"]
+offset_left = 137.0
+offset_top = -84.0
+offset_right = 343.0
+offset_bottom = -61.0
+text = "Was könnte der code sein?"
+label_settings = SubResource("LabelSettings_wehhw")
+
+[node name="ExNotiz1" type="Sprite2D" parent="Logik/schrank/schrank_area"]
+visible = false
+position = Vector2(344, 26)
+scale = Vector2(0.403636, 0.403636)
+texture = ExtResource("17_8mifd")
+
+[node name="Label_falsch" type="Label" parent="Logik/schrank/schrank_area"]
+visible = false
+offset_left = 118.0
+offset_top = 115.0
+offset_right = 385.0
+offset_bottom = 138.0
+text = "Hmm, das hat nicht funktioniert..."
+label_settings = SubResource("LabelSettings_xhwow")
 
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/schulbuch/prompt_area/seiten_input/schliessen" to="Logik/schulbuch/prompt_area" method="_on_schliessen_pressed"]
 [connection signal="body_entered" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/hausaufgabenheft/Area2D" to="Logik/hausaufgabenheft/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/schrank/schrank_area/schloss_input/schliessen" to="Logik/schrank/schrank_area" method="_on_schliessen_pressed"]

@@ -7,7 +7,7 @@ var e_pressed = false
 @onready var schliessen: Button = $seiten_input/schliessen
 @onready var line_edit: LineEdit = $seiten_input/LineEdit
 @onready var label: Label = $seiten_input/Label
-@onready var buchseite_richtig: Sprite2D = $BuchseiteRichtig
+@onready var buchseite_richtig: Sprite2D = $BuchseiteRichtig1
 @onready var buchseite_falsch: Sprite2D = $BuchseiteFalsch
 @onready var seiten_input: Node2D = $seiten_input
 
