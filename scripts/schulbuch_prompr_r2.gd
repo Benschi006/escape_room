@@ -32,6 +32,7 @@ func _on_body_exited(body: Node2D) -> void:
 	entered = false
 
 func _on_schliessen_pressed() -> void:
+	get_tree().paused = false
 	e_pressed = false
 
 func check_E_clicked():
@@ -40,7 +41,8 @@ func check_E_clicked():
 
 func _process(delta: float) -> void:
 	check_E_clicked()
-	if e_pressed == true and entered == true:
+	if e_pressed == true:
+		get_tree().paused = true
 		seiten_input.show()
 	elif e_pressed == false:
 		seiten_input.hide()

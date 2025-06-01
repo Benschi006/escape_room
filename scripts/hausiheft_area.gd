@@ -19,7 +19,7 @@ func _on_body_exited(body: Node2D) -> void:
 	
 func checkClickable():
 	if entered == true and Input.is_action_just_pressed("E"):
-		e_pressed = not e_pressed
+		e_pressed = true
 
 func _process(delta: float) -> void:
 	checkClickable()
@@ -29,3 +29,6 @@ func _process(delta: float) -> void:
 	elif e_pressed == false:
 		get_tree().paused = false
 		hausi_heft_offen.hide()
+
+func _on_schliessen_pressed() -> void:
+	e_pressed = false

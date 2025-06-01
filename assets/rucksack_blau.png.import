@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbtxr5wbw61py"
-path="res://.godot/imported/Project Capture (16).png-3398d616d9aa72cabca215609df4d1c5.ctex"
+uid="uid://d1qq6857lxsxo"
+path="res://.godot/imported/rucksack_blau.png-eb2a567ecf43e94b9a40dd24fbeb53d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Project Capture (16).png"
-dest_files=["res://.godot/imported/Project Capture (16).png-3398d616d9aa72cabca215609df4d1c5.ctex"]
+source_file="res://assets/rucksack_blau.png"
+dest_files=["res://.godot/imported/rucksack_blau.png-eb2a567ecf43e94b9a40dd24fbeb53d1.ctex"]
 
 [params]
 

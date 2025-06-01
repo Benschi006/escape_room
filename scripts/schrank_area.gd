@@ -33,6 +33,7 @@ func check_E_pressed():
 		pressed = true
 		
 func _on_schliessen_pressed() -> void:
+	get_tree().paused = false
 	pressed = false
 	ex_notiz.hide()
 	label_falsch.hide()
@@ -40,6 +41,7 @@ func _on_schliessen_pressed() -> void:
 func _process(delta: float) -> void:
 	check_E_pressed()
 	if pressed == true:
+		get_tree().paused = true
 		schloss_input.show()
 	else:
 		schloss_input.hide()
