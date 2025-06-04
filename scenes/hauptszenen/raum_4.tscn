@@ -162,17 +162,17 @@ offset_bottom = -254.0
 scale = Vector2(0.999726, 1.02306)
 max_value = 255.0
 
-[node name="Checkbutton" type="Button" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_right = 8.0
-offset_bottom = 8.0
-scale = Vector2(-16.051, 10.4735)
+[node name="Result Lable" type="Label" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
+offset_left = -120.0
+offset_top = -643.0
+offset_right = 59.0
+offset_bottom = -573.0
 
-[node name="Resultlabel" type="Label" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = nan
-offset_top = nan
-offset_right = nan
-offset_bottom = nan
-scale = Vector2(inf, 125.449)
+[node name="checkbutton" type="Button" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
+offset_left = 60.1871
+offset_top = -49.1928
+offset_right = 231.187
+offset_bottom = 35.8072
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.932585, 1.1765)
@@ -182,3 +182,4 @@ zoom = Vector2(1.15, 1.15)
 [connection signal="body_exited" from="Logik/dunkle" to="Logik/dunkle" method="_on_body_exited"]
 [connection signal="body_entered" from="Logik/kunsträtselmain/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/kunsträtselmain/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel" method="_on_body_exited"]
+[connection signal="visibility_changed" from="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" method="_on_visibility_changed"]

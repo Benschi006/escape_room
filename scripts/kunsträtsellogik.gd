@@ -5,8 +5,12 @@ extends Node2D
 @onready var red_slider: HSlider = $Redslider
 @onready var green_slider: HSlider = $Greenslider
 @onready var blue_slider: HSlider = $Blueslider
+@onready var icon: Sprite2D = $"../Icon"
+@onready var checkbutton: Button = $checkbutton
 
-@onready var resultlabel: Label = $Resultlabel
+@onready var result_lable: Label = $"Result Lable"
+
+
 
 var target_color: Color
 func _ready(): 
@@ -16,7 +20,7 @@ func _ready():
 	red_slider.connect("value_changed",Callable(self,"update_mixed_color"))
 	green_slider.connect("value_changed",Callable(self,"update_mixed_color"))
 	blue_slider.connect("value_changed",Callable(self,"update_mixed_color"))
-	$Checkbutton.connect("pressed",Callable(self,"check_result"))
+	checkbutton.connect("pressed",Callable(self,"check_result"))
 
 func generate_new_target_color():
 	target_color=Color(
@@ -25,7 +29,7 @@ func generate_new_target_color():
 	randf_range(0,1)
 	)
 	target_color_rect.color= target_color
-	resultlabel.text=""
+	result_lable.text=""
 
 func update_mixed_color(_value=0):
 	var mixed_color=Color(
@@ -40,6 +44,12 @@ func check_result():
 	var diff = abs(target_color.r - mixed_color.r) + abs(target_color.g- mixed_color.g)+ abs(target_color.b- mixed_color.b)
 	
 	if diff< 0.5:
-		resultlabel.text="Richtig"
+		result_lable.text="Richtig"
+		kunsträtsel.hide()
+		icon.hide()
 	else: 
-		resultlabel.text="Versuchs Nochmal"
+		result_lable.text="Versuchs Nochmal"
+
+
+func _on_visibility_changed() -> void:
+	pass # Replace with function body.
