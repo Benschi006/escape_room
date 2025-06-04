@@ -104,7 +104,6 @@ scale = Vector2(0.897205, 0.630171)
 
 [node name="kunsträtsel" type="Area2D" parent="Logik/kunsträtselmain"]
 position = Vector2(-266.383, 526.841)
-scale = Vector2(1, 1)
 script = ExtResource("6_kcvyg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/kunsträtselmain/kunsträtsel"]
@@ -126,7 +125,6 @@ texture = ExtResource("5_ei8sl")
 
 [node name="kunsträtsel" type="Node2D" parent="Logik/kunsträtselmain/kunsträtsel"]
 position = Vector2(0, -6.10352e-05)
-scale = Vector2(1, 1)
 script = ExtResource("6_yqrdt")
 
 [node name="TargetColorRect" type="ColorRect" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
