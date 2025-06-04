@@ -145,12 +145,14 @@ offset_left = 237.404
 offset_top = -361.806
 offset_right = 365.404
 offset_bottom = -345.806
+max_value = 255.0
 
 [node name="Greenslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
 offset_left = 234.0
 offset_top = -333.0
 offset_right = 367.0
 offset_bottom = -274.0
+max_value = 255.0
 
 [node name="Blueslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
 offset_left = 233.0
@@ -158,6 +160,7 @@ offset_top = -270.0
 offset_right = 367.0
 offset_bottom = -254.0
 scale = Vector2(0.999726, 1.02306)
+max_value = 255.0
 
 [node name="Checkbutton" type="Button" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
 offset_right = 8.0
