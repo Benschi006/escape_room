@@ -9,6 +9,8 @@ extends Node2D
 @onready var checkbutton: Button = $checkbutton
 
 @onready var result_lable: Label = $"Result Lable"
+@onready var safe: LineEdit = $Safe
+
 
 
 
@@ -30,6 +32,7 @@ func generate_new_target_color():
 	)
 	target_color_rect.color= target_color
 	result_lable.text=""
+	safe.hide()
 
 func update_mixed_color(_value=0):
 	var mixed_color=Color(
@@ -44,9 +47,10 @@ func check_result():
 	var diff = abs(target_color.r - mixed_color.r) + abs(target_color.g- mixed_color.g)+ abs(target_color.b- mixed_color.b)
 	
 	if diff< 0.5:
+		safe.show()
 		result_lable.text="Richtig"
-		kunsträtsel.hide()
-		icon.hide()
+		safe.text="Der Code für den Safe ist: 42 !!!"
+		safe.editable=false
 	else: 
 		result_lable.text="Versuchs Nochmal"
 

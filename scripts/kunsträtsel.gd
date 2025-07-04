@@ -28,7 +28,7 @@ func testE():
 func testEsc():
 	if Input.is_action_just_pressed("esc") and entered == true:
 		icon.hide()
-		kunsträtsel.show()
+		kunsträtsel.hide()
 
 func _process(delta):
 	testE()
