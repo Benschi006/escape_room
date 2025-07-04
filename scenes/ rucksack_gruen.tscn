@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6mqp0mcinj48"]
+
+[ext_resource type="Texture2D" uid="uid://bdig2xsyc848t" path="res://assets/rucksack_grün.png" id="1_jme8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euphh"]
+size = Vector2(40, 8)
+
+[node name="rucksack grün" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+position = Vector2(-8, 24)
+shape = SubResource("RectangleShape2D_euphh")
+
+[node name="RucksackGrün" type="Sprite2D" parent="."]
+position = Vector2(24, 24)
+scale = Vector2(0.106, 0.106)
+texture = ExtResource("1_jme8s")

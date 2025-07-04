@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=47 format=3 uid="uid://dvieqeb8xpjbw"]
 
 [ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b5it4qtonl4ho" path="res://scenes/function scenes/tisch_mit_schulbuch.tscn" id="6_8mifd"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="7_5arhk"]
 [ext_resource type="Script" uid="uid://o852i7sras1v" path="res://scripts/schulbuch_prompr_r2.gd" id="7_tqhsi"]
+[ext_resource type="PackedScene" uid="uid://rgmrqjm5a0ef" path="res://scenes/rucksack_blau.tscn" id="8_nigvf"]
+[ext_resource type="PackedScene" uid="uid://c6mqp0mcinj48" path="res://scenes/ rucksack_gruen.tscn" id="9_wcx5g"]
 [ext_resource type="Script" uid="uid://bj0dps7eibay5" path="res://scripts/hausiheft_area.gd" id="10_jokoe"]
 [ext_resource type="Texture2D" uid="uid://ch46degp7vdyo" path="res://assets/hausi heft offen.png" id="11_fsc35"]
 [ext_resource type="Texture2D" uid="uid://s2tu17obohw2" path="res://assets/buchseite_richtig_1.png" id="12_wehhw"]
@@ -17,7 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://c7jagwvixnehw" path="res://assets/schloss.png" id="16_xhwow"]
 [ext_resource type="Texture2D" uid="uid://buu66jowdhr2w" path="res://assets/ex_notiz_1.png" id="17_8mifd"]
 [ext_resource type="Texture2D" uid="uid://xqvcqadc5ur2" path="res://assets/klassenliste.png" id="18_4y4vv"]
+[ext_resource type="Texture2D" uid="uid://kcl08e5cnwcn" path="res://assets/rucksack_rot.png" id="19_ageqq"]
+[ext_resource type="Script" uid="uid://dlssjgkc4fwjl" path="res://scripts/rucksack_g_area.gd" id="19_nigvf"]
 [ext_resource type="Script" uid="uid://cu4lww5qo2e0o" path="res://scripts/klassenliste.gd" id="19_tc3c7"]
+[ext_resource type="Script" uid="uid://2jq6oo8phhy5" path="res://scripts/rucksack_rot.gd" id="20_ageqq"]
+[ext_resource type="Texture2D" uid="uid://dw4x7rmn7uhlq" path="res://assets/Project Capture (35).png" id="20_wcx5g"]
+[ext_resource type="Texture2D" uid="uid://b3f3dlnekwbm8" path="res://assets/Project Capture (36).png" id="21_h4c08"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -80,6 +87,15 @@ outline_color = Color(0, 0, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4c08"]
+radius = 74.0068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nigvf"]
+radius = 71.0634
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcx5g"]
+radius = 77.1622
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4l7fy"]
 radius = 61.0737
 
@@ -115,8 +131,14 @@ scale = Vector2(0.9, 0.9)
 position = Vector2(96, -196)
 scale = Vector2(0.480003, 0.480003)
 
+[node name="rucksack blau" parent="Objekte" instance=ExtResource("8_nigvf")]
+position = Vector2(-280, -112)
+
+[node name="rucksack grün" parent="Objekte" instance=ExtResource("9_wcx5g")]
+position = Vector2(128, -96)
+
 [node name="player" parent="Objekte" instance=ExtResource("4_rdcte")]
-position = Vector2(-320, -93)
+position = Vector2(-344, -104)
 
 [node name="barriers" type="Node2D" parent="."]
 
@@ -301,12 +323,85 @@ text = "Hmm, das hat nicht funktioniert..."
 label_settings = SubResource("LabelSettings_xhwow")
 
 [node name="rucksäcke" type="Node2D" parent="Logik"]
+y_sort_enabled = true
 
 [node name="rucksack1" type="Node2D" parent="Logik/rucksäcke"]
 
 [node name="rucksack2" type="Node2D" parent="Logik/rucksäcke"]
+y_sort_enabled = true
+
+[node name="EKey" type="Sprite2D" parent="Logik/rucksäcke/rucksack2"]
+position = Vector2(104, -192)
+scale = Vector2(0.385, 0.385)
+texture = ExtResource("7_5arhk")
+
+[node name="Rucksack_B_Area" type="Area2D" parent="Logik/rucksäcke/rucksack2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack2/Rucksack_B_Area"]
+position = Vector2(-288, -96)
+shape = SubResource("CircleShape2D_h4c08")
+
+[node name="Rucksack_G_Area" type="Area2D" parent="Logik/rucksäcke/rucksack2"]
+process_mode = 3
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("19_nigvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack2/Rucksack_G_Area"]
+position = Vector2(128, -88)
+shape = SubResource("CircleShape2D_nigvf")
+
+[node name="ex_gruen" type="Sprite2D" parent="Logik/rucksäcke/rucksack2/Rucksack_G_Area"]
+visible = false
+position = Vector2(24, -296)
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("20_wcx5g")
+
+[node name="schliessen" type="Button" parent="Logik/rucksäcke/rucksack2/Rucksack_G_Area"]
+visible = false
+offset_left = -128.0
+offset_top = -80.0
+offset_right = 128.0
+offset_bottom = -48.0
+text = "Schließen"
 
 [node name="rucksack3" type="Node2D" parent="Logik/rucksäcke"]
+
+[node name="EKey" type="Sprite2D" parent="Logik/rucksäcke/rucksack3"]
+position = Vector2(440, -176)
+scale = Vector2(0.385, 0.385)
+texture = ExtResource("7_5arhk")
+
+[node name="RucksackRot" type="Sprite2D" parent="Logik/rucksäcke/rucksack3"]
+y_sort_enabled = true
+position = Vector2(413, -18)
+rotation = 3.14159
+scale = Vector2(0.106045, -0.114394)
+texture = ExtResource("19_ageqq")
+
+[node name="Area2D" type="Area2D" parent="Logik/rucksäcke/rucksack3"]
+process_mode = 3
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("20_ageqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack3/Area2D"]
+position = Vector2(439, -31)
+shape = SubResource("CircleShape2D_wcx5g")
+
+[node name="ex_rot" type="Sprite2D" parent="Logik/rucksäcke/rucksack3/Area2D"]
+visible = false
+position = Vector2(24, -288)
+scale = Vector2(0.284848, 0.284848)
+texture = ExtResource("21_h4c08")
+
+[node name="schliessen" type="Button" parent="Logik/rucksäcke/rucksack3/Area2D"]
+visible = false
+offset_left = -128.0
+offset_top = -80.0
+offset_right = 128.0
+offset_bottom = -48.0
+text = "Schließen"
 
 [node name="klassenliste" type="Node2D" parent="Logik"]
 
@@ -354,6 +449,12 @@ text = "Schließen"
 [connection signal="body_entered" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/schrank/schrank_area/schloss_input/schliessen" to="Logik/schrank/schrank_area" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area/schliessen" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/rucksäcke/rucksack3/Area2D" to="Logik/rucksäcke/rucksack3/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/rucksäcke/rucksack3/Area2D" to="Logik/rucksäcke/rucksack3/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/rucksäcke/rucksack3/Area2D/schliessen" to="Logik/rucksäcke/rucksack3/Area2D" method="_on_schliessen_pressed"]
 [connection signal="body_entered" from="Logik/klassenliste/Area2D" to="Logik/klassenliste/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/klassenliste/Area2D" to="Logik/klassenliste/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/klassenliste/Area2D/listeOffen/schliessen" to="Logik/klassenliste/Area2D" method="_on_schliessen_pressed"]
