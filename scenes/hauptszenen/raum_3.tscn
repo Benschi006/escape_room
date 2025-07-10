@@ -1,3 +1,58 @@
-[gd_scene format=3 uid="uid://0c70y8212hts"]
+[gd_scene load_steps=6 format=3 uid="uid://0c70y8212hts"]
+
+[ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ldnpm"]
+[ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_2211e"]
+[ext_resource type="PackedScene" uid="uid://uvtoqvx1h3xh" path="res://scenes/function scenes/lehrertisch.tscn" id="3_my2a5"]
+[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="4_3sg6d"]
+[ext_resource type="Script" uid="uid://cvmrxvh38y5pi" path="res://scripts/door_raum3.gd" id="5_t1apv"]
 
 [node name="raum3" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.15, 1.15)
+
+[node name="RaumOhneFenster" type="Sprite2D" parent="."]
+texture = ExtResource("1_ldnpm")
+
+[node name="objekte" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tisch" parent="objekte" instance=ExtResource("2_2211e")]
+position = Vector2(-146, 131)
+
+[node name="tisch2" parent="objekte" instance=ExtResource("2_2211e")]
+position = Vector2(-106, 223)
+
+[node name="tisch3" parent="objekte" instance=ExtResource("2_2211e")]
+position = Vector2(64, 127)
+
+[node name="tisch4" parent="objekte" instance=ExtResource("2_2211e")]
+position = Vector2(83, 223)
+
+[node name="lehrertisch" parent="objekte" instance=ExtResource("3_my2a5")]
+position = Vector2(281, 151)
+scale = Vector2(0.75, 0.75)
+
+[node name="player" parent="objekte" instance=ExtResource("4_3sg6d")]
+position = Vector2(-334, 167)
+
+[node name="boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="boundaries"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundaries/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-312, 40, 312, 40, 500, 229, 500, 250, -500, 250, -500, 228)
+
+[node name="logik" type="Node2D" parent="."]
+
+[node name="door" type="Node2D" parent="logik"]
+
+[node name="Area2D" type="Area2D" parent="logik/door"]
+script = ExtResource("5_t1apv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/door/Area2D"]
+polygon = PackedVector2Array(-436, 164, -436, 188, -347, 99, -348, 77)
+
+[connection signal="body_entered" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_exited"]

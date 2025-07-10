@@ -1,6 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://dvieqeb8xpjbw"]
+[gd_scene load_steps=50 format=3 uid="uid://dvieqeb8xpjbw"]
 
-[ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_txjdu"]
+[ext_resource type="Texture2D" uid="uid://cagewydmlwp77" path="res://assets/raum_vorlage_2.png" id="1_syq8h"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_gkwet"]
 [ext_resource type="PackedScene" uid="uid://bb0wud2nxuvhn" path="res://scenes/function scenes/schrank.tscn" id="2_rdng0"]
 [ext_resource type="PackedScene" uid="uid://cov2icpkpnq40" path="res://scenes/function scenes/tisch_hausiheft.tscn" id="3_fsc35"]
@@ -21,10 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://xqvcqadc5ur2" path="res://assets/klassenliste.png" id="18_4y4vv"]
 [ext_resource type="Texture2D" uid="uid://kcl08e5cnwcn" path="res://assets/rucksack_rot.png" id="19_ageqq"]
 [ext_resource type="Script" uid="uid://dlssjgkc4fwjl" path="res://scripts/rucksack_g_area.gd" id="19_nigvf"]
+[ext_resource type="Script" uid="uid://deqs5e550skcq" path="res://scripts/rucksack_b_area.gd" id="19_syq8h"]
 [ext_resource type="Script" uid="uid://cu4lww5qo2e0o" path="res://scripts/klassenliste.gd" id="19_tc3c7"]
 [ext_resource type="Script" uid="uid://2jq6oo8phhy5" path="res://scripts/rucksack_rot.gd" id="20_ageqq"]
+[ext_resource type="Texture2D" uid="uid://bx0fkpvmbydfc" path="res://assets/ex.png" id="20_iqtrx"]
 [ext_resource type="Texture2D" uid="uid://dw4x7rmn7uhlq" path="res://assets/Project Capture (35).png" id="20_wcx5g"]
 [ext_resource type="Texture2D" uid="uid://b3f3dlnekwbm8" path="res://assets/Project Capture (36).png" id="21_h4c08"]
+[ext_resource type="Script" uid="uid://g2317fu0eh32" path="res://scripts/door_raum2.gd" id="28_iqtrx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gkwet"]
 a = Vector2(-501, -3)
@@ -104,9 +107,9 @@ default_font_size = 40
 
 [node name="raum2" type="Node2D"]
 
-[node name="RaumVorlage2" type="Sprite2D" parent="."]
-position = Vector2(0, -248)
-texture = ExtResource("1_txjdu")
+[node name="RaumVorlage3" type="Sprite2D" parent="."]
+position = Vector2(1, -248)
+texture = ExtResource("1_syq8h")
 
 [node name="Objekte" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -135,7 +138,7 @@ scale = Vector2(0.480003, 0.480003)
 position = Vector2(-280, -112)
 
 [node name="rucksack grün" parent="Objekte" instance=ExtResource("9_wcx5g")]
-position = Vector2(128, -96)
+position = Vector2(128, -104)
 
 [node name="player" parent="Objekte" instance=ExtResource("4_rdcte")]
 position = Vector2(-344, -104)
@@ -327,6 +330,35 @@ y_sort_enabled = true
 
 [node name="rucksack1" type="Node2D" parent="Logik/rucksäcke"]
 
+[node name="EKey" type="Sprite2D" parent="Logik/rucksäcke/rucksack1"]
+visible = false
+position = Vector2(-288, -224)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("7_5arhk")
+
+[node name="Rucksack_G_Area2" type="Area2D" parent="Logik/rucksäcke/rucksack1"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("19_syq8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack1/Rucksack_G_Area2"]
+position = Vector2(-264, -88)
+shape = SubResource("CircleShape2D_h4c08")
+
+[node name="Ex" type="Sprite2D" parent="Logik/rucksäcke/rucksack1/Rucksack_G_Area2"]
+visible = false
+position = Vector2(0, -280)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("20_iqtrx")
+
+[node name="schliessen" type="Button" parent="Logik/rucksäcke/rucksack1/Rucksack_G_Area2"]
+visible = false
+offset_left = -128.0
+offset_top = -80.0
+offset_right = 128.0
+offset_bottom = -48.0
+text = "Schließen"
+
 [node name="rucksack2" type="Node2D" parent="Logik/rucksäcke"]
 y_sort_enabled = true
 
@@ -334,12 +366,6 @@ y_sort_enabled = true
 position = Vector2(104, -192)
 scale = Vector2(0.385, 0.385)
 texture = ExtResource("7_5arhk")
-
-[node name="Rucksack_B_Area" type="Area2D" parent="Logik/rucksäcke/rucksack2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack2/Rucksack_B_Area"]
-position = Vector2(-288, -96)
-shape = SubResource("CircleShape2D_h4c08")
 
 [node name="Rucksack_G_Area" type="Area2D" parent="Logik/rucksäcke/rucksack2"]
 process_mode = 3
@@ -440,6 +466,17 @@ offset_bottom = 790.298
 theme = SubResource("Theme_ageqq")
 text = "Schließen"
 
+[node name="door" type="Node2D" parent="Logik"]
+
+[node name="Area2D" type="Area2D" parent="Logik/door"]
+position = Vector2(-384, -120)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("28_iqtrx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Logik/door/Area2D"]
+polygon = PackedVector2Array(-40, 8, -56, 24, -56, 64, 48, -32, 40, -72)
+
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/schulbuch/prompt_area/seiten_input/schliessen" to="Logik/schulbuch/prompt_area" method="_on_schliessen_pressed"]
@@ -449,6 +486,9 @@ text = "Schließen"
 [connection signal="body_entered" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schrank/schrank_area" to="Logik/schrank/schrank_area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/schrank/schrank_area/schloss_input/schliessen" to="Logik/schrank/schrank_area" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/rucksäcke/rucksack1/Rucksack_G_Area2" to="Logik/rucksäcke/rucksack1/Rucksack_G_Area2" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/rucksäcke/rucksack1/Rucksack_G_Area2" to="Logik/rucksäcke/rucksack1/Rucksack_G_Area2" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/rucksäcke/rucksack1/Rucksack_G_Area2/schliessen" to="Logik/rucksäcke/rucksack1/Rucksack_G_Area2" method="_on_schliessen_pressed"]
 [connection signal="body_entered" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/rucksäcke/rucksack2/Rucksack_G_Area/schliessen" to="Logik/rucksäcke/rucksack2/Rucksack_G_Area" method="_on_schliessen_pressed"]
@@ -458,3 +498,5 @@ text = "Schließen"
 [connection signal="body_entered" from="Logik/klassenliste/Area2D" to="Logik/klassenliste/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/klassenliste/Area2D" to="Logik/klassenliste/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/klassenliste/Area2D/listeOffen/schliessen" to="Logik/klassenliste/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/door/Area2D" to="Logik/door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/door/Area2D" to="Logik/door/Area2D" method="_on_body_exited"]
