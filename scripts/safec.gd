@@ -7,10 +7,14 @@ var entered=false
 @onready var line_edit_2: LineEdit = $LineEdit2
 @onready var line_edit: LineEdit = $LineEdit
 @onready var icon_3: Sprite2D = $Icon3
-@onready var button: Button = $Button
+
 @onready var icon_4: Sprite2D = $Icon4
 @onready var icon_5: Sprite2D = $Icon5
 @onready var check_button: CheckButton = $CheckButton
+@onready var button: Button = $Button
+@onready var button_pressed = false
+@onready var icon_6: Sprite2D = $Icon6
+
 
 
 func _ready() -> void:
@@ -26,7 +30,8 @@ func _ready() -> void:
 	button.hide()
 	icon_4.hide()
 	icon_5.hide()
-	check_button.connect("pressed",Callable(self,"check_result"))
+	icon_6.hide()
+	
 
 func _on_body_entered(body: Node2D) -> void:
 	e_key.show()
@@ -63,8 +68,25 @@ func _on_check_login():
 		check_button.hide()
 		button.show()
 		icon_4.show()
-func check_result():
-	icon_5.show()
+		icon_5.hide()
+	
+
 func _process(delta):
 	testE()
 	testEsc()
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
+	icon_5.show()
+	
+	button_pressed=true
+	icon_6.show()
+	icon_4.hide()
+	button.hide()
+
+func checkPressed() -> bool:
+	if button_pressed == true:
+		return true
+	else:
+		return false

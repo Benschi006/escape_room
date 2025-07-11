@@ -192,6 +192,11 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("8_ry25g")
 
+[node name="Icon6" type="Sprite2D" parent="Logik/Safe/Safec"]
+position = Vector2(212, -108)
+scale = Vector2(3.1875, 2.8125)
+texture = ExtResource("5_ei8sl")
+
 [node name="EKey" type="Sprite2D" parent="Logik/Safe/Safec"]
 light_mask = 4
 visibility_layer = 4
@@ -239,17 +244,17 @@ offset_right = 236.0
 offset_bottom = 8.0
 
 [node name="Button" type="Button" parent="Logik/Safe/Safec"]
-offset_left = 176.0
-offset_top = -24.0
-offset_right = 256.0
-offset_bottom = 16.0
+offset_left = 152.0
+offset_top = -104.0
+offset_right = 280.0
+offset_bottom = 24.0
 
 [node name="Icon4" type="Sprite2D" parent="Logik/Safe/Safec"]
 position = Vector2(216, -40)
 texture = ExtResource("5_ei8sl")
 
 [node name="Icon5" type="Sprite2D" parent="Logik/Safe/Safec"]
-position = Vector2(600, 48)
+position = Vector2(608, 56)
 texture = ExtResource("5_ei8sl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -264,3 +269,4 @@ zoom = Vector2(1.15, 1.15)
 [connection signal="visibility_changed" from="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Logik/Safe/Safec" to="Logik/Safe/Safec" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/Safe/Safec" to="Logik/Safe/Safec" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/Safe/Safec/Button" to="Logik/Safe/Safec" method="_on_button_pressed"]
