@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s14pmtibypc1"
-path="res://.godot/imported/plakat_2_g.png-4d3a3a8f41a26bbafd7cde2a2f513bce.ctex"
+uid="uid://bi3xnx7a0ujc6"
+path="res://.godot/imported/schulbuch ges_offen.png-5d0644e999ac7316cd7604cded49c2ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plakat_2_g.png"
-dest_files=["res://.godot/imported/plakat_2_g.png-4d3a3a8f41a26bbafd7cde2a2f513bce.ctex"]
+source_file="res://assets/schulbuch ges_offen.png"
+dest_files=["res://.godot/imported/schulbuch ges_offen.png-5d0644e999ac7316cd7604cded49c2ca.ctex"]
 
 [params]
 

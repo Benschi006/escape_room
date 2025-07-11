@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwhowgrys2116"]
+
+[ext_resource type="Texture2D" uid="uid://67h44jwinggj" path="res://assets/tisch_mit_g_buch.png" id="1_pfypi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buieo"]
+size = Vector2(504, 40)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.479, 0.479)
+
+[node name="TischMitGBuch" type="Sprite2D" parent="."]
+texture = ExtResource("1_pfypi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 252)
+shape = SubResource("RectangleShape2D_buieo")

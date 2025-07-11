@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0c70y8212hts"]
+[gd_scene load_steps=23 format=3 uid="uid://0c70y8212hts"]
 
 [ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ldnpm"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_2211e"]
@@ -11,9 +11,25 @@
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="9_j05kc"]
 [ext_resource type="Texture2D" uid="uid://c20ke4eavoqdh" path="res://assets/plakat_1_g.png" id="10_t2mhb"]
 [ext_resource type="Script" uid="uid://dmhe07sv7plok" path="res://scripts/plakat_1.gd" id="11_iv7ho"]
+[ext_resource type="Texture2D" uid="uid://bdefibq5w6sy1" path="res://assets/plakat_2_g_1.png" id="12_idbx2"]
+[ext_resource type="Script" uid="uid://dex7y38ar5vad" path="res://scripts/plakat2.gd" id="13_nn6my"]
+[ext_resource type="Script" uid="uid://d0riryw581vul" path="res://scripts/plakat3.gd" id="14_idbx2"]
+[ext_resource type="Texture2D" uid="uid://bi1q2fe277rqf" path="res://assets/plakat_3_g.png" id="15_07hvf"]
+[ext_resource type="PackedScene" uid="uid://bwhowgrys2116" path="res://scenes/function scenes/tisch_mit_g_buch.tscn" id="16_07hvf"]
+[ext_resource type="Texture2D" uid="uid://bi3xnx7a0ujc6" path="res://assets/schulbuch ges_offen.png" id="17_l12sl"]
+[ext_resource type="Script" uid="uid://daw4rpiropjej" path="res://scripts/schulbuch_g.gd" id="18_g6sci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn6my"]
 size = Vector2(146, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idbx2"]
+size = Vector2(146, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh23m"]
+size = Vector2(162, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmlsx"]
+radius = 80.0
 
 [node name="raum3" type="Node2D"]
 
@@ -42,16 +58,17 @@ scale = Vector2(0.16, 0.16)
 texture = ExtResource("4_okj51")
 
 [node name="tisch" parent="objekte" instance=ExtResource("2_2211e")]
-position = Vector2(-146, 131)
+position = Vector2(-144, 144)
 
 [node name="tisch2" parent="objekte" instance=ExtResource("2_2211e")]
 position = Vector2(-106, 223)
 
 [node name="tisch3" parent="objekte" instance=ExtResource("2_2211e")]
-position = Vector2(64, 127)
+position = Vector2(64, 144)
 
-[node name="tisch4" parent="objekte" instance=ExtResource("2_2211e")]
-position = Vector2(83, 223)
+[node name="tisch_schulbuch" parent="objekte" instance=ExtResource("16_07hvf")]
+position = Vector2(72, 136)
+scale = Vector2(0.26, 0.26)
 
 [node name="lehrertisch" parent="objekte" instance=ExtResource("3_my2a5")]
 position = Vector2(281, 151)
@@ -91,7 +108,7 @@ texture = ExtResource("9_j05kc")
 [node name="Plakat1G" type="Sprite2D" parent="logik/plakat1"]
 visible = false
 position = Vector2(-16, -72)
-scale = Vector2(0.276667, 0.276667)
+scale = Vector2(0.275, 0.275)
 texture = ExtResource("10_t2mhb")
 
 [node name="Area2D" type="Area2D" parent="logik/plakat1"]
@@ -120,6 +137,30 @@ position = Vector2(0, -160)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("9_j05kc")
 
+[node name="Plakat2G" type="Sprite2D" parent="logik/plakat2"]
+visible = false
+position = Vector2(100.394, -5.87496)
+scale = Vector2(0.506818, 0.506818)
+texture = ExtResource("12_idbx2")
+
+[node name="Area2D" type="Area2D" parent="logik/plakat2"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("13_nn6my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/plakat2/Area2D"]
+position = Vector2(-1, 56)
+shape = SubResource("RectangleShape2D_idbx2")
+
+[node name="schliessen" type="Button" parent="logik/plakat2"]
+visible = false
+offset_left = -128.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 208.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
 [node name="plakat3" type="Node2D" parent="logik"]
 
 [node name="EKey" type="Sprite2D" parent="logik/plakat3"]
@@ -128,8 +169,73 @@ position = Vector2(192, -160)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("9_j05kc")
 
+[node name="Area2D" type="Area2D" parent="logik/plakat3"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("14_idbx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/plakat3/Area2D"]
+position = Vector2(199, 55)
+shape = SubResource("RectangleShape2D_hh23m")
+
+[node name="Plakat3G" type="Sprite2D" parent="logik/plakat3"]
+visible = false
+position = Vector2(64, -16)
+scale = Vector2(0.465758, 0.465758)
+texture = ExtResource("15_07hvf")
+
+[node name="schliessen" type="Button" parent="logik/plakat3"]
+visible = false
+offset_left = -128.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 208.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="schulbuch" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/schulbuch"]
+visible = false
+position = Vector2(104, 24)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
+[node name="SchulbuchGesOffen" type="Sprite2D" parent="logik/schulbuch"]
+visible = false
+position = Vector2(32, -16)
+scale = Vector2(0.373939, 0.373939)
+texture = ExtResource("17_l12sl")
+
+[node name="Area2D" type="Area2D" parent="logik/schulbuch"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("18_g6sci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/schulbuch/Area2D"]
+position = Vector2(112, 136)
+shape = SubResource("CircleShape2D_qmlsx")
+
+[node name="schliessen" type="Button" parent="logik/schulbuch"]
+visible = false
+offset_left = -128.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 207.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
 [connection signal="body_entered" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="logik/plakat1/Area2D" to="logik/plakat1/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/plakat1/Area2D" to="logik/plakat1/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="logik/plakat1/schliessen" to="logik/plakat1/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/plakat2/Area2D" to="logik/plakat2/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/plakat2/Area2D" to="logik/plakat2/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/plakat2/schliessen" to="logik/plakat2/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/plakat3/Area2D" to="logik/plakat3/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/plakat3/Area2D" to="logik/plakat3/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/plakat3/schliessen" to="logik/plakat3/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/schulbuch/Area2D" to="logik/schulbuch/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/schulbuch/Area2D" to="logik/schulbuch/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/schulbuch/schliessen" to="logik/schulbuch/Area2D" method="_on_schliessen_pressed"]
