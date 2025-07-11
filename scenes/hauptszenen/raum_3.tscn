@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://0c70y8212hts"]
+[gd_scene load_steps=13 format=3 uid="uid://0c70y8212hts"]
 
 [ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ldnpm"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_2211e"]
+[ext_resource type="Texture2D" uid="uid://k7mdchktmp6q" path="res://assets/plakat_3.png" id="2_t1apv"]
+[ext_resource type="Texture2D" uid="uid://dbe7h0hre4bji" path="res://assets/plakat_1.png" id="3_2kr5b"]
 [ext_resource type="PackedScene" uid="uid://uvtoqvx1h3xh" path="res://scenes/function scenes/lehrertisch.tscn" id="3_my2a5"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="4_3sg6d"]
+[ext_resource type="Texture2D" uid="uid://v43y8vnxolc0" path="res://assets/plakat_2.png" id="4_okj51"]
 [ext_resource type="Script" uid="uid://cvmrxvh38y5pi" path="res://scripts/door_raum3.gd" id="5_t1apv"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="9_j05kc"]
+[ext_resource type="Texture2D" uid="uid://c20ke4eavoqdh" path="res://assets/plakat_1_g.png" id="10_t2mhb"]
+[ext_resource type="Script" uid="uid://dmhe07sv7plok" path="res://scripts/plakat_1.gd" id="11_iv7ho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn6my"]
+size = Vector2(146, 29)
 
 [node name="raum3" type="Node2D"]
 
@@ -16,6 +25,21 @@ texture = ExtResource("1_ldnpm")
 
 [node name="objekte" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Plakat2" type="Sprite2D" parent="objekte"]
+position = Vector2(24, -64)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_t1apv")
+
+[node name="Plakat1" type="Sprite2D" parent="objekte"]
+position = Vector2(-184, -72)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("3_2kr5b")
+
+[node name="Plakat3" type="Sprite2D" parent="objekte"]
+position = Vector2(208, -64)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("4_okj51")
 
 [node name="tisch" parent="objekte" instance=ExtResource("2_2211e")]
 position = Vector2(-146, 131)
@@ -49,10 +73,63 @@ polygon = PackedVector2Array(-312, 40, 312, 40, 500, 229, 500, 250, -500, 250, -
 [node name="door" type="Node2D" parent="logik"]
 
 [node name="Area2D" type="Area2D" parent="logik/door"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("5_t1apv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/door/Area2D"]
 polygon = PackedVector2Array(-436, 164, -436, 188, -347, 99, -348, 77)
 
+[node name="plakat1" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/plakat1"]
+visible = false
+position = Vector2(-208, -160)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
+[node name="Plakat1G" type="Sprite2D" parent="logik/plakat1"]
+visible = false
+position = Vector2(-16, -72)
+scale = Vector2(0.276667, 0.276667)
+texture = ExtResource("10_t2mhb")
+
+[node name="Area2D" type="Area2D" parent="logik/plakat1"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("11_iv7ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/plakat1/Area2D"]
+position = Vector2(-209, 57.5)
+shape = SubResource("RectangleShape2D_nn6my")
+
+[node name="schliessen" type="Button" parent="logik/plakat1"]
+visible = false
+offset_left = -128.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 208.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="plakat2" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/plakat2"]
+visible = false
+position = Vector2(0, -160)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
+[node name="plakat3" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/plakat3"]
+visible = false
+position = Vector2(192, -160)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
 [connection signal="body_entered" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="logik/plakat1/Area2D" to="logik/plakat1/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/plakat1/Area2D" to="logik/plakat1/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/plakat1/schliessen" to="logik/plakat1/Area2D" method="_on_schliessen_pressed"]

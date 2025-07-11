@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 	if entered3 == true:
 		if Input.is_action_just_pressed("E"):
 			get_tree().change_scene_to_file("res://scenes/hauptszenen/raum_3.tscn")
+			entered3 = false

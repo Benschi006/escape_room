@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0e0l3g4sww8u"]
+[gd_scene load_steps=19 format=3 uid="uid://c0e0l3g4sww8u"]
 
 [ext_resource type="Texture2D" uid="uid://bypfgrmvwqbid" path="res://assets/flur_1.png" id="1_ankp5"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_hlxwh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://qnj2lsrl0ekj" path="res://scripts/door_2_area.gd" id="5_wmw0y"]
 [ext_resource type="Script" uid="uid://ogq7b56rr05x" path="res://scripts/door_3_area.gd" id="6_1xbqk"]
 [ext_resource type="Script" uid="uid://403yvsib4o3a" path="res://scripts/door_4_area.gd" id="7_2j8q1"]
+[ext_resource type="Script" uid="uid://beca62ej2cu4r" path="res://scripts/exit_area.gd" id="8_dykjv"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1xbqk"]
 a = Vector2(440, 41)
@@ -55,7 +56,13 @@ texture = ExtResource("1_ankp5")
 position = Vector2(-441, 165)
 
 [node name="Camera2D" type="Camera2D" parent="objekte/player"]
-position = Vector2(1, -89)
+position = Vector2(1, -117)
+zoom = Vector2(1.15, 1.15)
+limit_left = -640
+limit_top = -256
+limit_right = 640
+limit_bottom = 256
+position_smoothing_enabled = true
 
 [node name="boundaries2" type="StaticBody2D" parent="objekte"]
 
@@ -100,6 +107,8 @@ shape = SubResource("RectangleShape2D_6ljwr")
 [node name="door 2" type="Node2D" parent="logik/areas"]
 
 [node name="door2area" type="Area2D" parent="logik/areas/door 2"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("5_wmw0y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/areas/door 2/door2area"]
@@ -109,6 +118,8 @@ shape = SubResource("RectangleShape2D_1xbqk")
 [node name="door 3" type="Node2D" parent="logik/areas"]
 
 [node name="door3area" type="Area2D" parent="logik/areas/door 3"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("6_1xbqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/areas/door 3/door3area"]
@@ -120,11 +131,52 @@ shape = SubResource("RectangleShape2D_2j8q1")
 [node name="door 4" type="Node2D" parent="logik/areas"]
 
 [node name="door4area" type="Area2D" parent="logik/areas/door 4"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("7_2j8q1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/areas/door 4/door4area"]
 position = Vector2(332.5, 56.5)
 shape = SubResource("RectangleShape2D_dykjv")
+
+[node name="exit" type="Node2D" parent="logik/areas"]
+
+[node name="exit_area" type="Area2D" parent="logik/areas/exit"]
+process_mode = 3
+script = ExtResource("8_dykjv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/areas/exit/exit_area"]
+polygon = PackedVector2Array(472, 96, 469, 74, 564, 169, 564, 187)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="logik/areas/exit/exit_area"]
+process_mode = 3
+
+[node name="schliessen" type="Button" parent="logik/areas/exit/exit_area/CanvasLayer"]
+visible = false
+offset_left = 448.0
+offset_top = 496.0
+offset_right = 704.0
+offset_bottom = 528.0
+text = "Schließen"
+
+[node name="exit code" type="LineEdit" parent="logik/areas/exit/exit_area/CanvasLayer"]
+visible = false
+offset_left = 448.0
+offset_top = 288.0
+offset_right = 704.0
+offset_bottom = 319.0
+placeholder_text = "Code eingeben (vierstellig)"
+
+[node name="Label" type="Label" parent="logik/areas/exit/exit_area/CanvasLayer"]
+visible = false
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 704.0
+offset_bottom = 287.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Was ist der Code?"
 
 [connection signal="body_entered" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_exited"]
@@ -134,3 +186,6 @@ shape = SubResource("RectangleShape2D_dykjv")
 [connection signal="body_exited" from="logik/areas/door 3/door3area" to="logik/areas/door 3/door3area" method="_on_body_exited"]
 [connection signal="body_entered" from="logik/areas/door 4/door4area" to="logik/areas/door 4/door4area" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/areas/door 4/door4area" to="logik/areas/door 4/door4area" method="_on_body_exited"]
+[connection signal="body_entered" from="logik/areas/exit/exit_area" to="logik/areas/exit/exit_area" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/areas/exit/exit_area" to="logik/areas/exit/exit_area" method="_on_body_exited"]
+[connection signal="pressed" from="logik/areas/exit/exit_area/CanvasLayer/schliessen" to="logik/areas/exit/exit_area" method="_on_schliessen_pressed"]
