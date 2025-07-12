@@ -5,9 +5,9 @@ var cd_access_granted = false
 var entf_gedrueckt = false
 
 @onready var e_key: Sprite2D = $EKey2
-@onready var project_capture_15_: Sprite2D = $"ProjectCapture(15)"
-@onready var project_capture_22_: Sprite2D = $"ProjectCapture(22)"
-@onready var project_capture_21_: Sprite2D = $"ProjectCapture(21)"
+@onready var project_capture_15_: Sprite2D = $anmelden_bildschirm
+@onready var project_capture_22_: Sprite2D = $keine_cd_screen
+@onready var project_capture_21_: Sprite2D = $katze_bildschirm
 @onready var line_editusername: LineEdit = $"../Login/LineEditusername"
 @onready var line_edit_password: LineEdit = $"../Login/LineEditPassword"
 @onready var check_button: CheckButton = $"../Login/CheckButton"

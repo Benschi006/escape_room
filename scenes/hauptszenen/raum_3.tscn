@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://0c70y8212hts"]
+[gd_scene load_steps=26 format=3 uid="uid://0c70y8212hts"]
 
-[ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ldnpm"]
+[ext_resource type="Texture2D" uid="uid://bbyqwsltu0be0" path="res://assets/raum_mit_tafelanschrift.png" id="1_qmlsx"]
 [ext_resource type="PackedScene" uid="uid://d0csjqmnu2f6" path="res://scenes/function scenes/tisch.tscn" id="2_2211e"]
 [ext_resource type="Texture2D" uid="uid://k7mdchktmp6q" path="res://assets/plakat_3.png" id="2_t1apv"]
 [ext_resource type="Texture2D" uid="uid://dbe7h0hre4bji" path="res://assets/plakat_1.png" id="3_2kr5b"]
@@ -17,7 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://bi1q2fe277rqf" path="res://assets/plakat_3_g.png" id="15_07hvf"]
 [ext_resource type="PackedScene" uid="uid://bwhowgrys2116" path="res://scenes/function scenes/tisch_mit_g_buch.tscn" id="16_07hvf"]
 [ext_resource type="Texture2D" uid="uid://bi3xnx7a0ujc6" path="res://assets/schulbuch ges_offen.png" id="17_l12sl"]
+[ext_resource type="Texture2D" uid="uid://b1uwe0g678poj" path="res://assets/buchseite_falsch.png" id="18_11s77"]
 [ext_resource type="Script" uid="uid://daw4rpiropjej" path="res://scripts/schulbuch_g.gd" id="18_g6sci"]
+[ext_resource type="Script" uid="uid://pukwflp7wgnl" path="res://scripts/tafel.gd" id="19_11s77"]
+[ext_resource type="Texture2D" uid="uid://cdyf6wkkbllpw" path="res://assets/tafel_hauptfrage.png" id="20_rrryr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn6my"]
 size = Vector2(146, 29)
@@ -29,15 +32,15 @@ size = Vector2(146, 32)
 size = Vector2(162, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmlsx"]
-radius = 80.0
+radius = 72.0
 
 [node name="raum3" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.15, 1.15)
 
-[node name="RaumOhneFenster" type="Sprite2D" parent="."]
-texture = ExtResource("1_ldnpm")
+[node name="RaumMitTafelanschrift" type="Sprite2D" parent="."]
+texture = ExtResource("1_qmlsx")
 
 [node name="objekte" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -201,19 +204,13 @@ position = Vector2(104, 24)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("9_j05kc")
 
-[node name="SchulbuchGesOffen" type="Sprite2D" parent="logik/schulbuch"]
-visible = false
-position = Vector2(32, -16)
-scale = Vector2(0.373939, 0.373939)
-texture = ExtResource("17_l12sl")
-
 [node name="Area2D" type="Area2D" parent="logik/schulbuch"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("18_g6sci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/schulbuch/Area2D"]
-position = Vector2(112, 136)
+position = Vector2(112, 160)
 shape = SubResource("CircleShape2D_qmlsx")
 
 [node name="schliessen" type="Button" parent="logik/schulbuch"]
@@ -222,6 +219,68 @@ offset_left = -128.0
 offset_top = 176.0
 offset_right = 128.0
 offset_bottom = 207.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="eingabe" type="Node2D" parent="logik/schulbuch"]
+visible = false
+
+[node name="LineEdit" type="LineEdit" parent="logik/schulbuch/eingabe"]
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 31.0
+placeholder_text = "Buchseite"
+
+[node name="Label" type="Label" parent="logik/schulbuch/eingabe"]
+offset_left = -128.0
+offset_top = -24.0
+offset_right = 144.0
+offset_bottom = -1.0
+theme_override_constants/outline_size = 5
+text = "Welche Buchseite willst du öffnen?:"
+
+[node name="buchseiten" type="Node2D" parent="logik/schulbuch"]
+
+[node name="BuchseiteFalsch" type="Sprite2D" parent="logik/schulbuch/buchseiten"]
+visible = false
+position = Vector2(64, -32)
+scale = Vector2(0.39303, 0.39303)
+texture = ExtResource("18_11s77")
+
+[node name="SchulbuchGesOffen" type="Sprite2D" parent="logik/schulbuch/buchseiten"]
+visible = false
+position = Vector2(32, -16)
+scale = Vector2(0.373939, 0.373939)
+texture = ExtResource("17_l12sl")
+
+[node name="tafel" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/tafel"]
+visible = false
+position = Vector2(384, -16)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
+[node name="Area2D" type="Area2D" parent="logik/tafel"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("19_11s77")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/tafel/Area2D"]
+polygon = PackedVector2Array(320, 72, 320, 48, 448, 176, 448, 200)
+
+[node name="TafelHauptfrage" type="Sprite2D" parent="logik/tafel/Area2D"]
+visible = false
+position = Vector2(1, -53)
+scale = Vector2(0.336864, 0.336864)
+texture = ExtResource("20_rrryr")
+
+[node name="schliessen" type="Button" parent="logik/tafel/Area2D"]
+visible = false
+offset_left = -128.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 208.0
 theme_override_constants/outline_size = 5
 text = "Schließen"
 
@@ -239,3 +298,6 @@ text = "Schließen"
 [connection signal="body_entered" from="logik/schulbuch/Area2D" to="logik/schulbuch/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/schulbuch/Area2D" to="logik/schulbuch/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="logik/schulbuch/schliessen" to="logik/schulbuch/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/tafel/Area2D" to="logik/tafel/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/tafel/Area2D" to="logik/tafel/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/tafel/Area2D/schliessen" to="logik/tafel/Area2D" method="_on_schliessen_pressed"]

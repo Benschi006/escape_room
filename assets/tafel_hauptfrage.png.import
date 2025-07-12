@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5glljkskexjo"
-path="res://.godot/imported/Project Capture (17).png-57a8ea0e3cfcf5a240dbf616c5d5016d.ctex"
+uid="uid://cdyf6wkkbllpw"
+path="res://.godot/imported/tafel_hauptfrage.png-0051ba3744723ac909360e60e40d87e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Project Capture (17).png"
-dest_files=["res://.godot/imported/Project Capture (17).png-57a8ea0e3cfcf5a240dbf616c5d5016d.ctex"]
+source_file="res://assets/tafel_hauptfrage.png"
+dest_files=["res://.godot/imported/tafel_hauptfrage.png-0051ba3744723ac909360e60e40d87e2.ctex"]
 
 [params]
 

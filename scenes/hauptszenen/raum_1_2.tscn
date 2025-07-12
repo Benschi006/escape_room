@@ -1,0 +1,214 @@
+[gd_scene load_steps=18 format=3 uid="uid://cw7g6vmhxu1rt"]
+
+[ext_resource type="Texture2D" uid="uid://cctsd1iiqjaqu" path="res://assets/raum_fenster_tafel.png" id="1_2fqd0"]
+[ext_resource type="PackedScene" uid="uid://eq5gcjrx0xrk" path="res://scenes/function scenes/lehrer_pc.tscn" id="2_t8pa8"]
+[ext_resource type="PackedScene" uid="uid://bbmhqp1w3igc6" path="res://scenes/function scenes/tisch_pc.tscn" id="3_3s4ya"]
+[ext_resource type="Texture2D" uid="uid://c5glljkskexjo" path="res://assets/stickynote_klein.png" id="4_l5d7q"]
+[ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="5_2fqd0"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="6_f0nvo"]
+[ext_resource type="Texture2D" uid="uid://br4y5csae6wue" path="res://assets/stickynote_gross.png" id="7_ehfqm"]
+[ext_resource type="Script" uid="uid://xny6j3pufm3p" path="res://scripts/area_stickynote_r1_2.gd" id="8_twcbh"]
+[ext_resource type="Script" uid="uid://cexla0qgglmpc" path="res://scripts/computer_schueler_r1_2.gd" id="9_2fqd0"]
+[ext_resource type="Texture2D" uid="uid://dk4tbohdja2dn" path="res://assets/anmeldebildschirm.png" id="10_f0nvo"]
+[ext_resource type="Texture2D" uid="uid://5kqb6ypqwm0r" path="res://assets/katze_bild_screen.png" id="11_ehfqm"]
+[ext_resource type="Texture2D" uid="uid://c1o7giuq8kckw" path="res://assets/nur_mit_cd_screen.png" id="12_twcbh"]
+[ext_resource type="Texture2D" uid="uid://dgo8ae4nfx0xs" path="res://assets/cd.png" id="13_ehfqm"]
+[ext_resource type="Script" uid="uid://dliqbk266jm4w" path="res://scripts/cd_area.gd" id="14_twcbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l7m5"]
+size = Vector2(106, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1l7m5"]
+radius = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_of1q4"]
+radius = 40.0
+
+[node name="raum_1_2" type="Node2D"]
+
+[node name="RaumFensterTafel" type="Sprite2D" parent="."]
+position = Vector2(500, 250)
+texture = ExtResource("1_2fqd0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(500, 248)
+zoom = Vector2(1.15, 1.15)
+
+[node name="boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="boundaries"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundaries/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(187, 292, 813, 293, 1000, 481, 1000, 499, 0, 500, 0, 478)
+
+[node name="objekte" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="lehrer_pc" parent="objekte" instance=ExtResource("2_t8pa8")]
+position = Vector2(760, 384)
+
+[node name="tisch_pc" parent="objekte" instance=ExtResource("3_3s4ya")]
+position = Vector2(309, 378)
+scale = Vector2(0.475, 0.475)
+
+[node name="tisch_pc2" parent="objekte" instance=ExtResource("3_3s4ya")]
+position = Vector2(508, 378)
+scale = Vector2(0.475, 0.475)
+
+[node name="tisch_pc3" parent="objekte" instance=ExtResource("3_3s4ya")]
+position = Vector2(378, 298)
+scale = Vector2(0.475, 0.475)
+
+[node name="tisch_pc4" parent="objekte" instance=ExtResource("3_3s4ya")]
+position = Vector2(571, 298)
+scale = Vector2(0.475, 0.475)
+
+[node name="StickynoteKlein" type="Sprite2D" parent="objekte"]
+position = Vector2(256, 200)
+scale = Vector2(0.0487879, 0.0487879)
+texture = ExtResource("4_l5d7q")
+
+[node name="player" parent="objekte" instance=ExtResource("5_2fqd0")]
+position = Vector2(142, 411)
+
+[node name="logik" type="Node2D" parent="."]
+
+[node name="stickynote" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/stickynote"]
+visible = false
+position = Vector2(248, 152)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_f0nvo")
+
+[node name="stickynote_gross" type="Sprite2D" parent="logik/stickynote"]
+visible = false
+position = Vector2(544, 200)
+scale = Vector2(0.400076, 0.400076)
+texture = ExtResource("7_ehfqm")
+
+[node name="Area2D" type="Area2D" parent="logik/stickynote"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_twcbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/stickynote/Area2D"]
+position = Vector2(251, 304)
+shape = SubResource("RectangleShape2D_1l7m5")
+
+[node name="schliessen" type="Button" parent="logik/stickynote"]
+visible = false
+offset_left = 384.0
+offset_top = 432.0
+offset_right = 640.0
+offset_bottom = 464.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="computer_schueler" type="Node2D" parent="logik"]
+process_mode = 3
+
+[node name="EKey" type="Sprite2D" parent="logik/computer_schueler"]
+visible = false
+position = Vector2(352, 272)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_f0nvo")
+
+[node name="Area2D" type="Area2D" parent="logik/computer_schueler"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_2fqd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/computer_schueler/Area2D"]
+position = Vector2(352, 400)
+shape = SubResource("CircleShape2D_1l7m5")
+
+[node name="schliessen" type="Button" parent="logik/computer_schueler"]
+visible = false
+offset_left = 384.0
+offset_top = 432.0
+offset_right = 640.0
+offset_bottom = 464.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="screens" type="Node2D" parent="logik/computer_schueler"]
+
+[node name="login screen" type="Sprite2D" parent="logik/computer_schueler/screens"]
+visible = false
+position = Vector2(448, 200)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("10_f0nvo")
+
+[node name="KatzeBildschirm" type="Sprite2D" parent="logik/computer_schueler/screens"]
+visible = false
+position = Vector2(448, 200)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("11_ehfqm")
+
+[node name="NurMitCdScreen" type="Sprite2D" parent="logik/computer_schueler/screens"]
+visible = false
+position = Vector2(448, 200)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("12_twcbh")
+
+[node name="login" type="Node2D" parent="logik/computer_schueler"]
+visible = false
+
+[node name="LineEdit_user" type="LineEdit" parent="logik/computer_schueler/login"]
+offset_left = 491.0
+offset_top = 152.0
+offset_right = 603.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 10
+flat = true
+
+[node name="LineEdit_pass" type="LineEdit" parent="logik/computer_schueler/login"]
+offset_left = 492.0
+offset_top = 172.0
+offset_right = 604.0
+offset_bottom = 194.0
+theme_override_font_sizes/font_size = 10
+flat = true
+
+[node name="einloggen" type="Button" parent="logik/computer_schueler/login"]
+offset_left = 448.0
+offset_top = 240.0
+offset_right = 576.0
+offset_bottom = 272.0
+theme_override_constants/outline_size = 5
+text = "Einloggen"
+
+[node name="computer_lehrer" type="Node2D" parent="logik"]
+
+[node name="CD" type="Node2D" parent="logik"]
+
+[node name="EKey" type="Sprite2D" parent="logik/CD"]
+position = Vector2(56, 352)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_f0nvo")
+
+[node name="Cd" type="Sprite2D" parent="logik/CD"]
+position = Vector2(56, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_ehfqm")
+
+[node name="Area2D" type="Area2D" parent="logik/CD"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("14_twcbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/CD/Area2D"]
+position = Vector2(56, 480)
+shape = SubResource("CircleShape2D_of1q4")
+
+[connection signal="body_entered" from="logik/stickynote/Area2D" to="logik/stickynote/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/stickynote/Area2D" to="logik/stickynote/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/stickynote/schliessen" to="logik/stickynote/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/computer_schueler/Area2D" to="logik/computer_schueler/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/computer_schueler/Area2D" to="logik/computer_schueler/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/computer_schueler/schliessen" to="logik/computer_schueler/Area2D" method="_on_schliessen_pressed"]
+[connection signal="pressed" from="logik/computer_schueler/login/einloggen" to="logik/computer_schueler/Area2D" method="_on_einloggen_pressed"]
+[connection signal="body_entered" from="logik/CD/Area2D" to="logik/CD/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/CD/Area2D" to="logik/CD/Area2D" method="_on_body_exited"]

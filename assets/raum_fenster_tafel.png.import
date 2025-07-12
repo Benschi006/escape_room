@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5kqb6ypqwm0r"
-path="res://.godot/imported/Project Capture (21).png-612790a3cbc1136a61e1842c70d45e83.ctex"
+uid="uid://cctsd1iiqjaqu"
+path="res://.godot/imported/raum_fenster_tafel.png-0388b8175bcbfd974ebb66a0974583f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Project Capture (21).png"
-dest_files=["res://.godot/imported/Project Capture (21).png-612790a3cbc1136a61e1842c70d45e83.ctex"]
+source_file="res://assets/raum_fenster_tafel.png"
+dest_files=["res://.godot/imported/raum_fenster_tafel.png-0388b8175bcbfd974ebb66a0974583f1.ctex"]
 
 [params]
 

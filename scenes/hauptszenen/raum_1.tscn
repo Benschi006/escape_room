@@ -1,17 +1,17 @@
 [gd_scene load_steps=26 format=3 uid="uid://bae4jdr6cm2ic"]
 
-[ext_resource type="Texture2D" uid="uid://cagewydmlwp77" path="res://assets/raum_vorlage_2.png" id="1_1cuc3"]
+[ext_resource type="Texture2D" uid="uid://bbyqwsltu0be0" path="res://assets/raum_mit_tafelanschrift.png" id="1_1cuc3"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_pukxj"]
 [ext_resource type="PackedScene" uid="uid://bbmhqp1w3igc6" path="res://scenes/function scenes/tisch_pc.tscn" id="2_qk0i1"]
 [ext_resource type="Script" uid="uid://du7nefkumvri4" path="res://scripts/sticky.gd" id="4_3t605"]
-[ext_resource type="Texture2D" uid="uid://br4y5csae6wue" path="res://assets/Project Capture (18).png" id="6_j70gu"]
-[ext_resource type="Texture2D" uid="uid://c5glljkskexjo" path="res://assets/Project Capture (17).png" id="7_l1u5m"]
+[ext_resource type="Texture2D" uid="uid://br4y5csae6wue" path="res://assets/stickynote_gross.png" id="6_j70gu"]
+[ext_resource type="Texture2D" uid="uid://c5glljkskexjo" path="res://assets/stickynote_klein.png" id="7_l1u5m"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="8_lj200"]
 [ext_resource type="Script" uid="uid://b4yr33ces8ye5" path="res://scripts/computer_funktion.gd" id="9_o7j6o"]
-[ext_resource type="Texture2D" uid="uid://dk4tbohdja2dn" path="res://assets/Project Capture (15).png" id="10_hsqyi"]
+[ext_resource type="Texture2D" uid="uid://dk4tbohdja2dn" path="res://assets/anmeldebildschirm.png" id="10_hsqyi"]
 [ext_resource type="Script" uid="uid://dkmalkkbolj0d" path="res://scripts/control.gd" id="11_o7j6o"]
-[ext_resource type="Texture2D" uid="uid://c1o7giuq8kckw" path="res://assets/Project Capture (22).png" id="12_uqplh"]
-[ext_resource type="Texture2D" uid="uid://5kqb6ypqwm0r" path="res://assets/Project Capture (21).png" id="13_tlo3d"]
+[ext_resource type="Texture2D" uid="uid://c1o7giuq8kckw" path="res://assets/nur_mit_cd_screen.png" id="12_uqplh"]
+[ext_resource type="Texture2D" uid="uid://5kqb6ypqwm0r" path="res://assets/katze_bild_screen.png" id="13_tlo3d"]
 [ext_resource type="Script" uid="uid://ccenbc36ufsr4" path="res://scripts/cd.gd" id="14_mxfo0"]
 [ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="15_5ka36"]
 [ext_resource type="Script" uid="uid://5yxr7p45q2qm" path="res://scripts/minigame.gd" id="15_lj200"]
@@ -40,8 +40,8 @@ radius = 88.0
 [node name="raum1" type="Node2D"]
 position = Vector2(-504, -248)
 
-[node name="RaumVorlage2" type="Sprite2D" parent="."]
-position = Vector2(504, 250)
+[node name="RaumMitTafelanschrift" type="Sprite2D" parent="."]
+position = Vector2(504, 248)
 texture = ExtResource("1_1cuc3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -79,6 +79,11 @@ scale = Vector2(0.475, 0.475)
 [node name="StaticBody2D" parent="objekte" instance=ExtResource("17_0jjxd")]
 position = Vector2(800, 384)
 
+[node name="sticky klein" type="Sprite2D" parent="objekte"]
+position = Vector2(264, 200)
+scale = Vector2(0.0489925, 0.0593182)
+texture = ExtResource("7_l1u5m")
+
 [node name="player" parent="objekte" instance=ExtResource("2_pukxj")]
 position = Vector2(136, 416)
 
@@ -106,11 +111,6 @@ position = Vector2(529, 196)
 scale = Vector2(0.520466, 0.458428)
 texture = ExtResource("6_j70gu")
 
-[node name="sticky klein" type="Sprite2D" parent="Logik1/stickyNote"]
-position = Vector2(264, 200)
-scale = Vector2(0.0489925, 0.0593182)
-texture = ExtResource("7_l1u5m")
-
 [node name="computer" type="Node2D" parent="Logik1"]
 
 [node name="computer funktion" type="Area2D" parent="Logik1/computer"]
@@ -120,27 +120,27 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_o7j6o")
 
-[node name="ProjectCapture(15)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
-visible = false
-position = Vector2(440, 180)
-scale = Vector2(0.420821, 0.376212)
-texture = ExtResource("10_hsqyi")
-
 [node name="EKey2" type="Sprite2D" parent="Logik1/computer/computer funktion"]
 position = Vector2(552, 256)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("8_lj200")
 
-[node name="ProjectCapture(22)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+[node name="anmelden_bildschirm" type="Sprite2D" parent="Logik1/computer/computer funktion"]
 visible = false
-position = Vector2(832, 376)
-scale = Vector2(0.744316, 0.762576)
+position = Vector2(440, 180)
+scale = Vector2(0.420821, 0.376212)
+texture = ExtResource("10_hsqyi")
+
+[node name="keine_cd_screen" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+visible = false
+position = Vector2(443, 197)
+scale = Vector2(0.378924, 0.38822)
 texture = ExtResource("12_uqplh")
 
-[node name="ProjectCapture(21)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
+[node name="katze_bildschirm" type="Sprite2D" parent="Logik1/computer/computer funktion"]
 visible = false
-position = Vector2(824, 376)
-scale = Vector2(0.742955, 0.751061)
+position = Vector2(439, 202)
+scale = Vector2(0.38, 0.384)
 texture = ExtResource("13_tlo3d")
 
 [node name="Programm Cd (ICON)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
@@ -276,6 +276,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("8_lj200")
 
 [node name="Lehrer-Pc" type="Node2D" parent="Logik1"]
+process_mode = 3
 
 [node name="Pclehrer" type="Area2D" parent="Logik1/Lehrer-Pc"]
 position = Vector2(-3, -7)
@@ -294,8 +295,8 @@ texture = ExtResource("8_lj200")
 
 [node name="anmeldescreen" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
 visible = false
-position = Vector2(-63, -193)
-scale = Vector2(0.535893, 0.514848)
+position = Vector2(437, 212)
+scale = Vector2(0.395, 0.38)
 texture = ExtResource("10_hsqyi")
 
 [node name="Icon" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
@@ -324,19 +325,23 @@ offset_bottom = -351.0
 visible = false
 show_behind_parent = true
 layout_mode = 0
-offset_left = -6.0
-offset_top = -275.0
-offset_right = 156.0
-offset_bottom = -244.0
+offset_left = 482.0
+offset_top = 156.0
+offset_right = 605.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 10
+flat = true
 
 [node name="LineEditPassword" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
 visible = false
 show_behind_parent = true
 layout_mode = 0
-offset_left = -7.0
-offset_top = -240.0
-offset_right = 158.0
-offset_bottom = -209.0
+offset_left = 482.0
+offset_top = 176.0
+offset_right = 604.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 10
+flat = true
 secret = true
 
 [node name="CheckButton" type="CheckButton" parent="Logik1/Lehrer-Pc/Login Lehrer"]
