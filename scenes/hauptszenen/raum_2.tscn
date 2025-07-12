@@ -124,7 +124,7 @@ position = Vector2(-192, -24)
 position = Vector2(-96, -120)
 
 [node name="schrank" parent="Objekte" instance=ExtResource("2_rdng0")]
-position = Vector2(-251, -328)
+position = Vector2(-240, -320)
 
 [node name="lehrertisch" parent="Objekte" instance=ExtResource("5_rdcte")]
 position = Vector2(242, -110)

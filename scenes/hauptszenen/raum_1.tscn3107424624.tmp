@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=25 format=3 uid="uid://bae4jdr6cm2ic"]
 
 [ext_resource type="Texture2D" uid="uid://cagewydmlwp77" path="res://assets/raum_vorlage_2.png" id="1_1cuc3"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_pukxj"]
@@ -22,65 +22,59 @@
 [ext_resource type="Script" uid="uid://b521cjn1sxjdm" path="res://scripts/room1_door.gd" id="20_1cuc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk0i1"]
-size = Vector2(126.5, 22.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1cuc3"]
-radius = 72.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj200"]
-size = Vector2(26, 26)
+size = Vector2(237, 77)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqplh"]
-radius = 112.0
-height = 224.0
+radius = 120.0
+height = 240.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj200"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3tkx"]
-radius = 88.0
+radius = 136.0
 
 [node name="raum1" type="Node2D"]
-position = Vector2(-504, -248)
-
-[node name="RaumVorlage2" type="Sprite2D" parent="."]
-position = Vector2(504, 250)
-texture = ExtResource("1_1cuc3")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(503, 248)
-zoom = Vector2(1.15, 1.15)
 
 [node name="boundaries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="boundaries"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundaries/StaticBody2D"]
-position = Vector2(-176, -272)
 build_mode = 1
-polygon = PackedVector2Array(179, 748, 180, 770, 1179, 769, 1179, 749, 992, 563, 367, 561)
+polygon = PackedVector2Array(-2, 915, -1, 960, 1918, 959, 1919, 921, 1559, 564, 360, 562)
+
+[node name="RaumVorlage2" type="Sprite2D" parent="."]
+position = Vector2(959, 479.5)
+scale = Vector2(1.922, 1.922)
+texture = ExtResource("1_1cuc3")
 
 [node name="objekte" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="tisch_pc" parent="objekte" instance=ExtResource("2_qk0i1")]
-position = Vector2(313, 379)
-scale = Vector2(0.475, 0.475)
+position = Vector2(576, 736)
+scale = Vector2(0.85, 0.85)
 
 [node name="tisch_pc2" parent="objekte" instance=ExtResource("2_qk0i1")]
-position = Vector2(377, 314)
-scale = Vector2(0.475, 0.475)
+position = Vector2(632, 580)
+scale = Vector2(0.85, 0.85)
 
 [node name="tisch_pc3" parent="objekte" instance=ExtResource("2_qk0i1")]
-position = Vector2(506, 379)
-scale = Vector2(0.475, 0.475)
+position = Vector2(968, 737)
+scale = Vector2(0.85, 0.85)
 
 [node name="tisch_pc4" parent="objekte" instance=ExtResource("2_qk0i1")]
-position = Vector2(570, 315)
-scale = Vector2(0.475, 0.475)
-
-[node name="StaticBody2D" parent="objekte" instance=ExtResource("17_0jjxd")]
-position = Vector2(800, 384)
+position = Vector2(1000, 580)
+scale = Vector2(0.85, 0.85)
 
 [node name="player" parent="objekte" instance=ExtResource("2_pukxj")]
-position = Vector2(136, 416)
+position = Vector2(304, 808)
+scale = Vector2(1.75, 1.75)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 485)
+enabled = false
+zoom = Vector2(0.6, 0.6)
 
 [node name="Logik1" type="Node2D" parent="."]
 
@@ -92,23 +86,23 @@ collision_mask = 4
 script = ExtResource("4_3t605")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/stickyNote/sticky"]
-position = Vector2(256.75, 299.25)
+position = Vector2(473.5, 566.5)
 shape = SubResource("RectangleShape2D_qk0i1")
 
 [node name="EKey" type="Sprite2D" parent="Logik1/stickyNote/sticky"]
-position = Vector2(256, 136)
-scale = Vector2(0.365, 0.365)
+position = Vector2(464, 288)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_lj200")
 
 [node name="sticky_gross" type="Sprite2D" parent="Logik1/stickyNote/sticky"]
 visible = false
-position = Vector2(529, 196)
-scale = Vector2(0.520466, 0.458428)
+position = Vector2(1032, 344)
+scale = Vector2(0.738178, 0.650189)
 texture = ExtResource("6_j70gu")
 
 [node name="sticky klein" type="Sprite2D" parent="Logik1/stickyNote"]
-position = Vector2(264, 200)
-scale = Vector2(0.0489925, 0.0593182)
+position = Vector2(480, 424)
+scale = Vector2(0.0838442, 0.101515)
 texture = ExtResource("7_l1u5m")
 
 [node name="computer" type="Node2D" parent="Logik1"]
@@ -120,15 +114,20 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_o7j6o")
 
+[node name="computer collision" type="CollisionShape2D" parent="Logik1/computer/computer funktion"]
+y_sort_enabled = true
+position = Vector2(1048, 696)
+shape = SubResource("CapsuleShape2D_uqplh")
+
 [node name="ProjectCapture(15)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
 visible = false
-position = Vector2(440, 180)
-scale = Vector2(0.420821, 0.376212)
+position = Vector2(-54, -82)
+scale = Vector2(0.380654, 0.340303)
 texture = ExtResource("10_hsqyi")
 
 [node name="EKey2" type="Sprite2D" parent="Logik1/computer/computer funktion"]
-position = Vector2(552, 256)
-scale = Vector2(0.365, 0.365)
+position = Vector2(1040, 496)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_lj200")
 
 [node name="ProjectCapture(22)" type="Sprite2D" parent="Logik1/computer/computer funktion"]
@@ -149,10 +148,6 @@ position = Vector2(960, 376)
 scale = Vector2(7.93848, 5.3698)
 texture = ExtResource("15_5ka36")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/computer funktion"]
-position = Vector2(552, 352)
-shape = SubResource("CircleShape2D_1cuc3")
-
 [node name="Login" type="Control" parent="Logik1/computer"]
 process_mode = 3
 layout_mode = 3
@@ -160,27 +155,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_o7j6o")
-metadata/_edit_use_anchors_ = true
 
 [node name="LineEditusername" type="LineEdit" parent="Logik1/computer/Login"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
-offset_left = 492.0
-offset_top = 147.0
-offset_right = 620.0
-offset_bottom = 169.0
-theme_override_font_sizes/font_size = 10
-flat = true
+offset_left = -8.0
+offset_top = -120.0
+offset_right = 109.0
+offset_bottom = -89.0
 
 [node name="LineEditPassword" type="LineEdit" parent="Logik1/computer/Login"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
-offset_left = 491.0
-offset_top = 167.0
-offset_right = 618.0
-offset_bottom = 189.0
-theme_override_font_sizes/font_size = 10
-flat = true
+offset_left = -8.0
+offset_top = -88.0
+offset_right = 109.0
+offset_bottom = -57.0
 secret = true
 
 [node name="CheckButton" type="CheckButton" parent="Logik1/computer/Login"]
@@ -217,7 +209,6 @@ scale = Vector2(0.0571429, 0.0581818)
 texture = ExtResource("16_m0ht4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/computer/PasswordMinigame/password_player"]
-position = Vector2(80, 64)
 shape = SubResource("RectangleShape2D_lj200")
 
 [node name="Ziel" type="Area2D" parent="Logik1/computer/PasswordMinigame"]
@@ -226,8 +217,12 @@ shape = SubResource("RectangleShape2D_lj200")
 light_mask = 256
 visibility_layer = 256
 y_sort_enabled = true
-position = Vector2(872, 120)
+position = Vector2(840, 520)
 shape = SubResource("CapsuleShape2D_uqplh")
+
+[node name="StaticBody2D" parent="Logik1/computer/PasswordMinigame/Ziel" instance=ExtResource("17_0jjxd")]
+position = Vector2(1464, 736)
+scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Logik1/computer/PasswordMinigame"]
 anchors_preset = -1
@@ -247,12 +242,11 @@ offset_left = 624.0
 offset_top = 200.0
 offset_right = 932.0
 offset_bottom = 231.0
-metadata/_edit_use_anchors_ = true
 
 [node name="CD" type="Node2D" parent="Logik1"]
 
 [node name="programm cd" type="Sprite2D" parent="Logik1/CD"]
-position = Vector2(872, 120)
+position = Vector2(596, 323)
 texture = ExtResource("15_5ka36")
 
 [node name="areacd" type="Area2D" parent="Logik1/CD"]
@@ -279,17 +273,15 @@ texture = ExtResource("8_lj200")
 
 [node name="Pclehrer" type="Area2D" parent="Logik1/Lehrer-Pc"]
 position = Vector2(-3, -7)
-collision_layer = 4
-collision_mask = 4
 script = ExtResource("18_3bo7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-position = Vector2(803, 359)
+position = Vector2(1467, 687)
 shape = SubResource("CircleShape2D_b3tkx")
 
 [node name="EKey123" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
-position = Vector2(803, 255)
-scale = Vector2(0.365, 0.365)
+position = Vector2(1459, 447)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_lj200")
 
 [node name="anmeldescreen" type="Sprite2D" parent="Logik1/Lehrer-Pc/Pclehrer"]
@@ -307,10 +299,11 @@ texture = ExtResource("15_5ka36")
 [node name="Login Lehrer" type="Control" parent="Logik1/Lehrer-Pc"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 44.0
 script = ExtResource("19_1cuc3")
-metadata/_edit_use_anchors_ = true
 
 [node name="code" type="LineEdit" parent="Logik1/Lehrer-Pc/Login Lehrer"]
 visible = false
@@ -367,7 +360,7 @@ collision_mask = 4
 script = ExtResource("20_1cuc3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Logik1/door/Area2D"]
-polygon = PackedVector2Array(64, 440, 64, 408, 160, 320, 160, 344, 160, 344)
+polygon = PackedVector2Array(110, 848, 108, 813, 295, 626, 295, 670)
 
 [connection signal="body_entered" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik1/stickyNote/sticky" to="Logik1/stickyNote/sticky" method="_on_body_exited"]

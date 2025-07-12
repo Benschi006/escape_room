@@ -15,7 +15,8 @@ var entf_gedrueckt = false
 @onready var e_key2: Sprite2D = $"../../CD/areacd/EKey"
 @onready var areacd: Area2D = $"../../CD/areacd"
 @onready var password_minigame: Node2D = $"../PasswordMinigame"
-@onready var programm_cd: Sprite2D = $"Programm Cd"
+@onready var programm_cd: Sprite2D = $"../../CD/programm cd"
+
 
 func _ready() -> void:
 	programm_cd.hide()

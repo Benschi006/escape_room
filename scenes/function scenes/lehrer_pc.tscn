@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://eq5gcjrx0xrk"]
+
+[ext_resource type="Texture2D" uid="uid://chrtcxonewog0" path="res://assets/lehrer_pc.png" id="1_kn0a0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmkuk"]
+size = Vector2(64, 16)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="LehrerPc" type="Sprite2D" parent="."]
+scale = Vector2(-0.475, 0.475)
+texture = ExtResource("1_kn0a0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_wmkuk")

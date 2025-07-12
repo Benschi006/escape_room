@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbmhqp1w3igc6"]
+
+[ext_resource type="Texture2D" uid="uid://h8622ybclwf1" path="res://assets/Tisch_mit_pc.png" id="1_ybo3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvbe2"]
+size = Vector2(282, 26)
+
+[node name="tisch_pc" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TischMitPc" type="Sprite2D" parent="."]
+texture = ExtResource("1_ybo3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 133)
+shape = SubResource("RectangleShape2D_lvbe2")

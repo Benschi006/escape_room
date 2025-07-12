@@ -3,13 +3,13 @@ extends Area2D
 var entered = false
 
 
-@onready var project_capture_18_: Sprite2D = $"ProjectCapture(18)"
+@onready var sticky_gross: Sprite2D = $sticky_gross
 @onready var e_key: Sprite2D = $EKey
 
 
 func _ready() -> void:
 	e_key.hide()
-	project_capture_18_.hide()
+	sticky_gross.hide()
 
 func _on_body_entered(body: Node2D) -> void:
 	e_key.show()
@@ -21,10 +21,10 @@ func _on_body_exited(body: Node2D) -> void:
 
 func testE():
 	if Input.is_action_just_pressed("E") and entered == true:
-		project_capture_18_.show()
+		sticky_gross.show()
 func testEsc():
 	if Input.is_action_just_pressed("esc") and entered == true:
-		project_capture_18_.hide()
+		sticky_gross.hide()
 
 func _process(delta):
 	testE()
