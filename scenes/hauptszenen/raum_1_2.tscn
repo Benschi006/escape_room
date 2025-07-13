@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cw7g6vmhxu1rt"]
+[gd_scene load_steps=44 format=3 uid="uid://cw7g6vmhxu1rt"]
 
 [ext_resource type="Texture2D" uid="uid://cctsd1iiqjaqu" path="res://assets/raum_fenster_tafel.png" id="1_2fqd0"]
 [ext_resource type="PackedScene" uid="uid://eq5gcjrx0xrk" path="res://scenes/function scenes/lehrer_pc.tscn" id="2_t8pa8"]
@@ -13,7 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://5kqb6ypqwm0r" path="res://assets/katze_bild_screen.png" id="11_ehfqm"]
 [ext_resource type="Texture2D" uid="uid://c1o7giuq8kckw" path="res://assets/nur_mit_cd_screen.png" id="12_twcbh"]
 [ext_resource type="Texture2D" uid="uid://dgo8ae4nfx0xs" path="res://assets/cd.png" id="13_ehfqm"]
+[ext_resource type="Texture2D" uid="uid://bc6524d131dcf" path="res://assets/pacman_mit_ziel.png" id="13_t4c5w"]
 [ext_resource type="Script" uid="uid://dliqbk266jm4w" path="res://scripts/cd_area.gd" id="14_twcbh"]
+[ext_resource type="Texture2D" uid="uid://gn0xat2v2lb7" path="res://assets/lehrer_pc_passwort.png" id="14_tyt5f"]
+[ext_resource type="PackedScene" uid="uid://fgsa8oa3trne" path="res://scenes/hauptszenen/player_small.tscn" id="15_dk0ev"]
+[ext_resource type="Script" uid="uid://62pey0gabpl4" path="res://scripts/door_r1_2.gd" id="15_twcbh"]
+[ext_resource type="Texture2D" uid="uid://ci81pm8qw3pmi" path="res://assets/r1_tafelanschrift.png" id="17_t4c5w"]
+[ext_resource type="Script" uid="uid://bs1b08piafne" path="res://scripts/r1_tafel.gd" id="18_dudi0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l7m5"]
 size = Vector2(106, 20)
@@ -23,6 +29,85 @@ radius = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_of1q4"]
 radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkbbg"]
+size = Vector2(37, 25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_db4pr"]
+a = Vector2(435, 87)
+b = Vector2(345, 90)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3s0c4"]
+a = Vector2(630, 96)
+b = Vector2(435, 87)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rrmnj"]
+a = Vector2(365, 290)
+b = Vector2(345, 93)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6v8em"]
+a = Vector2(641, 287)
+b = Vector2(367, 289)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kvlqp"]
+a = Vector2(444, 248)
+b = Vector2(450, 287)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vv50e"]
+a = Vector2(405, 244)
+b = Vector2(362, 250)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7y3y1"]
+a = Vector2(398, 180)
+b = Vector2(404, 244)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7n0ib"]
+a = Vector2(433, 176)
+b = Vector2(398, 179)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wswvg"]
+a = Vector2(440, 215)
+b = Vector2(432, 176)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c4msv"]
+a = Vector2(439, 128)
+b = Vector2(397, 130)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p02ow"]
+a = Vector2(438, 128)
+b = Vector2(435, 88)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_urdnu"]
+a = Vector2(487, 132)
+b = Vector2(484, 91)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jyybj"]
+a = Vector2(487, 132)
+b = Vector2(579, 134)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r4r00"]
+a = Vector2(642, 286)
+b = Vector2(632, 98)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b80xn"]
+a = Vector2(529, 213)
+b = Vector2(441, 215)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lsost"]
+a = Vector2(532, 250)
+b = Vector2(529, 214)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wravn"]
+a = Vector2(587, 180)
+b = Vector2(491, 181)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k5hca"]
+a = Vector2(594, 248)
+b = Vector2(586, 182)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_70ljj"]
+a = Vector2(592, 248)
+b = Vector2(533, 249)
 
 [node name="raum_1_2" type="Node2D"]
 
@@ -73,6 +158,7 @@ texture = ExtResource("4_l5d7q")
 position = Vector2(142, 411)
 
 [node name="logik" type="Node2D" parent="."]
+process_mode = 3
 
 [node name="stickynote" type="Node2D" parent="logik"]
 
@@ -105,6 +191,18 @@ offset_right = 640.0
 offset_bottom = 464.0
 theme_override_constants/outline_size = 5
 text = "Schließen"
+
+[node name="computer_lehrer" type="Node2D" parent="logik"]
+
+[node name="door" type="Node2D" parent="logik"]
+
+[node name="Area2D" type="Area2D" parent="logik/door"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("15_twcbh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/door/Area2D"]
+polygon = PackedVector2Array(65, 415, 157, 324, 156, 348, 65, 437)
 
 [node name="computer_schueler" type="Node2D" parent="logik"]
 process_mode = 3
@@ -153,6 +251,12 @@ position = Vector2(448, 200)
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("12_twcbh")
 
+[node name="PacmanMitZiel" type="Sprite2D" parent="logik/computer_schueler/screens"]
+visible = false
+position = Vector2(504, 208)
+scale = Vector2(0.377572, 0.377572)
+texture = ExtResource("13_t4c5w")
+
 [node name="login" type="Node2D" parent="logik/computer_schueler"]
 visible = false
 
@@ -180,11 +284,41 @@ offset_bottom = 272.0
 theme_override_constants/outline_size = 5
 text = "Einloggen"
 
-[node name="computer_lehrer" type="Node2D" parent="logik"]
+[node name="tafel" type="Node2D" parent="logik"]
+
+[node name="R1Tafelanschrift" type="Sprite2D" parent="logik/tafel"]
+visible = false
+position = Vector2(505, 195)
+scale = Vector2(0.31197, 0.31197)
+texture = ExtResource("17_t4c5w")
+
+[node name="EKey" type="Sprite2D" parent="logik/tafel"]
+visible = false
+position = Vector2(905, 108)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_f0nvo")
+
+[node name="Area2D" type="Area2D" parent="logik/tafel"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("18_dudi0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/tafel/Area2D"]
+polygon = PackedVector2Array(823, 323, 822, 302, 948, 428, 948, 447)
+
+[node name="schliessen" type="Button" parent="logik/tafel"]
+visible = false
+offset_left = 392.0
+offset_top = 432.0
+offset_right = 640.0
+offset_bottom = 464.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
 
 [node name="CD" type="Node2D" parent="logik"]
 
 [node name="EKey" type="Sprite2D" parent="logik/CD"]
+visible = false
 position = Vector2(56, 352)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("6_f0nvo")
@@ -203,12 +337,103 @@ script = ExtResource("14_twcbh")
 position = Vector2(56, 480)
 shape = SubResource("CircleShape2D_of1q4")
 
+[node name="minigame" type="Node2D" parent="logik"]
+process_mode = 3
+
+[node name="LehrerPcPasswort" type="Sprite2D" parent="logik/minigame"]
+visible = false
+position = Vector2(504, 208)
+scale = Vector2(0.374486, 0.374486)
+texture = ExtResource("14_tyt5f")
+
+[node name="player small" parent="logik/minigame" instance=ExtResource("15_dk0ev")]
+visible = false
+position = Vector2(416, 120)
+scale = Vector2(0.15, 0.15)
+
+[node name="ziel_area" type="Area2D" parent="logik/minigame"]
+process_mode = 3
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/minigame/ziel_area"]
+process_mode = 3
+position = Vector2(386, 269)
+shape = SubResource("RectangleShape2D_jkbbg")
+
+[node name="walls" type="StaticBody2D" parent="logik/minigame"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_db4pr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_3s0c4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_rrmnj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_6v8em")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_kvlqp")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_vv50e")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_7y3y1")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_7n0ib")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_wswvg")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_c4msv")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_p02ow")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_urdnu")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_jyybj")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_r4r00")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_b80xn")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_lsost")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_wravn")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_k5hca")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="logik/minigame/walls"]
+shape = SubResource("SegmentShape2D_70ljj")
+
 [connection signal="body_entered" from="logik/stickynote/Area2D" to="logik/stickynote/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/stickynote/Area2D" to="logik/stickynote/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="logik/stickynote/schliessen" to="logik/stickynote/Area2D" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/door/Area2D" to="logik/door/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="logik/computer_schueler/Area2D" to="logik/computer_schueler/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/computer_schueler/Area2D" to="logik/computer_schueler/Area2D" method="_on_body_exited"]
 [connection signal="pressed" from="logik/computer_schueler/schliessen" to="logik/computer_schueler/Area2D" method="_on_schliessen_pressed"]
 [connection signal="pressed" from="logik/computer_schueler/login/einloggen" to="logik/computer_schueler/Area2D" method="_on_einloggen_pressed"]
+[connection signal="body_entered" from="logik/tafel/Area2D" to="logik/tafel/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="logik/tafel/Area2D" to="logik/tafel/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="logik/tafel/schliessen" to="logik/tafel/Area2D" method="_on_schliessen_pressed"]
 [connection signal="body_entered" from="logik/CD/Area2D" to="logik/CD/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/CD/Area2D" to="logik/CD/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="logik/minigame/ziel_area" to="logik/computer_schueler/Area2D" method="_on_ziel_area_body_entered"]

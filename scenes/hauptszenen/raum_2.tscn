@@ -54,7 +54,7 @@ a = Vector2(504, -1)
 b = Vector2(-507, -1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqhsi"]
-radius = 71.1758
+radius = 56.0
 
 [sub_resource type="SystemFont" id="SystemFont_fsc35"]
 font_names = PackedStringArray("Arial")
@@ -76,8 +76,8 @@ radius = 68.0074
 [sub_resource type="Theme" id="Theme_q2n4m"]
 default_font_size = 21
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xhwow"]
-radius = 92.0489
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqtrx"]
+size = Vector2(146, 20)
 
 [sub_resource type="Theme" id="Theme_4y4vv"]
 default_font_size = 13
@@ -91,10 +91,10 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4c08"]
-radius = 74.0068
+radius = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nigvf"]
-radius = 71.0634
+radius = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcx5g"]
 radius = 77.1622
@@ -124,7 +124,7 @@ position = Vector2(-192, -24)
 position = Vector2(-96, -120)
 
 [node name="schrank" parent="Objekte" instance=ExtResource("2_rdng0")]
-position = Vector2(-240, -320)
+position = Vector2(-240, -328)
 
 [node name="lehrertisch" parent="Objekte" instance=ExtResource("5_rdcte")]
 position = Vector2(242, -110)
@@ -182,11 +182,11 @@ collision_mask = 4
 script = ExtResource("7_tqhsi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schulbuch/prompt_area"]
-position = Vector2(130, -245)
+position = Vector2(136, -224)
 shape = SubResource("CircleShape2D_tqhsi")
 
 [node name="EKey" type="Sprite2D" parent="Logik/schulbuch/prompt_area"]
-position = Vector2(136, -384)
+position = Vector2(136, -344)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("7_5arhk")
 
@@ -258,7 +258,7 @@ theme = SubResource("Theme_q2n4m")
 text = "Schließen"
 
 [node name="EKey" type="Sprite2D" parent="Logik/hausaufgabenheft/Area2D"]
-position = Vector2(-62, -369)
+position = Vector2(-48, -344)
 scale = Vector2(0.385, 0.385)
 texture = ExtResource("7_5arhk")
 
@@ -272,10 +272,11 @@ collision_mask = 4
 script = ExtResource("15_wehhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/schrank/schrank_area"]
-shape = SubResource("CircleShape2D_xhwow")
+position = Vector2(10, 63)
+shape = SubResource("RectangleShape2D_iqtrx")
 
 [node name="EKey" type="Sprite2D" parent="Logik/schrank/schrank_area"]
-position = Vector2(-4, -145)
+position = Vector2(11, -145)
 scale = Vector2(0.38, 0.38)
 texture = ExtResource("7_5arhk")
 
@@ -342,7 +343,7 @@ collision_mask = 4
 script = ExtResource("19_syq8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack1/Rucksack_G_Area2"]
-position = Vector2(-264, -88)
+position = Vector2(-288, -80)
 shape = SubResource("CircleShape2D_h4c08")
 
 [node name="Ex" type="Sprite2D" parent="Logik/rucksäcke/rucksack1/Rucksack_G_Area2"]
@@ -374,7 +375,7 @@ collision_mask = 4
 script = ExtResource("19_nigvf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/rucksäcke/rucksack2/Rucksack_G_Area"]
-position = Vector2(128, -88)
+position = Vector2(120, -88)
 shape = SubResource("CircleShape2D_nigvf")
 
 [node name="ex_gruen" type="Sprite2D" parent="Logik/rucksäcke/rucksack2/Rucksack_G_Area"]
@@ -448,7 +449,7 @@ position = Vector2(272, -170)
 shape = SubResource("CircleShape2D_4l7fy")
 
 [node name="EKey" type="Sprite2D" parent="Logik/klassenliste/Area2D"]
-position = Vector2(264, -296)
+position = Vector2(264, -280)
 scale = Vector2(0.385, 0.385)
 texture = ExtResource("7_5arhk")
 

@@ -2,6 +2,7 @@ extends Area2D
 
 var entered = false
 var pressed = false
+var taken = false
 
 signal collected
 
@@ -10,7 +11,8 @@ signal collected
 
 func _on_body_entered(body: Node2D) -> void:
 	entered = true
-	e_key.show()
+	if taken == false:
+		e_key.show()
 
 func _on_body_exited(body: Node2D) -> void:
 	entered = false

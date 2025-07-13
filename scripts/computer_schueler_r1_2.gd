@@ -6,6 +6,7 @@ var username_correct = false
 var password_correct = false
 var login_successful = false
 var cd_collected = false
+var minigame_completion = false
 var pc_progress = 0
 
 @onready var e_key: Sprite2D = $"../EKey"
@@ -18,13 +19,18 @@ var pc_progress = 0
 @onready var einloggen: Button = $"../login/einloggen"
 @onready var katze_bildschirm: Sprite2D = $"../screens/KatzeBildschirm"
 @onready var nur_mit_cd_screen: Sprite2D = $"../screens/NurMitCdScreen"
+@onready var pacman: Sprite2D = $"../screens/PacmanMitZiel"
+@onready var lehrer_pc_passwort: Sprite2D = $"../../minigame/LehrerPcPasswort"
+@onready var minigame: Node2D = $"../minigame"
+@onready var player_small: CharacterBody2D = $"../../minigame/player small"
 
 
 func _ready() -> void:
 	line_edit_user.text_submitted.connect(checkUsername)
 	line_edit_pass.text_submitted.connect(checkPassword)
-	var cd_node = get_node_or_null("$../../CD/Area2D")
+	var cd_node = get_node_or_null("../../CD/Area2D")
 	cd_node.collected.connect(is_cd_collected)
+	
 
 func checkUsername(user: String) -> void:
 	if user == "Katze":
@@ -59,40 +65,75 @@ func _on_body_exited(body: Node2D) -> void:
 	entered = false
 
 func checkEntf() -> void:
-	if Input.is_action_just_pressed("entf"):
+	if Input.is_action_just_pressed("entf") and pc_progress == 1:
 		pc_progress = 2
 		katze_bildschirm.hide()
 		nur_mit_cd_screen.show()
 		print("entf pressed")
 
-func is_cd_collected() -> void:
+func is_cd_collected():
 	cd_collected = true
+
+func _on_ziel_area_body_entered(body: CharacterBody2D) -> void:
+	print("ziel entered")
+	pc_progress = 4
+	lehrer_pc_passwort.show()
+	pacman.hide()
+	player_small.hide()
+	minigame_completion = true
 
 func checkPressed() -> void:
 	if entered == true and Input.is_action_just_pressed("E"):
 		pressed = true
 		if entered == true and pressed == true:
+			get_tree().paused = true
 			if pc_progress == 0:
 				login_screen.show()
 				login.show()
 				schliessen.show()
-				get_tree().paused = true
 			elif pc_progress == 1:
 				katze_bildschirm.show()
+				schliessen.show()
+				
 				checkEntf()
 			elif pc_progress == 2:
 				if cd_collected:
 					pc_progress = 3
+					schliessen.show()
+					player_small.global_position = Vector2(417,123)
+					player_small.show()
+					pacman.show()
 				else:
 					nur_mit_cd_screen.show()
+					schliessen.show()
+					
 			elif pc_progress == 3:
-				pass
+				if minigame_completion:
+					pc_progress = 4
+					schliessen.show()
+					print(pc_progress)
+					lehrer_pc_passwort.show()
+					player_small.hide()
+					pacman.hide()
+					
+				else:
+					pacman.show()
+					player_small.show()
+					schliessen.show()
+			elif pc_progress == 4:
+				lehrer_pc_passwort.show()
+				schliessen.show()
 
 
 func _on_schliessen_pressed() -> void:
 	get_tree().paused = false
 	pressed = false
-	screens.hide()
+	login_screen.hide()
+	katze_bildschirm.hide()
+	nur_mit_cd_screen.hide()
+	lehrer_pc_passwort.hide()
+	pacman.hide()
+	player_small.hide()
 	schliessen.hide()
 	login.hide()
 
