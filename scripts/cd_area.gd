@@ -21,6 +21,7 @@ func _on_body_exited(body: Node2D) -> void:
 func checkPressed() -> void:
 	if entered == true and Input.is_action_just_pressed("E"):
 		pressed = true
+		taken = true
 		emit_signal("collected")
 		cd.hide()
 

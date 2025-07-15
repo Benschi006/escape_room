@@ -1,6 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6bpckkme5sx4"]
-
-[ext_resource type="PackedScene" uid="uid://b3hkqyixr8lat" path="res://scenes/hauptszenen/player_small_2.tscn" id="1_6qko2"]
+[gd_scene load_steps=20 format=3 uid="uid://c6bpckkme5sx4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hm83i"]
 a = Vector2(435, 87)
@@ -80,10 +78,6 @@ b = Vector2(533, 249)
 
 [node name="minigame" type="Node2D"]
 process_mode = 3
-
-[node name="player_small" parent="." instance=ExtResource("1_6qko2")]
-position = Vector2(412, 91)
-scale = Vector2(0.175, 0.175)
 
 [node name="walls" type="StaticBody2D" parent="."]
 collision_layer = 8

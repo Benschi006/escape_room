@@ -20,10 +20,10 @@ var pc_progress = 0
 @onready var katze_bildschirm: Sprite2D = $"../screens/KatzeBildschirm"
 @onready var nur_mit_cd_screen: Sprite2D = $"../screens/NurMitCdScreen"
 @onready var pacman: Sprite2D = $"../screens/PacmanMitZiel"
-@onready var lehrer_pc_passwort: Sprite2D = $"../../minigame/LehrerPcPasswort"
-@onready var minigame: Node2D = $"../minigame"
-@onready var player_small: CharacterBody2D = $"../../minigame/player_small"
-@onready var ziel_area: Area2D = $"../../minigame/ziel_area"
+@onready var lehrer_pc_passwort: Sprite2D = $"../screens/LehrerPcPasswort"
+@onready var minigame: Node2D = $"../../minigame2"
+@onready var player_small: CharacterBody2D = $"../../player small"
+@onready var ziel_area: Area2D = $"../../../ziel_minigame"
 
 
 func _ready() -> void:
@@ -33,8 +33,6 @@ func _ready() -> void:
 	cd_node.collected.connect(is_cd_collected)
 
 	
-	
-
 func checkUsername(user: String) -> void:
 	if user == "Katze":
 		username_correct = true
@@ -69,19 +67,28 @@ func _on_body_exited(body: Node2D) -> void:
 
 func checkEntf() -> void:
 	if Input.is_action_just_pressed("entf") and pc_progress == 1:
-		pc_progress = 2
-		katze_bildschirm.hide()
-		nur_mit_cd_screen.show()
-		print("entf pressed")
+		if cd_collected == false:
+			pc_progress = 2
+			katze_bildschirm.hide()
+			nur_mit_cd_screen.show()
+			print("entf pressed")
+		elif cd_collected == true:
+			PhysicsServer2D.set_active(true)
+			pc_progress = 3
+			katze_bildschirm.hide()
+			pacman.show()
+			player_small.show()
+			player_small.global_position = Vector2(419,150)
 
 func is_cd_collected():
 	cd_collected = true
-
-func _on_ziel_area_body_entered(body: CharacterBody2D) -> void:
+	
+func _on_ziel_minigame_body_entered(body: Node2D) -> void:
 	print("ziel entered")
 	pc_progress = 4
 	lehrer_pc_passwort.show()
 	pacman.hide()
+	minigame.hide()
 	player_small.hide()
 	minigame_completion = true
 
@@ -103,10 +110,12 @@ func checkPressed() -> void:
 			elif pc_progress == 2:
 				if cd_collected:
 					get_tree().paused = true
+					PhysicsServer2D.set_active(true)
 					pc_progress = 3
 					schliessen.show()
-					player_small.global_position = Vector2(409,95)
+					player_small.global_position = Vector2(419,160)
 					player_small.show()
+					minigame.show()
 					pacman.show()
 				else:
 					get_tree().paused = true
@@ -120,16 +129,20 @@ func checkPressed() -> void:
 					schliessen.show()
 					lehrer_pc_passwort.show()
 					player_small.hide()
+					minigame.show()
 					pacman.hide()
 					
 				else:
 					get_tree().paused = true
+					PhysicsServer2D.set_active(true)
 					pacman.show()
 					player_small.show()
-					player_small.global_position = Vector2(409,95)
+					player_small.global_position = Vector2(419,160)
+					minigame.show()
 					schliessen.show()
 					
 			elif pc_progress == 4:
+				get_tree().paused = true
 				lehrer_pc_passwort.show()
 				schliessen.show()
 	
@@ -144,8 +157,7 @@ func _on_schliessen_pressed() -> void:
 	player_small.hide()
 	schliessen.hide()
 	login.hide()
-	ziel_area.hide()
-	player_small.global_position = Vector2(409,95)
+	player_small.global_position = Vector2(419,125)
 	get_tree().paused = false
 
 func _on_einloggen_pressed() -> void:

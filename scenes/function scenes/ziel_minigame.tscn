@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bavbnc1x8h8sk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxt0s"]
+size = Vector2(25, 25)
+
+[node name="ziel_minigame" type="Area2D"]
+process_mode = 2
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(383.5, 267.5)
+shape = SubResource("RectangleShape2D_cxt0s")

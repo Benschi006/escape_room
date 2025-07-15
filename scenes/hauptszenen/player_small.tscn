@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d6m6"]
 radius = 32.0
-height = 192.0
+height = 176.0
 
 [node name="player small" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -14,7 +14,7 @@ collision_mask = 8
 script = ExtResource("1_7d6m6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -96)
+position = Vector2(-8, -89)
 shape = SubResource("CapsuleShape2D_7d6m6")
 
 [node name="ProjectCapture(4)" type="Sprite2D" parent="."]
