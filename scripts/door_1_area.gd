@@ -11,5 +11,5 @@ func _on_body_exited(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	if entered1 == true:
 		if Input.is_action_just_pressed("E"):
-			get_tree().change_scene_to_file("res://scenes/hauptszenen/raum_1.tscn")
+			get_tree().change_scene_to_file("res://scenes/hauptszenen/raum_1_2.tscn")
 			entered1 = false
