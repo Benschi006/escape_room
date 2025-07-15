@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://b1uwe0g678poj" path="res://assets/buchseite_falsch.png" id="12_xhwow"]
 [ext_resource type="Script" uid="uid://3w4pajfd0p7h" path="res://scripts/schrank_area.gd" id="15_wehhw"]
 [ext_resource type="Texture2D" uid="uid://c7jagwvixnehw" path="res://assets/schloss.png" id="16_xhwow"]
-[ext_resource type="Texture2D" uid="uid://buu66jowdhr2w" path="res://assets/ex_notiz_1.png" id="17_8mifd"]
 [ext_resource type="Texture2D" uid="uid://xqvcqadc5ur2" path="res://assets/klassenliste.png" id="18_4y4vv"]
+[ext_resource type="Texture2D" uid="uid://orqkpxkwq1fu" path="res://assets/ex_notiz.png" id="18_iqtrx"]
 [ext_resource type="Texture2D" uid="uid://kcl08e5cnwcn" path="res://assets/rucksack_rot.png" id="19_ageqq"]
 [ext_resource type="Script" uid="uid://dlssjgkc4fwjl" path="res://scripts/rucksack_g_area.gd" id="19_nigvf"]
 [ext_resource type="Script" uid="uid://deqs5e550skcq" path="res://scripts/rucksack_b_area.gd" id="19_syq8h"]
@@ -311,12 +311,6 @@ offset_bottom = -61.0
 text = "Was könnte der code sein?"
 label_settings = SubResource("LabelSettings_wehhw")
 
-[node name="ExNotiz1" type="Sprite2D" parent="Logik/schrank/schrank_area"]
-visible = false
-position = Vector2(344, 26)
-scale = Vector2(0.403636, 0.403636)
-texture = ExtResource("17_8mifd")
-
 [node name="Label_falsch" type="Label" parent="Logik/schrank/schrank_area"]
 visible = false
 offset_left = 118.0
@@ -325,6 +319,12 @@ offset_right = 385.0
 offset_bottom = 138.0
 text = "Hmm, das hat nicht funktioniert..."
 label_settings = SubResource("LabelSettings_xhwow")
+
+[node name="ExNotiz" type="Sprite2D" parent="Logik/schrank/schrank_area"]
+visible = false
+position = Vector2(339, -1.00005)
+scale = Vector2(0.414849, 0.414849)
+texture = ExtResource("18_iqtrx")
 
 [node name="rucksäcke" type="Node2D" parent="Logik"]
 y_sort_enabled = true

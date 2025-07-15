@@ -2,7 +2,7 @@ extends Area2D
 
 signal cd_collected
 
-@onready var cd: Sprite2D = $cd
+@onready var cd: Sprite2D = $Cd
 @onready var e_key: Sprite2D = $EKey
 
 func _ready() -> void:

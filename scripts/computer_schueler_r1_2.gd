@@ -22,7 +22,8 @@ var pc_progress = 0
 @onready var pacman: Sprite2D = $"../screens/PacmanMitZiel"
 @onready var lehrer_pc_passwort: Sprite2D = $"../../minigame/LehrerPcPasswort"
 @onready var minigame: Node2D = $"../minigame"
-@onready var player_small: CharacterBody2D = $"../../minigame/player small"
+@onready var player_small: CharacterBody2D = $"../../minigame/player_small"
+@onready var ziel_area: Area2D = $"../../minigame/ziel_area"
 
 
 func _ready() -> void:
@@ -30,6 +31,8 @@ func _ready() -> void:
 	line_edit_pass.text_submitted.connect(checkPassword)
 	var cd_node = get_node_or_null("../../CD/Area2D")
 	cd_node.collected.connect(is_cd_collected)
+
+	
 	
 
 func checkUsername(user: String) -> void:
@@ -82,51 +85,56 @@ func _on_ziel_area_body_entered(body: CharacterBody2D) -> void:
 	player_small.hide()
 	minigame_completion = true
 
+
 func checkPressed() -> void:
 	if entered == true and Input.is_action_just_pressed("E"):
 		pressed = true
 		if entered == true and pressed == true:
-			get_tree().paused = true
 			if pc_progress == 0:
+				get_tree().paused = true
 				login_screen.show()
 				login.show()
 				schliessen.show()
 			elif pc_progress == 1:
+				get_tree().paused = true
 				katze_bildschirm.show()
 				schliessen.show()
-				
 				checkEntf()
 			elif pc_progress == 2:
 				if cd_collected:
+					get_tree().paused = true
 					pc_progress = 3
 					schliessen.show()
-					player_small.global_position = Vector2(417,123)
+					player_small.global_position = Vector2(409,95)
 					player_small.show()
 					pacman.show()
 				else:
+					get_tree().paused = true
 					nur_mit_cd_screen.show()
 					schliessen.show()
 					
 			elif pc_progress == 3:
 				if minigame_completion:
+					get_tree().paused = true
 					pc_progress = 4
 					schliessen.show()
-					print(pc_progress)
 					lehrer_pc_passwort.show()
 					player_small.hide()
 					pacman.hide()
 					
 				else:
+					get_tree().paused = true
 					pacman.show()
 					player_small.show()
+					player_small.global_position = Vector2(409,95)
 					schliessen.show()
+					
 			elif pc_progress == 4:
 				lehrer_pc_passwort.show()
 				schliessen.show()
-
+	
 
 func _on_schliessen_pressed() -> void:
-	get_tree().paused = false
 	pressed = false
 	login_screen.hide()
 	katze_bildschirm.hide()
@@ -136,6 +144,9 @@ func _on_schliessen_pressed() -> void:
 	player_small.hide()
 	schliessen.hide()
 	login.hide()
+	ziel_area.hide()
+	player_small.global_position = Vector2(409,95)
+	get_tree().paused = false
 
 func _on_einloggen_pressed() -> void:
 	checkLogin()
@@ -146,6 +157,7 @@ func _on_einloggen_pressed() -> void:
 
 func _process(delta: float) -> void:
 	checkPressed()
-	checkEntf()
-	print(pc_progress)
+	if pc_progress == 1:
+		checkEntf()
+	
 	

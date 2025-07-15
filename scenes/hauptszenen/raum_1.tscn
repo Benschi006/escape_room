@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bae4jdr6cm2ic"]
+[gd_scene load_steps=27 format=3 uid="uid://bae4jdr6cm2ic"]
 
 [ext_resource type="Texture2D" uid="uid://bbyqwsltu0be0" path="res://assets/raum_mit_tafelanschrift.png" id="1_1cuc3"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_pukxj"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c6rir41i10t6n" path="res://assets/Project Capture (4).png" id="16_m0ht4"]
 [ext_resource type="PackedScene" uid="uid://eq5gcjrx0xrk" path="res://scenes/function scenes/lehrer_pc.tscn" id="17_0jjxd"]
 [ext_resource type="Script" uid="uid://fgssbps5w450" path="res://scripts/pclehrer.gd" id="18_3bo7f"]
+[ext_resource type="Texture2D" uid="uid://dgo8ae4nfx0xs" path="res://assets/cd.png" id="18_qk0i1"]
 [ext_resource type="Script" uid="uid://cfw8nimc0drql" path="res://scripts/login_lehrer.gd" id="19_1cuc3"]
 [ext_resource type="Script" uid="uid://b521cjn1sxjdm" path="res://scripts/room1_door.gd" id="20_1cuc3"]
 
@@ -35,7 +36,7 @@ radius = 112.0
 height = 224.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3tkx"]
-radius = 88.0
+radius = 51.6236
 
 [node name="raum1" type="Node2D"]
 position = Vector2(-504, -248)
@@ -186,10 +187,10 @@ secret = true
 [node name="CheckButton" type="CheckButton" parent="Logik1/computer/Login"]
 visible = false
 layout_mode = 0
-offset_left = 168.0
-offset_top = -183.0
-offset_right = 212.0
-offset_bottom = -157.0
+offset_left = 482.0
+offset_top = 223.0
+offset_right = 526.0
+offset_bottom = 249.0
 
 [node name="Label" type="Label" parent="Logik1/computer/Login/CheckButton"]
 visible = false
@@ -234,10 +235,11 @@ anchors_preset = -1
 anchor_top = -6.396
 anchor_right = 2.725
 anchor_bottom = -6.396
-offset_left = -309.0
-offset_top = -492.0
-offset_right = 408.0
-offset_bottom = -459.0
+offset_left = -123.0
+offset_top = -364.0
+offset_right = 660.0
+offset_bottom = -331.0
+text = "\"Bewege dich so: ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ⬇️ ➡️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬅️ ⬆️ ➡️ ⬇️ und drücke dann Enter!!!\""
 
 [node name="passwordbox" type="LineEdit" parent="Logik1/computer/PasswordMinigame"]
 anchors_preset = -1
@@ -262,18 +264,18 @@ collision_mask = 4
 script = ExtResource("14_mxfo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik1/CD/areacd"]
-position = Vector2(404, 58)
+position = Vector2(130, 477)
 shape = SubResource("CircleShape2D_b3tkx")
 
-[node name="cd" type="Sprite2D" parent="Logik1/CD/areacd"]
-position = Vector2(402, 69)
-scale = Vector2(0.585938, 0.53125)
-texture = ExtResource("15_5ka36")
-
 [node name="EKey" type="Sprite2D" parent="Logik1/CD/areacd"]
-position = Vector2(415, -110)
-scale = Vector2(0.55, 0.55)
+position = Vector2(130, 366)
+scale = Vector2(0.365, 0.365)
 texture = ExtResource("8_lj200")
+
+[node name="Cd" type="Sprite2D" parent="Logik1/CD/areacd"]
+position = Vector2(130, 479)
+scale = Vector2(0.685185, 0.685185)
+texture = ExtResource("18_qk0i1")
 
 [node name="Lehrer-Pc" type="Node2D" parent="Logik1"]
 process_mode = 3

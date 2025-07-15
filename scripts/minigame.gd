@@ -17,7 +17,7 @@ var in_ziel = false
 
 func _ready():
 	passwordbox.hide()
-	label.text = "Bewege dich so: ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ⬇️ ➡️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬅️ ⬆️ ➡️ ⬇️ und drücke dann Enter!!!"
+	#label.text = "Bewege dich so: ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ⬇️ ➡️ ⬇️ ⬅️ ⬅️ ⬆️ ⬆️ ➡️ ➡️ ⬇️ ⬅️ ⬆️ ➡️ ⬇️ und drücke dann Enter!!!"
 	passwordplayer.position = Vector2(100, 50)
 	current_step = 0
 	in_ziel = false

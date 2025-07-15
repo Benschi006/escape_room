@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkhtw58y75dbq"]
+[gd_scene load_steps=12 format=3 uid="uid://dkhtw58y75dbq"]
 
-[ext_resource type="Texture2D" uid="uid://bu7saiclfqw1e" path="res://assets/Raum_vorlage_2_.png" id="1_1v0gd"]
+[ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ry25g"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_kcvyg"]
 [ext_resource type="Script" uid="uid://djae8pq7p5jix" path="res://scripts/dunkle.gd" id="3_1v0gd"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="4_ry25g"]
@@ -8,30 +8,6 @@
 [ext_resource type="Script" uid="uid://cf6et5olcnvy5" path="res://scripts/kunsträtsel.gd" id="6_kcvyg"]
 [ext_resource type="Script" uid="uid://cn1p45yj5elc7" path="res://scripts/kunsträtsellogik.gd" id="6_yqrdt"]
 [ext_resource type="Script" uid="uid://8cfv5dlkcg2q" path="res://scripts/safec.gd" id="8_ry25g"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_c252u"]
-a = Vector2(322, -71)
-b = Vector2(-319, -73)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_q70by"]
-a = Vector2(495, 193)
-b = Vector2(301, 16)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_himl6"]
-a = Vector2(-515, 212)
-b = Vector2(-312, 24)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_2rhpl"]
-a = Vector2(498, 200)
-b = Vector2(498, 242)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_m5tjn"]
-a = Vector2(-504, 243)
-b = Vector2(-504, 190)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_nvtuy"]
-a = Vector2(496, 243)
-b = Vector2(-505, 244)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1v0gd"]
 radius = 52.0
@@ -44,9 +20,8 @@ radius = 24.0
 
 [node name="raum4" type="Node2D"]
 
-[node name="RaumVorlage2" type="Sprite2D" parent="."]
-position = Vector2(-3, -8)
-texture = ExtResource("1_1v0gd")
+[node name="RaumOhneFenster" type="Sprite2D" parent="."]
+texture = ExtResource("1_ry25g")
 
 [node name="player" parent="." instance=ExtResource("2_kcvyg")]
 position = Vector2(-110, 161)
@@ -56,29 +31,9 @@ position = Vector2(-110, 161)
 [node name="StaticBody2D" type="StaticBody2D" parent="barriers"]
 position = Vector2(-6, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(2, 83)
-shape = SubResource("SegmentShape2D_c252u")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(14, -5)
-shape = SubResource("SegmentShape2D_q70by")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(6, -16)
-shape = SubResource("SegmentShape2D_himl6")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(6, -16)
-shape = SubResource("SegmentShape2D_2rhpl")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(6, -16)
-shape = SubResource("SegmentShape2D_m5tjn")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="barriers/StaticBody2D"]
-position = Vector2(6, -16)
-shape = SubResource("SegmentShape2D_nvtuy")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="barriers/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-493, 211, -493, 234, 505, 235, 505, 213, 318, 27, -306, 27)
 
 [node name="Logik" type="Node2D" parent="."]
 position = Vector2(-166, 199)
@@ -253,7 +208,7 @@ position = Vector2(608, 56)
 texture = ExtResource("5_ei8sl")
 
 [node name="Icon6" type="Sprite2D" parent="Logik/Safe/Safec"]
-position = Vector2(212, -108)
+position = Vector2(224, -113)
 scale = Vector2(3.1875, 2.8125)
 texture = ExtResource("5_ei8sl")
 

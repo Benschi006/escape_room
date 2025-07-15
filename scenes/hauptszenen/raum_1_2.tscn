@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cw7g6vmhxu1rt"]
+[gd_scene load_steps=45 format=3 uid="uid://cw7g6vmhxu1rt"]
 
 [ext_resource type="Texture2D" uid="uid://cctsd1iiqjaqu" path="res://assets/raum_fenster_tafel.png" id="1_2fqd0"]
 [ext_resource type="PackedScene" uid="uid://eq5gcjrx0xrk" path="res://scenes/function scenes/lehrer_pc.tscn" id="2_t8pa8"]
@@ -16,10 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://bc6524d131dcf" path="res://assets/pacman_mit_ziel.png" id="13_t4c5w"]
 [ext_resource type="Script" uid="uid://dliqbk266jm4w" path="res://scripts/cd_area.gd" id="14_twcbh"]
 [ext_resource type="Texture2D" uid="uid://gn0xat2v2lb7" path="res://assets/lehrer_pc_passwort.png" id="14_tyt5f"]
-[ext_resource type="PackedScene" uid="uid://fgsa8oa3trne" path="res://scenes/hauptszenen/player_small.tscn" id="15_dk0ev"]
 [ext_resource type="Script" uid="uid://62pey0gabpl4" path="res://scripts/door_r1_2.gd" id="15_twcbh"]
 [ext_resource type="Texture2D" uid="uid://ci81pm8qw3pmi" path="res://assets/r1_tafelanschrift.png" id="17_t4c5w"]
 [ext_resource type="Script" uid="uid://bs1b08piafne" path="res://scripts/r1_tafel.gd" id="18_dudi0"]
+[ext_resource type="PackedScene" uid="uid://b3hkqyixr8lat" path="res://scenes/hauptszenen/player_small_2.tscn" id="20_24am0"]
+[ext_resource type="Script" uid="uid://bqmr13wk1csab" path="res://scripts/ziel_area.gd" id="21_tyt5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l7m5"]
 size = Vector2(106, 20)
@@ -158,9 +159,9 @@ texture = ExtResource("4_l5d7q")
 position = Vector2(142, 411)
 
 [node name="logik" type="Node2D" parent="."]
-process_mode = 3
 
 [node name="stickynote" type="Node2D" parent="logik"]
+process_mode = 3
 
 [node name="EKey" type="Sprite2D" parent="logik/stickynote"]
 visible = false
@@ -195,6 +196,7 @@ text = "Schließen"
 [node name="computer_lehrer" type="Node2D" parent="logik"]
 
 [node name="door" type="Node2D" parent="logik"]
+process_mode = 3
 
 [node name="Area2D" type="Area2D" parent="logik/door"]
 collision_layer = 4
@@ -257,6 +259,12 @@ position = Vector2(504, 208)
 scale = Vector2(0.377572, 0.377572)
 texture = ExtResource("13_t4c5w")
 
+[node name="LehrerPcPasswort" type="Sprite2D" parent="logik/computer_schueler/screens"]
+visible = false
+position = Vector2(504, 208)
+scale = Vector2(0.374486, 0.374486)
+texture = ExtResource("14_tyt5f")
+
 [node name="login" type="Node2D" parent="logik/computer_schueler"]
 visible = false
 
@@ -285,6 +293,7 @@ theme_override_constants/outline_size = 5
 text = "Einloggen"
 
 [node name="tafel" type="Node2D" parent="logik"]
+process_mode = 3
 
 [node name="R1Tafelanschrift" type="Sprite2D" parent="logik/tafel"]
 visible = false
@@ -319,12 +328,12 @@ text = "Schließen"
 
 [node name="EKey" type="Sprite2D" parent="logik/CD"]
 visible = false
-position = Vector2(56, 352)
+position = Vector2(160, 381)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("6_f0nvo")
 
 [node name="Cd" type="Sprite2D" parent="logik/CD"]
-position = Vector2(56, 480)
+position = Vector2(163, 482)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_ehfqm")
 
@@ -334,30 +343,23 @@ collision_mask = 4
 script = ExtResource("14_twcbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/CD/Area2D"]
-position = Vector2(56, 480)
+position = Vector2(161, 478)
 shape = SubResource("CircleShape2D_of1q4")
 
 [node name="minigame" type="Node2D" parent="logik"]
 process_mode = 3
 
-[node name="LehrerPcPasswort" type="Sprite2D" parent="logik/minigame"]
+[node name="player_small" parent="logik/minigame" instance=ExtResource("20_24am0")]
 visible = false
-position = Vector2(504, 208)
-scale = Vector2(0.374486, 0.374486)
-texture = ExtResource("14_tyt5f")
-
-[node name="player small" parent="logik/minigame" instance=ExtResource("15_dk0ev")]
-visible = false
-position = Vector2(416, 120)
-scale = Vector2(0.15, 0.15)
+position = Vector2(409, 95)
+scale = Vector2(0.175, 0.175)
 
 [node name="ziel_area" type="Area2D" parent="logik/minigame"]
-process_mode = 3
 collision_layer = 8
 collision_mask = 8
+script = ExtResource("21_tyt5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/minigame/ziel_area"]
-process_mode = 3
 position = Vector2(386, 269)
 shape = SubResource("RectangleShape2D_jkbbg")
 

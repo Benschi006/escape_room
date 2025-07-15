@@ -8,7 +8,7 @@ var pressed = false
 @onready var label_falsch: Label = $Label_falsch
 @onready var schliessen: Button = $schloss_input/schliessen
 @onready var schloss_input: Node2D = $schloss_input
-@onready var ex_notiz: Sprite2D = $ExNotiz1
+@onready var ex_notiz: Sprite2D = $ExNotiz
 
 func _ready() -> void:
 	e_key.hide()
