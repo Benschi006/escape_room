@@ -1,13 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkhtw58y75dbq"]
+[gd_scene load_steps=19 format=3 uid="uid://dkhtw58y75dbq"]
 
 [ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ry25g"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_kcvyg"]
 [ext_resource type="Script" uid="uid://djae8pq7p5jix" path="res://scripts/dunkle.gd" id="3_1v0gd"]
+[ext_resource type="Texture2D" uid="uid://sin6aateuveb" path="res://assets/schachtel_small_zu.png" id="3_m5tjn"]
+[ext_resource type="Texture2D" uid="uid://b665sp040n5mg" path="res://assets/schachtel_gross.png" id="4_nvtuy"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="4_ry25g"]
+[ext_resource type="Texture2D" uid="uid://bnwbdb2w1acwk" path="res://assets/schachtel_small_offen.png" id="5_7a7o5"]
+[ext_resource type="Texture2D" uid="uid://bios1bmlrgh6" path="res://assets/dunkel_12k.png" id="5_c252u"]
 [ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="5_ei8sl"]
+[ext_resource type="Texture2D" uid="uid://8isml2ea4jcp" path="res://assets/lichtschalter.png" id="6_c252u"]
 [ext_resource type="Script" uid="uid://cf6et5olcnvy5" path="res://scripts/kunsträtsel.gd" id="6_kcvyg"]
 [ext_resource type="Script" uid="uid://cn1p45yj5elc7" path="res://scripts/kunsträtsellogik.gd" id="6_yqrdt"]
 [ext_resource type="Script" uid="uid://8cfv5dlkcg2q" path="res://scripts/safec.gd" id="8_ry25g"]
+[ext_resource type="Texture2D" uid="uid://bn35n66sk6s71" path="res://assets/safe_closed.png" id="14_x0456"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssxam"]
+size = Vector2(96, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1v0gd"]
 radius = 52.0
@@ -16,15 +25,16 @@ radius = 52.0
 radius = 48.5077
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei8sl"]
-radius = 24.0
+radius = 40.0
 
 [node name="raum4" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.932585, 1.1765)
+zoom = Vector2(1.15, 1.15)
+
 [node name="RaumOhneFenster" type="Sprite2D" parent="."]
 texture = ExtResource("1_ry25g")
-
-[node name="player" parent="." instance=ExtResource("2_kcvyg")]
-position = Vector2(-110, 161)
 
 [node name="barriers" type="Node2D" parent="."]
 
@@ -35,27 +45,104 @@ position = Vector2(-6, 16)
 build_mode = 1
 polygon = PackedVector2Array(-493, 211, -493, 234, 505, 235, 505, 213, 318, 27, -306, 27)
 
+[node name="objekte (y sort)" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Lichtschalter" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-280, -24)
+scale = Vector2(0.0621059, 0.0627462)
+texture = ExtResource("6_c252u")
+
+[node name="SafeClosed_small" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-15, 46)
+scale = Vector2(0.143333, 0.143333)
+texture = ExtResource("14_x0456")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="objekte (y sort)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objekte (y sort)/StaticBody2D"]
+position = Vector2(-224, 228)
+shape = SubResource("RectangleShape2D_ssxam")
+
+[node name="SchachtelSmallZu2" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-16, 168)
+rotation = -1.59999
+scale = Vector2(0.139545, 0.139545)
+texture = ExtResource("3_m5tjn")
+
+[node name="SchachtelGross" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(40, 168)
+rotation = -1.55915
+scale = Vector2(0.200152, 0.200152)
+texture = ExtResource("4_nvtuy")
+
+[node name="SchachtelSmallZu" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-220, 203)
+scale = Vector2(0.163788, 0.163788)
+texture = ExtResource("3_m5tjn")
+
+[node name="SchachtelGross2" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-136, 56)
+scale = Vector2(0.186402, 0.186402)
+texture = ExtResource("4_nvtuy")
+
+[node name="SchachtelSmallOffen" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-187, 85)
+scale = Vector2(0.126212, 0.126212)
+texture = ExtResource("5_7a7o5")
+
+[node name="SchachtelSmallZu3" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(-108, 57)
+scale = Vector2(0.133636, 0.133636)
+texture = ExtResource("3_m5tjn")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="objekte (y sort)"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
+polygon = PackedVector2Array(-236, 98, -200, 48, -72, 48, -64, 72, -78, 112, -142, 112, -165, 125, -228, 125)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
+polygon = PackedVector2Array(-73, 247, -71, 181, 0, 179, 1, 202, 73, 204, 76, 247)
+
+[node name="safe" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
+polygon = PackedVector2Array(-55, 85, -56, 63, 26, 63, 29, 102, -57, 102)
+
+[node name="player" parent="objekte (y sort)" instance=ExtResource("2_kcvyg")]
+position = Vector2(-360, 160)
+
 [node name="Logik" type="Node2D" parent="."]
 position = Vector2(-166, 199)
 
 [node name="dunkle" type="Area2D" parent="Logik"]
 position = Vector2(-126.25, -236)
 scale = Vector2(0.485, 0.49)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("3_1v0gd")
 
-[node name="Dunkel" type="Sprite2D" parent="Logik/dunkle"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/dunkle"]
+position = Vector2(8.76287, 157.143)
+shape = SubResource("CircleShape2D_1v0gd")
+
+[node name="Dunkel12k" type="Sprite2D" parent="Logik/dunkle"]
 visible = false
-position = Vector2(658.247, 153.061)
-scale = Vector2(19.8131, 10.9694)
-texture = ExtResource("5_ei8sl")
+position = Vector2(-139.691, 238.776)
+scale = Vector2(0.586254, 0.580272)
+texture = ExtResource("5_c252u")
 
 [node name="EKey" type="Sprite2D" parent="Logik/dunkle"]
-position = Vector2(-42.7835, -14.2857)
+position = Vector2(8.76286, -87.7551)
+scale = Vector2(0.912294, 0.903261)
 texture = ExtResource("4_ry25g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/dunkle"]
-position = Vector2(-40.7216, 336.735)
-shape = SubResource("CircleShape2D_1v0gd")
+[node name="Label" type="Label" parent="Logik/dunkle"]
+offset_left = -403.608
+offset_top = -381.633
+offset_right = -363.608
+offset_bottom = -358.633
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 40
+text = "Hmm... Wo ist der Lichtschalter?"
 
 [node name="kunsträtselmain" type="Node2D" parent="Logik"]
 position = Vector2(239, -332)
@@ -73,11 +160,12 @@ shape = SubResource("CircleShape2D_yqrdt")
 one_way_collision_margin = 81.7
 
 [node name="EKey" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
-position = Vector2(386, -203)
-scale = Vector2(0.46, 0.56)
+position = Vector2(386, -207.309)
+scale = Vector2(0.46, 0.646174)
 texture = ExtResource("4_ry25g")
 
 [node name="Icon" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
+visible = false
 position = Vector2(298.705, -410.999)
 scale = Vector2(3.16407, 3.49601)
 texture = ExtResource("5_ei8sl")
@@ -100,10 +188,10 @@ offset_right = 242.0
 offset_bottom = -474.0
 
 [node name="Redslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 237.404
-offset_top = -361.806
-offset_right = 365.404
-offset_bottom = -345.806
+offset_left = 234.0
+offset_top = -362.0
+offset_right = 366.0
+offset_bottom = -346.0
 max_value = 255.0
 
 [node name="Greenslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
@@ -128,6 +216,7 @@ offset_right = 59.0
 offset_bottom = -573.0
 
 [node name="checkbutton" type="Button" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
+visible = false
 offset_left = 60.1871
 offset_top = -49.1928
 offset_right = 231.187
@@ -147,35 +236,38 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("8_ry25g")
 
+[node name="SafeClosed" type="Sprite2D" parent="Logik/Safe/Safec"]
+visible = false
+position = Vector2(201, -127)
+scale = Vector2(0.496457, 0.496457)
+texture = ExtResource("14_x0456")
+
 [node name="EKey" type="Sprite2D" parent="Logik/Safe/Safec"]
 light_mask = 4
 visibility_layer = 4
-position = Vector2(0, -136)
+position = Vector2(197, -152)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("4_ry25g")
 
-[node name="Icon2" type="Sprite2D" parent="Logik/Safe/Safec"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(0, -64)
-scale = Vector2(0.897205, 0.630171)
-texture = ExtResource("5_ei8sl")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/Safe/Safec"]
+position = Vector2(200, 0)
 shape = SubResource("CircleShape2D_ei8sl")
 
 [node name="Icon" type="Sprite2D" parent="Logik/Safe/Safec"]
+visible = false
 position = Vector2(216, -104)
 scale = Vector2(3.3125, 2.9375)
 texture = ExtResource("5_ei8sl")
 
 [node name="LineEdit" type="LineEdit" parent="Logik/Safe/Safec"]
+visible = false
 offset_left = 184.0
 offset_top = -104.0
 offset_right = 252.563
 offset_bottom = -73.0
 
 [node name="LineEdit2" type="LineEdit" parent="Logik/Safe/Safec"]
+visible = false
 offset_left = 120.0
 offset_top = -176.0
 offset_right = 312.0
@@ -188,34 +280,34 @@ scale = Vector2(3.375, 2.9375)
 texture = ExtResource("5_ei8sl")
 
 [node name="CheckButton" type="CheckButton" parent="Logik/Safe/Safec"]
+visible = false
 offset_left = 192.0
 offset_top = -16.0
 offset_right = 236.0
 offset_bottom = 8.0
 
 [node name="Button" type="Button" parent="Logik/Safe/Safec"]
+visible = false
 offset_left = 152.0
 offset_top = -104.0
 offset_right = 280.0
 offset_bottom = 24.0
 
 [node name="Icon4" type="Sprite2D" parent="Logik/Safe/Safec"]
+visible = false
 position = Vector2(216, -40)
 texture = ExtResource("5_ei8sl")
 
 [node name="Icon5" type="Sprite2D" parent="Logik/Safe/Safec"]
+visible = false
 position = Vector2(608, 56)
 texture = ExtResource("5_ei8sl")
 
 [node name="Icon6" type="Sprite2D" parent="Logik/Safe/Safec"]
+visible = false
 position = Vector2(224, -113)
 scale = Vector2(3.1875, 2.8125)
 texture = ExtResource("5_ei8sl")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -8)
-scale = Vector2(0.932585, 1.1765)
-zoom = Vector2(1.15, 1.15)
 
 [connection signal="body_entered" from="Logik/dunkle" to="Logik/dunkle" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/dunkle" to="Logik/dunkle" method="_on_body_exited"]

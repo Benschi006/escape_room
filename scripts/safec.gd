@@ -2,8 +2,8 @@ extends Area2D
 var entered=false
 
 @onready var e_key: Sprite2D = $EKey
-@onready var icon_2: Sprite2D = $Icon2
-@onready var icon: Sprite2D = $Icon
+@onready var icon2: Sprite2D = $SafeClosed
+@onready var safe_closed: Sprite2D = $SafeClosed
 @onready var line_edit_2: LineEdit = $LineEdit2
 @onready var line_edit: LineEdit = $LineEdit
 @onready var icon_3: Sprite2D = $Icon3
@@ -19,7 +19,7 @@ var entered=false
 
 func _ready() -> void:
 	e_key.hide()
-	icon.hide()
+	safe_closed.hide()
 	line_edit_2.hide()
 	line_edit.hide()
 	line_edit_2.editable = false
@@ -45,14 +45,14 @@ func _on_body_exited(body: Node2D) -> void:
 
 func testE():
 	if Input.is_action_just_pressed("E") and entered == true:
-		icon.show()
+		safe_closed.show()
 		line_edit_2.show()
 		line_edit.show()
 		check_button.show()
 
 func testEsc():
 	if Input.is_action_just_pressed("esc") and entered == true:
-		icon.hide()
+		safe_closed.hide()
 		line_edit.hide()
 		line_edit_2.hide()		
 
@@ -62,7 +62,7 @@ func _on_check_login():
 	var username = line_edit.text.strip_edges()
 	if username == valid_code:
 		icon_3.show()
-		icon_2.hide()
+		icon2.hide()
 		line_edit.hide()
 		line_edit_2.hide()
 		check_button.hide()

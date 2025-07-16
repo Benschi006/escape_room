@@ -3,21 +3,23 @@
 [ext_resource type="Script" uid="uid://ro4wytciq3p5" path="res://scripts/player.gd" id="1_cos01"]
 [ext_resource type="Texture2D" uid="uid://m8ta671fkfpb" path="res://assets/spieler.png" id="2_ijn0j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wfkil"]
-radius = 16.2788
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijn0j"]
+radius = 20.0
+height = 64.0
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(-2, 5)
+position = Vector2(-1, 3)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_cos01")
 
 [node name="Spieler" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -79)
+position = Vector2(2, -82)
 scale = Vector2(0.298387, 0.298387)
 texture = ExtResource("2_ijn0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -20)
-shape = SubResource("CircleShape2D_wfkil")
+position = Vector2(1, -24)
+rotation = -1.56131
+shape = SubResource("CapsuleShape2D_ijn0j")

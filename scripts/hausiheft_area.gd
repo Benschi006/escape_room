@@ -27,8 +27,8 @@ func _process(delta: float) -> void:
 		hausi_heft_offen.show()
 		get_tree().paused = true
 	elif e_pressed == false:
-		get_tree().paused = false
 		hausi_heft_offen.hide()
 
 func _on_schliessen_pressed() -> void:
 	e_pressed = false
+	get_tree().paused = false
