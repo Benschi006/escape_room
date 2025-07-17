@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://m8ta671fkfpb" path="res://assets/spieler.png" id="2_ijn0j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijn0j"]
-radius = 20.0
-height = 64.0
+radius = 16.9992
+height = 51.9787
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -20,6 +20,6 @@ scale = Vector2(0.298387, 0.298387)
 texture = ExtResource("2_ijn0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -24)
+position = Vector2(3, -22)
 rotation = -1.56131
 shape = SubResource("CapsuleShape2D_ijn0j")

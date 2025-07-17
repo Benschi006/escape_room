@@ -92,6 +92,11 @@ polygon = PackedVector2Array(-312, 40, 312, 40, 500, 229, 500, 250, -500, 250, -
 
 [node name="door" type="Node2D" parent="logik"]
 
+[node name="EKey" type="Sprite2D" parent="logik/door"]
+position = Vector2(-400, -160)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("9_j05kc")
+
 [node name="Area2D" type="Area2D" parent="logik/door"]
 collision_layer = 4
 collision_mask = 4

@@ -1,19 +1,36 @@
-[gd_scene load_steps=19 format=3 uid="uid://dkhtw58y75dbq"]
+[gd_scene load_steps=36 format=3 uid="uid://dkhtw58y75dbq"]
 
 [ext_resource type="Texture2D" uid="uid://b3ioekjqjlaxq" path="res://assets/raum_ohne_fenster.png" id="1_ry25g"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_kcvyg"]
 [ext_resource type="Script" uid="uid://djae8pq7p5jix" path="res://scripts/dunkle.gd" id="3_1v0gd"]
+[ext_resource type="Texture2D" uid="uid://bi523y46gf23c" path="res://assets/safe_offen_leer.png" id="3_7a7o5"]
 [ext_resource type="Texture2D" uid="uid://sin6aateuveb" path="res://assets/schachtel_small_zu.png" id="3_m5tjn"]
 [ext_resource type="Texture2D" uid="uid://b665sp040n5mg" path="res://assets/schachtel_gross.png" id="4_nvtuy"]
 [ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="4_ry25g"]
 [ext_resource type="Texture2D" uid="uid://bnwbdb2w1acwk" path="res://assets/schachtel_small_offen.png" id="5_7a7o5"]
 [ext_resource type="Texture2D" uid="uid://bios1bmlrgh6" path="res://assets/dunkel_12k.png" id="5_c252u"]
-[ext_resource type="Texture2D" uid="uid://lh4qlvdl6vkr" path="res://icon.svg" id="5_ei8sl"]
 [ext_resource type="Texture2D" uid="uid://8isml2ea4jcp" path="res://assets/lichtschalter.png" id="6_c252u"]
 [ext_resource type="Script" uid="uid://cf6et5olcnvy5" path="res://scripts/kunsträtsel.gd" id="6_kcvyg"]
 [ext_resource type="Script" uid="uid://cn1p45yj5elc7" path="res://scripts/kunsträtsellogik.gd" id="6_yqrdt"]
-[ext_resource type="Script" uid="uid://8cfv5dlkcg2q" path="res://scripts/safec.gd" id="8_ry25g"]
+[ext_resource type="Texture2D" uid="uid://bv7u7xnv63ddg" path="res://assets/bowl_full.png" id="8_ad63s"]
+[ext_resource type="Texture2D" uid="uid://d31f2ng5sq7ru" path="res://assets/bowl_empty.png" id="9_uvx74"]
+[ext_resource type="Texture2D" uid="uid://dfo3fj4k2pklr" path="res://assets/vent_openpng.png" id="10_s1or7"]
+[ext_resource type="Texture2D" uid="uid://exhf1ghjysmk" path="res://assets/vent_closed.png" id="11_m8g18"]
+[ext_resource type="Texture2D" uid="uid://dqs8ct4mt6f2l" path="res://assets/farbenvergleicher_small.png" id="14_il0iv"]
 [ext_resource type="Texture2D" uid="uid://bn35n66sk6s71" path="res://assets/safe_closed.png" id="14_x0456"]
+[ext_resource type="Texture2D" uid="uid://21b5xj2i60ta" path="res://assets/safe_offen.png" id="15_x0456"]
+[ext_resource type="Script" uid="uid://dpo40um1p8rj7" path="res://scripts/safe.gd" id="16_ssxam"]
+[ext_resource type="Texture2D" uid="uid://o4frie32i6yd" path="res://assets/farbenvergleicher_code.png" id="20_qpn3q"]
+[ext_resource type="Texture2D" uid="uid://c4b71fxnbradj" path="res://assets/farbenvergleicher_no_code.png" id="20_s5jpu"]
+[ext_resource type="Texture2D" uid="uid://c5vc6xclxsqfo" path="res://assets/katze_steht.png" id="21_m8g18"]
+[ext_resource type="Texture2D" uid="uid://b7h3658b4lrxg" path="res://assets/katze_frisst.png" id="22_il0iv"]
+[ext_resource type="Script" uid="uid://dgkevqk0y4f6r" path="res://scripts/katze.gd" id="23_s5jpu"]
+[ext_resource type="Texture2D" uid="uid://dp1auj0d5av5i" path="res://assets/code_r4.png" id="25_ekwoh"]
+[ext_resource type="Script" uid="uid://blp0grmbonskb" path="res://scripts/code_r4.gd" id="27_tjspo"]
+[ext_resource type="Script" uid="uid://c8803438j2hhj" path="res://scripts/door_r4.gd" id="28_tjspo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad63s"]
+size = Vector2(55, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssxam"]
 size = Vector2(96, 40)
@@ -21,20 +38,62 @@ size = Vector2(96, 40)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1v0gd"]
 radius = 52.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yqrdt"]
-radius = 48.5077
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5tjn"]
+radius = 88.058
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ei8sl"]
-radius = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_thnbm"]
+radius = 42.0119
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpn3q"]
+radius = 50.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbmxa"]
+radius = 50.01
 
 [node name="raum4" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -5)
 scale = Vector2(0.932585, 1.1765)
 zoom = Vector2(1.15, 1.15)
 
 [node name="RaumOhneFenster" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 texture = ExtResource("1_ry25g")
+
+[node name="VentClosed" type="Sprite2D" parent="."]
+position = Vector2(264, 1.90735e-06)
+scale = Vector2(0.110209, 0.110209)
+texture = ExtResource("11_m8g18")
+
+[node name="VentOpen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(264, -12)
+scale = Vector2(0.109649, 0.109649)
+texture = ExtResource("10_s1or7")
+
+[node name="BowlEmpty" type="Sprite2D" parent="."]
+position = Vector2(184, 72)
+scale = Vector2(0.0833334, 0.0833334)
+texture = ExtResource("9_uvx74")
+
+[node name="BowlFull" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(184, 72)
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("8_ad63s")
+
+[node name="KatzeSteht" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(268, 46)
+scale = Vector2(0.218935, 0.218935)
+texture = ExtResource("21_m8g18")
+
+[node name="KatzeFrisst" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(226, 59)
+scale = Vector2(0.219, 0.219)
+texture = ExtResource("22_il0iv")
 
 [node name="barriers" type="Node2D" parent="."]
 
@@ -42,8 +101,13 @@ texture = ExtResource("1_ry25g")
 position = Vector2(-6, 16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="barriers/StaticBody2D"]
+position = Vector2(0, -7)
 build_mode = 1
 polygon = PackedVector2Array(-493, 211, -493, 234, 505, 235, 505, 213, 318, 27, -306, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/StaticBody2D"]
+position = Vector2(188, 53)
+shape = SubResource("RectangleShape2D_ad63s")
 
 [node name="objekte (y sort)" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -52,6 +116,12 @@ y_sort_enabled = true
 position = Vector2(-280, -24)
 scale = Vector2(0.0621059, 0.0627462)
 texture = ExtResource("6_c252u")
+
+[node name="SafeOffenLeer_small" type="Sprite2D" parent="objekte (y sort)"]
+visible = false
+position = Vector2(4, 43)
+scale = Vector2(0.143, 0.143)
+texture = ExtResource("3_7a7o5")
 
 [node name="SafeClosed_small" type="Sprite2D" parent="objekte (y sort)"]
 position = Vector2(-15, 46)
@@ -96,16 +166,32 @@ position = Vector2(-108, 57)
 scale = Vector2(0.133636, 0.133636)
 texture = ExtResource("3_m5tjn")
 
+[node name="SchachtelSmallZu4" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(104, 53)
+scale = Vector2(-0.128, 0.128)
+texture = ExtResource("3_m5tjn")
+
+[node name="FarbenvergleicherSmall" type="Sprite2D" parent="objekte (y sort)"]
+position = Vector2(368, 184)
+scale = Vector2(0.181738, 0.181738)
+texture = ExtResource("14_il0iv")
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="objekte (y sort)"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
-polygon = PackedVector2Array(-236, 98, -200, 48, -72, 48, -64, 72, -78, 112, -142, 112, -165, 125, -228, 125)
+polygon = PackedVector2Array(-240, 104, -200, 48, -72, 48, -64, 72, -78, 112, -136, 112, -176, 128, -216, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
 polygon = PackedVector2Array(-73, 247, -71, 181, 0, 179, 1, 202, 73, 204, 76, 247)
 
 [node name="safe" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
 polygon = PackedVector2Array(-55, 85, -56, 63, 26, 63, 29, 102, -57, 102)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
+polygon = PackedVector2Array(64, 56, 64, 96, 136, 96, 136, 56)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="objekte (y sort)/StaticBody2D2"]
+polygon = PackedVector2Array(312, 195, 313, 242, 429, 242, 414, 169, 312, 169)
 
 [node name="player" parent="objekte (y sort)" instance=ExtResource("2_kcvyg")]
 position = Vector2(-360, 160)
@@ -131,18 +217,18 @@ scale = Vector2(0.586254, 0.580272)
 texture = ExtResource("5_c252u")
 
 [node name="EKey" type="Sprite2D" parent="Logik/dunkle"]
-position = Vector2(8.76286, -87.7551)
-scale = Vector2(0.912294, 0.903261)
+position = Vector2(-1.54636, -138.776)
+scale = Vector2(0.751044, 0.751044)
 texture = ExtResource("4_ry25g")
 
 [node name="Label" type="Label" parent="Logik/dunkle"]
 offset_left = -403.608
-offset_top = -381.633
-offset_right = -363.608
-offset_bottom = -358.633
+offset_top = -414.286
+offset_right = 219.392
+offset_bottom = -359.286
 theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 40
-text = "Hmm... Wo ist der Lichtschalter?"
+text = "Es ist so dunkel... Wo ist der Lichtschalter?"
 
 [node name="kunsträtselmain" type="Node2D" parent="Logik"]
 position = Vector2(239, -332)
@@ -150,170 +236,252 @@ scale = Vector2(0.897205, 0.630171)
 
 [node name="kunsträtsel" type="Area2D" parent="Logik/kunsträtselmain"]
 position = Vector2(-266.383, 526.841)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("6_kcvyg")
 
+[node name="FarbenvergleicherCode" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
+visible = false
+position = Vector2(194.453, -506.608)
+scale = Vector2(0.421423, 0.6)
+texture = ExtResource("20_qpn3q")
+
+[node name="FarbenvergleicherNoCode" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
+visible = false
+position = Vector2(193.936, -506.212)
+scale = Vector2(0.420929, 0.599297)
+texture = ExtResource("20_s5jpu")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/kunsträtselmain/kunsträtsel"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(386, -72)
-shape = SubResource("CircleShape2D_yqrdt")
-one_way_collision_margin = 81.7
+position = Vector2(568.432, -15.8686)
+scale = Vector2(1, 1.453)
+shape = SubResource("CircleShape2D_m5tjn")
 
 [node name="EKey" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
-position = Vector2(386, -207.309)
+position = Vector2(578.463, -261.834)
 scale = Vector2(0.46, 0.646174)
 texture = ExtResource("4_ry25g")
-
-[node name="Icon" type="Sprite2D" parent="Logik/kunsträtselmain/kunsträtsel"]
-visible = false
-position = Vector2(298.705, -410.999)
-scale = Vector2(3.16407, 3.49601)
-texture = ExtResource("5_ei8sl")
 
 [node name="kunsträtsel" type="Node2D" parent="Logik/kunsträtselmain/kunsträtsel"]
 position = Vector2(0, -6.10352e-05)
 script = ExtResource("6_yqrdt")
 
 [node name="TargetColorRect" type="ColorRect" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 266.383
-offset_top = -526.841
-offset_right = 306.383
-offset_bottom = -486.841
+offset_left = 206.196
+offset_top = -569.686
+offset_right = 246.196
+offset_bottom = -515.686
+scale = Vector2(1.75, 1.75)
 metadata/_edit_use_anchors_ = true
 
 [node name="MixedColorRect" type="ColorRect" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 202.0
-offset_top = -528.0
-offset_right = 242.0
-offset_bottom = -474.0
+offset_left = 66.8745
+offset_top = -568.1
+offset_right = 131.875
+offset_bottom = -479.1
 
 [node name="Redslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 234.0
-offset_top = -362.0
-offset_right = 366.0
-offset_bottom = -346.0
+offset_left = 61.3017
+offset_top = -428.455
+offset_right = 276.302
+offset_bottom = -398.455
 max_value = 255.0
 
 [node name="Greenslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 234.0
-offset_top = -333.0
-offset_right = 367.0
-offset_bottom = -274.0
+offset_left = 60.0
+offset_top = -382.0
+offset_right = 270.0
+offset_bottom = -356.0
 max_value = 255.0
 
 [node name="Blueslider" type="HSlider" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 233.0
-offset_top = -270.0
-offset_right = 367.0
-offset_bottom = -254.0
+offset_left = 61.0
+offset_top = -343.0
+offset_right = 273.0
+offset_bottom = -315.0
 scale = Vector2(0.999726, 1.02306)
 max_value = 255.0
 
-[node name="Result Lable" type="Label" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = -120.0
-offset_top = -643.0
-offset_right = 59.0
-offset_bottom = -573.0
-
-[node name="checkbutton" type="Button" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
+[node name="schliessen" type="Button" parent="Logik/kunsträtselmain/kunsträtsel"]
 visible = false
-offset_left = 60.1871
-offset_top = -49.1928
-offset_right = 231.187
-offset_bottom = 35.8072
+offset_left = 42.0
+offset_top = -36.0
+offset_right = 328.0
+offset_bottom = 14.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
+text = "Schließen"
 
-[node name="Safe" type="LineEdit" parent="Logik/kunsträtselmain/kunsträtsel/kunsträtsel"]
-offset_left = 176.103
-offset_top = -671.246
-offset_right = 408.103
-offset_bottom = -640.246
+[node name="safe" type="Node2D" parent="Logik"]
+process_mode = 3
 
-[node name="Safe" type="Node2D" parent="Logik"]
-
-[node name="Safec" type="Area2D" parent="Logik/Safe"]
-position = Vector2(-50, -111)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("8_ry25g")
-
-[node name="SafeClosed" type="Sprite2D" parent="Logik/Safe/Safec"]
+[node name="EKey" type="Sprite2D" parent="Logik/safe"]
 visible = false
-position = Vector2(201, -127)
-scale = Vector2(0.496457, 0.496457)
-texture = ExtResource("14_x0456")
-
-[node name="EKey" type="Sprite2D" parent="Logik/Safe/Safec"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(197, -152)
-scale = Vector2(0.42, 0.42)
+position = Vector2(150, -271)
+scale = Vector2(0.365, 0.365)
 texture = ExtResource("4_ry25g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/Safe/Safec"]
-position = Vector2(200, 0)
-shape = SubResource("CircleShape2D_ei8sl")
-
-[node name="Icon" type="Sprite2D" parent="Logik/Safe/Safec"]
+[node name="SafeClosed" type="Sprite2D" parent="Logik/safe"]
 visible = false
-position = Vector2(216, -104)
-scale = Vector2(3.3125, 2.9375)
-texture = ExtResource("5_ei8sl")
+position = Vector2(166, -287)
+scale = Vector2(0.394882, 0.394882)
+texture = ExtResource("14_x0456")
 
-[node name="LineEdit" type="LineEdit" parent="Logik/Safe/Safec"]
+[node name="SafeOffenLeer" type="Sprite2D" parent="Logik/safe"]
 visible = false
-offset_left = 184.0
-offset_top = -104.0
-offset_right = 252.563
-offset_bottom = -73.0
+position = Vector2(222, -295)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_7a7o5")
 
-[node name="LineEdit2" type="LineEdit" parent="Logik/Safe/Safec"]
+[node name="SafeOffen" type="Sprite2D" parent="Logik/safe"]
 visible = false
-offset_left = 120.0
-offset_top = -176.0
-offset_right = 312.0
-offset_bottom = -145.0
+position = Vector2(222, -295)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_x0456")
 
-[node name="Icon3" type="Sprite2D" parent="Logik/Safe/Safec"]
-visible = false
-position = Vector2(224, -108)
-scale = Vector2(3.375, 2.9375)
-texture = ExtResource("5_ei8sl")
+[node name="Area2D" type="Area2D" parent="Logik/safe"]
+process_mode = 3
+position = Vector2(151, -116)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("16_ssxam")
+metadata/_edit_group_ = true
 
-[node name="CheckButton" type="CheckButton" parent="Logik/Safe/Safec"]
-visible = false
-offset_left = 192.0
-offset_top = -16.0
-offset_right = 236.0
-offset_bottom = 8.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/safe/Area2D"]
+shape = SubResource("CircleShape2D_thnbm")
+metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="Logik/Safe/Safec"]
+[node name="schliessen" type="Button" parent="Logik/safe"]
 visible = false
-offset_left = 152.0
-offset_top = -104.0
-offset_right = 280.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_top = -23.0
+offset_right = 294.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
 
-[node name="Icon4" type="Sprite2D" parent="Logik/Safe/Safec"]
+[node name="nehmen" type="Button" parent="Logik/safe"]
 visible = false
-position = Vector2(216, -40)
-texture = ExtResource("5_ei8sl")
+offset_left = 38.0
+offset_top = -151.0
+offset_right = 294.0
+offset_bottom = -119.0
+theme_override_constants/outline_size = 5
+text = "Nehmen"
 
-[node name="Icon5" type="Sprite2D" parent="Logik/Safe/Safec"]
+[node name="Label" type="Label" parent="Logik/safe"]
 visible = false
-position = Vector2(608, 56)
-texture = ExtResource("5_ei8sl")
+offset_left = 38.0
+offset_top = -239.0
+offset_right = 294.0
+offset_bottom = -216.0
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 5
+text = "Was könnte der Code sein?"
 
-[node name="Icon6" type="Sprite2D" parent="Logik/Safe/Safec"]
+[node name="LineEdit" type="LineEdit" parent="Logik/safe"]
 visible = false
-position = Vector2(224, -113)
-scale = Vector2(3.1875, 2.8125)
-texture = ExtResource("5_ei8sl")
+offset_left = 38.0
+offset_top = -215.0
+offset_right = 294.0
+offset_bottom = -184.0
+
+[node name="katze" type="Node2D" parent="Logik"]
+
+[node name="notiz_label" type="Label" parent="Logik/katze"]
+visible = false
+offset_left = 38.0
+offset_top = -79.0
+offset_right = 294.0
+offset_bottom = -56.0
+theme_override_constants/outline_size = 5
+text = "Aha, die Katze hat etwas dabei..."
+
+[node name="Label" type="Label" parent="Logik/katze"]
+visible = false
+offset_left = -26.0
+offset_top = -95.0
+offset_right = 358.0
+offset_bottom = -71.0
+theme_override_constants/outline_size = 5
+text = "Hmm... hier kann ich noch nichts machen..."
+horizontal_alignment = 1
+
+[node name="EKey" type="Sprite2D" parent="Logik/katze"]
+visible = false
+position = Vector2(349, -259)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("4_ry25g")
+
+[node name="EKey2" type="Sprite2D" parent="Logik/katze"]
+visible = false
+position = Vector2(432, -252)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("4_ry25g")
+
+[node name="CodeR4" type="Sprite2D" parent="Logik/katze"]
+visible = false
+position = Vector2(277, -217)
+scale = Vector2(0.371515, 0.371515)
+texture = ExtResource("25_ekwoh")
+
+[node name="Area2D" type="Area2D" parent="Logik/katze"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("23_s5jpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/katze/Area2D"]
+position = Vector2(348, -130)
+shape = SubResource("CircleShape2D_qpn3q")
+
+[node name="code" type="Area2D" parent="Logik/katze"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("27_tjspo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logik/katze/code"]
+position = Vector2(432, -131)
+shape = SubResource("CircleShape2D_fbmxa")
+
+[node name="schliessen" type="Button" parent="Logik/katze"]
+visible = false
+offset_left = 38.0
+offset_top = -23.0
+offset_right = 294.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 5
+text = "Schließen"
+
+[node name="door" type="Node2D" parent="Logik"]
+
+[node name="EKey" type="Sprite2D" parent="Logik/door"]
+position = Vector2(-232, -361)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("4_ry25g")
+
+[node name="Area2D" type="Area2D" parent="Logik/door"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("28_tjspo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Logik/door/Area2D"]
+polygon = PackedVector2Array(-278, -35, -277, -11, -176, -112, -176, -135)
 
 [connection signal="body_entered" from="Logik/dunkle" to="Logik/dunkle" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/dunkle" to="Logik/dunkle" method="_on_body_exited"]
 [connection signal="body_entered" from="Logik/kunsträtselmain/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/kunsträtselmain/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel" method="_on_body_exited"]
 [connection signal="visibility_changed" from="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" to="Logik/kunsträtselmain/kunsträtsel/kunsträtsel" method="_on_visibility_changed"]
-[connection signal="body_entered" from="Logik/Safe/Safec" to="Logik/Safe/Safec" method="_on_body_entered"]
-[connection signal="body_exited" from="Logik/Safe/Safec" to="Logik/Safe/Safec" method="_on_body_exited"]
-[connection signal="pressed" from="Logik/Safe/Safec/Button" to="Logik/Safe/Safec" method="_on_button_pressed"]
+[connection signal="pressed" from="Logik/kunsträtselmain/kunsträtsel/schliessen" to="Logik/kunsträtselmain/kunsträtsel" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/safe/Area2D" to="Logik/safe/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/safe/Area2D" to="Logik/safe/Area2D" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/safe/schliessen" to="Logik/safe/Area2D" method="_on_schliessen_pressed"]
+[connection signal="pressed" from="Logik/safe/nehmen" to="Logik/safe/Area2D" method="_on_nehmen_pressed"]
+[connection signal="pressed" from="Logik/safe/nehmen" to="Logik/katze/Area2D" method="_on_nehmen_pressed"]
+[connection signal="body_entered" from="Logik/katze/Area2D" to="Logik/katze/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/katze/Area2D" to="Logik/katze/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Logik/katze/code" to="Logik/katze/code" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/katze/code" to="Logik/katze/code" method="_on_body_exited"]
+[connection signal="pressed" from="Logik/katze/schliessen" to="Logik/katze/code" method="_on_schliessen_pressed"]
+[connection signal="body_entered" from="Logik/door/Area2D" to="Logik/door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Logik/door/Area2D" to="Logik/door/Area2D" method="_on_body_exited"]

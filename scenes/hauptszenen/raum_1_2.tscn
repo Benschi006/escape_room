@@ -197,6 +197,11 @@ text = "Anmelden"
 [node name="door" type="Node2D" parent="logik"]
 process_mode = 3
 
+[node name="EKey" type="Sprite2D" parent="logik/door"]
+position = Vector2(104, 88)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_f0nvo")
+
 [node name="Area2D" type="Area2D" parent="logik/door"]
 collision_layer = 4
 collision_mask = 4

@@ -478,6 +478,12 @@ script = ExtResource("28_iqtrx")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Logik/door/Area2D"]
 polygon = PackedVector2Array(-40, 8, -56, 24, -56, 64, 48, -32, 40, -72)
 
+[node name="EKey" type="Sprite2D" parent="Logik/door"]
+visible = false
+position = Vector2(-400, -408)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_5arhk")
+
 [connection signal="body_entered" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/schulbuch/prompt_area" to="Logik/schulbuch/prompt_area" method="_on_body_exited"]
 [connection signal="pressed" from="Logik/schulbuch/prompt_area/seiten_input/schliessen" to="Logik/schulbuch/prompt_area" method="_on_schliessen_pressed"]

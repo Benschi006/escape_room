@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0e0l3g4sww8u"]
+[gd_scene load_steps=20 format=3 uid="uid://c0e0l3g4sww8u"]
 
 [ext_resource type="Texture2D" uid="uid://bypfgrmvwqbid" path="res://assets/flur_1.png" id="1_ankp5"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_hlxwh"]
 [ext_resource type="Texture2D" uid="uid://cg771fx18cqd7" path="res://assets/move_hint.png" id="3_hlxwh"]
 [ext_resource type="Script" uid="uid://cf1y0atirbgut" path="res://scripts/door_1_area.gd" id="3_wmw0y"]
 [ext_resource type="Script" uid="uid://qnj2lsrl0ekj" path="res://scripts/door_2_area.gd" id="5_wmw0y"]
+[ext_resource type="Texture2D" uid="uid://cijjrgs1bauh5" path="res://assets/e_key.png" id="5_x8p3i"]
 [ext_resource type="Script" uid="uid://ogq7b56rr05x" path="res://scripts/door_3_area.gd" id="6_1xbqk"]
 [ext_resource type="Script" uid="uid://403yvsib4o3a" path="res://scripts/door_4_area.gd" id="7_2j8q1"]
 [ext_resource type="Script" uid="uid://beca62ej2cu4r" path="res://scripts/exit_area.gd" id="8_dykjv"]
@@ -104,6 +105,12 @@ script = ExtResource("3_wmw0y")
 position = Vector2(-290.5, 57.5)
 shape = SubResource("RectangleShape2D_6ljwr")
 
+[node name="EKey" type="Sprite2D" parent="logik/areas/door 1"]
+visible = false
+position = Vector2(-289, -145)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_x8p3i")
+
 [node name="door 2" type="Node2D" parent="logik/areas"]
 
 [node name="door2area" type="Area2D" parent="logik/areas/door 2"]
@@ -114,6 +121,12 @@ script = ExtResource("5_wmw0y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/areas/door 2/door2area"]
 position = Vector2(-87.5, 55.5)
 shape = SubResource("RectangleShape2D_1xbqk")
+
+[node name="EKey" type="Sprite2D" parent="logik/areas/door 2"]
+visible = false
+position = Vector2(-89, -150)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_x8p3i")
 
 [node name="door 3" type="Node2D" parent="logik/areas"]
 
@@ -128,6 +141,12 @@ rotation = 3.14159
 scale = Vector2(2.20642, -1.15738)
 shape = SubResource("RectangleShape2D_2j8q1")
 
+[node name="EKey" type="Sprite2D" parent="logik/areas/door 3"]
+visible = false
+position = Vector2(136, -149)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_x8p3i")
+
 [node name="door 4" type="Node2D" parent="logik/areas"]
 
 [node name="door4area" type="Area2D" parent="logik/areas/door 4"]
@@ -138,6 +157,12 @@ script = ExtResource("7_2j8q1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logik/areas/door 4/door4area"]
 position = Vector2(332.5, 56.5)
 shape = SubResource("RectangleShape2D_dykjv")
+
+[node name="EKey" type="Sprite2D" parent="logik/areas/door 4"]
+visible = false
+position = Vector2(334, -152)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_x8p3i")
 
 [node name="exit" type="Node2D" parent="logik/areas"]
 
@@ -177,6 +202,11 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Was ist der Code?"
+
+[node name="EKey" type="Sprite2D" parent="logik/areas/exit/exit_area"]
+position = Vector2(508, -83)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_x8p3i")
 
 [connection signal="body_entered" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_exited"]
