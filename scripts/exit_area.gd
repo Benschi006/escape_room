@@ -7,6 +7,7 @@ var pressed = false
 @onready var exit_code_eingabe: LineEdit = $"CanvasLayer/exit code"
 @onready var label: Label = $CanvasLayer/Label
 @onready var e_key: Sprite2D = $EKey
+@onready var _1000040789: Sprite2D = $"../1000040789"
 
 func _ready() -> void:
 	exit_code_eingabe.text_submitted.connect(checkExitCode)
@@ -32,7 +33,7 @@ func _on_schliessen_pressed() -> void:
 
 func checkExitCode(code: String) -> void:
 	if code == "7165":
-		pass
+		_1000040789.show()
 
 func _process(delta: float) -> void:
 	checkPressed()

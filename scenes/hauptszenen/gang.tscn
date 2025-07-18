@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0e0l3g4sww8u"]
+[gd_scene load_steps=21 format=3 uid="uid://c0e0l3g4sww8u"]
 
 [ext_resource type="Texture2D" uid="uid://bypfgrmvwqbid" path="res://assets/flur_1.png" id="1_ankp5"]
 [ext_resource type="PackedScene" uid="uid://kw7le5116cb6" path="res://scenes/hauptszenen/player.tscn" id="2_hlxwh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ogq7b56rr05x" path="res://scripts/door_3_area.gd" id="6_1xbqk"]
 [ext_resource type="Script" uid="uid://403yvsib4o3a" path="res://scripts/door_4_area.gd" id="7_2j8q1"]
 [ext_resource type="Script" uid="uid://beca62ej2cu4r" path="res://scripts/exit_area.gd" id="8_dykjv"]
+[ext_resource type="Texture2D" uid="uid://blpsmvxaq2cmy" path="res://assets/1000040789.png" id="10_50tl5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1xbqk"]
 a = Vector2(440, 41)
@@ -168,6 +169,8 @@ texture = ExtResource("5_x8p3i")
 
 [node name="exit_area" type="Area2D" parent="logik/areas/exit"]
 process_mode = 3
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("8_dykjv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="logik/areas/exit/exit_area"]
@@ -204,9 +207,16 @@ theme_override_constants/outline_size = 5
 text = "Was ist der Code?"
 
 [node name="EKey" type="Sprite2D" parent="logik/areas/exit/exit_area"]
+visible = false
 position = Vector2(508, -83)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("5_x8p3i")
+
+[node name="1000040789" type="Sprite2D" parent="logik/areas/exit"]
+visible = false
+position = Vector2(40, 40)
+scale = Vector2(0.756055, 0.756055)
+texture = ExtResource("10_50tl5")
 
 [connection signal="body_entered" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_exited"]
