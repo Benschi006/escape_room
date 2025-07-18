@@ -121,7 +121,7 @@ position = Vector2(16, -24)
 position = Vector2(-192, -24)
 
 [node name="tisch" parent="Objekte" instance=ExtResource("3_fsc35")]
-position = Vector2(-96, -120)
+position = Vector2(-96, -104)
 
 [node name="schrank" parent="Objekte" instance=ExtResource("2_rdng0")]
 position = Vector2(-240, -328)
@@ -131,7 +131,7 @@ position = Vector2(242, -110)
 scale = Vector2(0.9, 0.9)
 
 [node name="tisch mit schulbuch" parent="Objekte" instance=ExtResource("6_8mifd")]
-position = Vector2(96, -196)
+position = Vector2(96, -176)
 scale = Vector2(0.480003, 0.480003)
 
 [node name="rucksack blau" parent="Objekte" instance=ExtResource("8_nigvf")]

@@ -455,6 +455,7 @@ text = "Schließen"
 [node name="door" type="Node2D" parent="Logik"]
 
 [node name="EKey" type="Sprite2D" parent="Logik/door"]
+visible = false
 position = Vector2(-232, -361)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("4_ry25g")

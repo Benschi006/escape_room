@@ -13,16 +13,14 @@ var login_state = 0
 @onready var raum_1_code: Sprite2D = $Raum1Code
 @onready var anmelden: Button = $anmelden
 
-func _ready() -> void:
-	line_edit.text_submitted.connect(password_submitted)
-
-
-func password_submitted(text: String) -> void:
-	if text == ")(zfg8s=?)Fjj[{[()(":
+func password_submitted() -> void:
+	var password = line_edit.text
+	if password == ")(zfg8s=?)Fjj[{[()(":
 		login_success = true
 
 
 func _on_anmelden_pressed() -> void:
+	password_submitted()
 	if login_success:
 		login_state = 1
 		line_edit.hide()

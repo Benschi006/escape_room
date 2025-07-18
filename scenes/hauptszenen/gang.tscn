@@ -206,17 +206,26 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Was ist der Code?"
 
+[node name="1000040789" type="Sprite2D" parent="logik/areas/exit/exit_area/CanvasLayer"]
+visible = false
+position = Vector2(596, 345)
+scale = Vector2(0.756055, 0.756055)
+texture = ExtResource("10_50tl5")
+
+[node name="fail label" type="Label" parent="logik/areas/exit/exit_area/CanvasLayer"]
+visible = false
+offset_left = 424.0
+offset_top = 384.0
+offset_right = 725.0
+offset_bottom = 417.0
+theme_override_constants/outline_size = 5
+text = "Der code hat leider nicht funktioniert..."
+
 [node name="EKey" type="Sprite2D" parent="logik/areas/exit/exit_area"]
 visible = false
 position = Vector2(508, -83)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("5_x8p3i")
-
-[node name="1000040789" type="Sprite2D" parent="logik/areas/exit"]
-visible = false
-position = Vector2(40, 40)
-scale = Vector2(0.756055, 0.756055)
-texture = ExtResource("10_50tl5")
 
 [connection signal="body_entered" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_entered"]
 [connection signal="body_exited" from="logik/areas/door 1/door1area" to="logik/areas/door 1/door1area" method="_on_body_exited"]

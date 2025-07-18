@@ -27,8 +27,6 @@ var pc_progress = 0
 
 
 func _ready() -> void:
-	line_edit_user.text_submitted.connect(checkUsername)
-	line_edit_pass.text_submitted.connect(checkPassword)
 	var cd_node = get_node_or_null("../../CD/Area2D")
 	cd_node.collected.connect(is_cd_collected)
 
@@ -50,7 +48,9 @@ func checkPassword(password: String) -> void:
 		print("pass failed")
 
 func checkLogin() -> void:
-	if username_correct == true and password_correct == true:
+	var username = line_edit_user.text
+	var password = line_edit_pass.text
+	if username == "Katze" and password == "12Miau!":
 		pc_progress = 1
 		login_successful = true
 		password_correct = false
