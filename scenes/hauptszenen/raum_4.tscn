@@ -478,6 +478,7 @@ polygon = PackedVector2Array(-278, -35, -277, -11, -176, -112, -176, -135)
 [connection signal="pressed" from="Logik/safe/schliessen" to="Logik/safe/Area2D" method="_on_schliessen_pressed"]
 [connection signal="pressed" from="Logik/safe/nehmen" to="Logik/safe/Area2D" method="_on_nehmen_pressed"]
 [connection signal="pressed" from="Logik/safe/nehmen" to="Logik/katze/Area2D" method="_on_nehmen_pressed"]
+[connection signal="pressed" from="Logik/safe/nehmen" to="Logik/katze/code" method="_on_nehmen_pressed"]
 [connection signal="body_entered" from="Logik/katze/Area2D" to="Logik/katze/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Logik/katze/Area2D" to="Logik/katze/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="Logik/katze/code" to="Logik/katze/code" method="_on_body_entered"]
